@@ -1,6 +1,9 @@
 <template>
   <div>
-    Bank
+    <div>
+      <vue-headful title="Оценки банков - Эмитеты Беларуси" description="Оценки банков - Эмитеты Беларуси"/>
+    </div>
+    Банки
   </div>
 </template>
 

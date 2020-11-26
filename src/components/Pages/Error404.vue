@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div>
+      <vue-headful title="Страница не найдена - Эмитеты Беларуси" description="Страница не найдена - Эмитеты Беларуси"/>
+    </div>
     Error 404
   </div>
 </template>

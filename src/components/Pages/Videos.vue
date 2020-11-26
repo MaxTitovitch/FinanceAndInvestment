@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div>
+      <vue-headful title="Видео - Эмитеты Беларуси" description="Видео - Эмитеты Беларуси"/>
+    </div>
     Videos
   </div>
 </template>
