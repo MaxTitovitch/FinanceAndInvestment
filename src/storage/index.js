@@ -7,7 +7,7 @@ import videos from './models/videos'
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
+new Vuex.Store({
     modules: [
         banks, issuers, terms, videos
     ]
