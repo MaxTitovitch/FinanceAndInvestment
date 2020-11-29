@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Header from "@/components/Parts/Header";
-import Footer from "@/components/Parts/Footer";
+import Header from "@/components/Layoyt/Header";
+import Footer from "@/components/Layoyt/Footer";
 
 export default {
   name: 'App',

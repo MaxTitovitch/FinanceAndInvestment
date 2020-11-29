@@ -5,18 +5,10 @@
         <div class="col-12 col-md-4 d-flex justify-content-center">
           <div class="w-50 mt-1">
             <a href="/">
-              <img class="w-100" src="@/assets/logo.png" alt="Эмитеты Беларуси">
+              <img class="w-100 image-logo" src="@/assets/logo.png" alt="Эмитеты Беларуси">
             </a>
           </div>
-          <div class="px-3">
-            <p class="font-weight-bold">Социальные сети:</p>
-            <a :href="Settings.TELEGRAM" target="_blank">
-              <img class="image-social" src="@/assets/telegram.svg" alt="Эмитеты Беларуси - YouTube">
-            </a>
-            <a :href="Settings.YOUTUBE" target="_blank">
-              <img class="image-social" src="@/assets/youtube.svg" alt="Эмитеты Беларуси - Телеграмм">
-            </a>
-          </div>
+          <SocialMedia container-class="w-50"/>
         </div>
         <div class="col-6 col-md-4 d-flex flex-wrap justify-content-center mobile-hidden">
           <div>
@@ -42,9 +34,11 @@
 
 <script>
 import Settings from '@/settings'
+import SocialMedia from "@/components/Parts/SocialMedia";
 
 export default {
   name: "Footer",
+  components: {SocialMedia},
   data(){
     return {
       Settings
@@ -61,14 +55,10 @@ export default {
 </script>
 
 <style scoped>
+
   footer {
     background: #F5F5F5;
     padding: 32px 0;
-  }
-  .image-social {
-    width: 40px;
-    height: auto;
-    margin: 5px;
   }
   p.p-no-line {
     margin-block-start: 0;
@@ -82,10 +72,17 @@ export default {
     font-size: .8em;
   }
 
+  .container {
+    padding: 0 100px;
+  }
 
-  @media screen and (min-device-width: 768px) {
+  @media screen and (max-device-width: 767px) {
     .container {
-      padding: 0 100px;
+      padding: 0 70px;
+    }
+
+    .image-logo {
+      padding: 0 15px;
     }
   }
 </style>
