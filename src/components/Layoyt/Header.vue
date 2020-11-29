@@ -1,5 +1,5 @@
 <template>
-  <header class="container">
+  <header class="container pb-2">
     <b-navbar toggleable="lg" variant="faded" type="light" class="flex-nowrap header-height">
       <b-navbar-brand href="/" :class="showSearch ? 'mobile-hidden' : ''">
           <img class="image-logo" src="@/assets/logo.png" alt="Эмитеты Беларуси">
@@ -83,12 +83,12 @@ export default {
   }
 
   .image-logo {
-    width: 60px;
+    width: 75px;
   }
 
 
   img {
-    max-width: 70px;
+    max-width: 75px;
   }
 
   .search-area {

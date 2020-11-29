@@ -20,6 +20,19 @@ export default {
 </script>
 
 <style>
+  @font-face {
+    font-family: 'DM Sans Bolded';
+    src: url('~@/assets/fonts/DMSans-Bold.ttf');
+  }
+
+  h1 {
+    font-family: 'DM Sans Bolded', sans-serif;
+  }
+
+  h2,h3,h4,h5,p,span,div {
+    font-family: Roboto,sans-serif;
+  }
+
   #app {
     min-height: 100vh;
     display: flex;
@@ -28,11 +41,17 @@ export default {
     flex-wrap: nowrap;
     flex-direction: column;
   }
+
   #app>*{
     width: 100%;
   }
+
   #app>*:nth-child(2){
     flex: 2;
+  }
+
+  main {
+    min-height: 100%;
   }
 
   .menu-dropdown-item {
