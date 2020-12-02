@@ -86,6 +86,7 @@ export default {
 
   .menu-link, .menu-link>a {
     padding: 0.3rem 0;
+    display: block;
   }
 
   .menu-link:hover {
@@ -98,6 +99,7 @@ export default {
   .dropdown-items p{
     margin-block-start: 0;
     margin-block-end: 0;
+    padding: 0;
   }
 
   .dropdown-button:hover {

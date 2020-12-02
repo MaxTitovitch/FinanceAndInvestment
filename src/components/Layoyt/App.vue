@@ -25,6 +25,11 @@ export default {
     src: url('~@/assets/fonts/DMSans-Bold.ttf');
   }
 
+  /*body {*/
+  /*  overflow-y: scroll;*/
+  /*  overflow-x: hidden;*/
+  /*}*/
+
   h1 {
     font-family: 'DM Sans Bolded', sans-serif;
   }

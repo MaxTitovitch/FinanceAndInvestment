@@ -20,7 +20,7 @@
      <div class="row carousel-row justify-content-between pb-5 mobile-hidden">
       <TileLink :model="link" v-for="(link, index) in links" :key="index"/>
      </div>
-     <div class="row ">
+     <div class="row mobile-show">
        <div class="col-12">
          <splide :options="options" class="mb-5">
            <splide-slide v-for="(link, index) in links" :key="index">
