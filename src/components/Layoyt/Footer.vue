@@ -4,23 +4,23 @@
       <div class="row mb-3">
         <div class="col-12 col-md-4 d-flex justify-content-center">
           <div class="w-50 mt-1">
-            <a href="/">
+            <router-link to="/">
               <img class="w-100 image-logo" src="@/assets/logo.png" alt="Эмитеты Беларуси">
-            </a>
+            </router-link>
           </div>
           <SocialMedia container-class="w-50"/>
         </div>
         <div class="col-6 col-md-4 d-flex flex-wrap justify-content-center mobile-hidden">
           <div>
-            <p class="font-weight-bold"><a class="text-dark" href="/videos">Видео</a></p>
-            <p class="font-weight-bold"><a class="text-dark" href="/terms">Термины</a></p>
+            <p class="font-weight-bold"><router-link class="text-dark" to="/videos">Видео</router-link></p>
+            <p class="font-weight-bold"><router-link class="text-dark" to="/terms">Термины</router-link></p>
           </div>
         </div>
         <div class="col-6 col-md-4 mobile-hidden">
           <p class="font-weight-bold">Беларусь</p>
           <p class="p-no-line"><a class="text-dark" :href="Settings.MARKET_MAP" target="_blank">Карта рынка облигаций</a></p>
-          <p class="p-no-line"><a class="text-dark" href="/issuers">Оценки эмитентов</a></p>
-          <p class="p-no-line"><a class="text-dark" href="/banks">Оценки банков</a></p>
+          <p class="p-no-line"><router-link class="text-dark" to="/issuers">Оценки эмитентов</router-link></p>
+          <p class="p-no-line"><router-link class="text-dark" to="/banks">Оценки банков</router-link></p>
         </div>
       </div>
       <div class="row">

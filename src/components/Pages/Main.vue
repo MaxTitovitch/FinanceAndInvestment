@@ -9,10 +9,10 @@
          <h1 class="pb-5">Про финансы <br>и инвестиции простыми словами</h1>
          <div class="buttons d-flex align-items-center flex-wrap mb-4 mobile-hidden">
            <div class="w-100 mb-4">
-             <a href="/terms">Термины</a>
+             <router-link to="/terms">Термины</router-link>
            </div>
            <div class="w-100 mb-4">
-             <a href="/videos">Видео</a>
+             <router-link to="/videos">Видео</router-link>
            </div>
          </div>
        </div>

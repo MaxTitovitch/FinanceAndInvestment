@@ -1,8 +1,8 @@
 <template>
-  <a :href="model.link" class="tile" :style="`width: ${width}`">
+  <router-link :to="model.link" class="tile" :style="`width: ${width}`">
     <img :src="`/img/${model.photo}`" :alt="model.title">
     <div class="mt-3">{{ model.title }}</div>
-  </a>
+  </router-link>
 </template>
 
 <script>

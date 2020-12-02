@@ -18,7 +18,7 @@ export default {
     containerClass: {},
     headerSize: {
       default: '.8em'
-    },
+    }
   },
   name: "SocialMedia",
   data(){

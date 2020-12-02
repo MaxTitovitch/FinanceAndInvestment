@@ -1,13 +1,13 @@
 <template>
   <header class="container pb-2">
     <b-navbar toggleable="lg" variant="faded" type="light" class="flex-nowrap header-height">
-      <b-navbar-brand href="/" :class="showSearch ? 'mobile-hidden' : ''">
+      <b-navbar-brand to="/" :class="showSearch ? 'mobile-hidden' : ''">
           <img class="image-logo" src="@/assets/logo.png" alt="Эмитеты Беларуси">
       </b-navbar-brand>
 
       <b-nav id="nav-collapse" is-nav class="w-100">
         <b-navbar-nav class="mobile-hidden w-100 px-5" v-if="!showSearch">
-          <MenuNavbar main-class="d-flex justify-content-around w-100"/>
+          <MenuNavbar main-class="d-flex justify-content-around w-100" type="desktop"/>
         </b-navbar-nav>
 
         <b-navbar-nav class="search-area w-100 mt-2" v-if="showSearch">
@@ -35,7 +35,7 @@
           <img src="@/assets/menu.svg" alt="Меню" class="image-search">
         </b-link>
         <b-sidebar id="sidebar-right" right shadow backdrop class="sidebar" body-class="px-3">
-          <MenuNavbar dropdown-class="menu-link" main-class="sidebar" first-item-claas="mt-1"/>
+          <MenuNavbar dropdown-class="menu-link" main-class="sidebar" first-item-claas="mt-1" type="mobile"/>
           <template slot="footer">
             <SocialMedia container-class="p-3 w-50" header-size=".9em"/>
         </template>

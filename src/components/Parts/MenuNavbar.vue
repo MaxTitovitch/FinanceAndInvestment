@@ -1,8 +1,13 @@
 <template>
 <div :class="mainClass">
-  <b-nav-item href="/terms" class="menu-link">Термины</b-nav-item>
-  <b-nav-item href="/videos" class="menu-link">Видео</b-nav-item>
-  <div :class="dropdownClass + ' d-block font-weight-bold'" @mouseenter="changeDropdown" @mouseleave="changeDropdown" @click="changeDropdown">
+  <router-link to="/terms" class="menu-link">Термины</router-link>
+  <router-link to="/videos" class="menu-link">Видео</router-link>
+  <div
+      :class="dropdownClass + ' d-block font-weight-bold'"
+      @mouseenter="changeDropdown(type === 'desktop')"
+      @mouseleave="changeDropdown(type === 'desktop')"
+      @click="changeDropdown(type === 'mobile')"
+  >
     <div class="d-flex align-items-center h-100 dropdown-button">
       <div>
         Беларусь
@@ -15,10 +20,10 @@
         <a class="text-dark" :href="Settings.MARKET_MAP" target="_blank">Карта рынка облигаций</a>
       </p>
       <p class="menu-link">
-        <a class="text-dark" href="/issuers">Оценки эмитентов</a>
+        <router-link class="text-dark" to="/issuers">Оценки эмитентов</router-link>
       </p>
       <p class="menu-link">
-        <a class="text-dark" href="/banks">Оценки банков</a>
+        <router-link class="text-dark" to="/banks">Оценки банков</router-link>
       </p>
     </div>
   </div>
@@ -37,6 +42,9 @@ export default {
     mainClass: {},
     firstItemClaas: {
       default: ''
+    },
+    type: {
+      default: 'desktop'
     }
   },
   data (){
@@ -46,15 +54,17 @@ export default {
     }
   },
   methods: {
-    changeDropdown() {
-      this.isOpen = !this.isOpen
+    changeDropdown(isNeedType) {
+      if(isNeedType){
+        this.isOpen = !this.isOpen
+      }
     }
   },
 }
 </script>
 
-<style scoped>
-  .menu-link>a {
+<style>
+  .menu-link>a, .menu-link {
     color: black!important;
     font-weight: bold;
     font-size: .9rem;
