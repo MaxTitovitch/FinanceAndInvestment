@@ -1,5 +1,5 @@
 <template>
-  <div id="terms">
+  <div id="videos">
     <div>
       <vue-headful title="Видео - Эмитеты Беларуси" description="Видео - Эмитеты Беларуси"/>
     </div>
@@ -22,14 +22,14 @@
             </h2>
             <div class="container-fluid">
               <div class="row">
-                <div v-for="(video, id) in group.videos" :key="id" class="col-12 col-md-3 p-1">
+                <div v-for="(video, id) in group.videos" :key="id" class="col-12 col-md-4 p-1">
                   <a href="#" class="video-name" @click.prevent="showVideo(video.name)">
                     <img src="@/assets/noshow.svg" alt="Не просмотрено" class="eye" v-if="video.showType === 'NOSHOW'">
                     <img src="@/assets/show.svg" alt="Просмотрено" class="eye" v-if="video.showType === 'SHOW'">
                     <img src="@/assets/fullshow.svg" alt="Просмотрено полностью" class="eye" v-if="video.showType === 'FULLSHOW'">
-                    {{ video.name }}
+                    <span>{{ video.name }}</span>
                   </a>
-<!--                  <VideoShow :video="video" />-->
+                  <VideoShow :video="video" :id="id"/>
                 </div>
               </div>
             </div>
@@ -42,11 +42,11 @@
 
 <script>
 import { mapGetters } from 'vuex';
-// import VideoShow from "@/components/Parts/VideoShow";
+import VideoShow from "@/components/Parts/VideoShow";
 
 export default {
   name: "Videos",
-  // components: {VideoShow},
+  components: {VideoShow},
   mounted() {
     this.$store.dispatch('initGroupVideos');
   },
@@ -67,10 +67,10 @@ export default {
       }, 200)
     },
     filtrateData (){
-      this.$store.commit('filtrateTerms', this.searchQuery)
+      this.$store.commit('filtrateVideos', this.searchQuery)
     },
-    showTerm (name){
-      this.$store.dispatch('showVido', {name});
+    showVideo (name){
+      this.$store.commit('setFullVideo', name);
     },
   },
 }
@@ -109,16 +109,18 @@ input:focus, input:active {
   color: #243EE9;
 }
 
-.term-name {
+.video-name {
   font-size: 16px;
   line-height: 19px;
   color: #000000;
+  display: flex;
+  justify-content: left;
+  align-items: end;
+  width: 100%;
 }
 
-.term-all {
-  font-size: 12px;
-  line-height: 14px;
-
-  color: #243EE9;
+.video-name>* {
+  padding-right: 8px;
 }
+
 </style>

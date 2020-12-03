@@ -9,38 +9,54 @@ export default {
         addGroupVideos(state, videos) {
             state.videos = [...state.videos, ...videos]
         },
-        filtrateTerms(state, filtrateValue){
+        filtrateVideos(state, filtrateValue){
             state.filtrateValue = filtrateValue;
         },
         setShowTerm (state, entity){
-            for (let i = 0; i < state.terms.length; i++) {
-                for (let j = 0; j < state.terms[i].terms.length; j++) {
-                    if(state.terms[i].terms[j].name === entity.name) {
-                        state.terms[i].terms[j].isShow = entity.isShow;
+            for (let i = 0; i < state.videos.length; i++) {
+                for (let j = 0; j < state.videos[i].videos.length; j++) {
+                    if(state.videos[i].videos[j].name === entity.name) {
+                        state.videos[i].videos[j].isShow = entity.isShow;
                         break;
                     }
                 }
             }
-        }
+        },
+        setFullVideo (state, name){
+            for (let i = 0; i < state.videos.length; i++) {
+                for (let j = 0; j < state.videos[i].videos.length; j++) {
+                    if(state.videos[i].videos[j].name === name) {
+                        state.videos[i].videos[j].isFull = !state.videos[i].videos[j].isFull;
+                        break;
+                    }
+                }
+            }
+        },
     },
     actions: {
         async initGroupVideos(context) {
-            let videos = [], path = Settings.API_HOST + Settings.API_VERSION + Settings.API_TERM_PATH;
-            // let lookedVideos = JSON.parse(localStorage.getItem("lookedVideos") || '[]');
+            let videos = [], path = Settings.API_HOST + Settings.API_VERSION + Settings.API_VIDEOS_PATH;
+            let lookedVideos = JSON.parse(localStorage.getItem("lookedVideos") || '[]');
             let response = await (await fetch(path, {headers: Settings.API_REQUEST_HEADER})).json();
-            console.log(response)
             for (let i = 0; i < response.length; i++) {
                 let videosPath = Settings.API_HOST + Settings.API_VERSION + Settings.API_VIDEOS_DESC_PATH;
                 let videoResponse = await (await fetch(videosPath + response[i], {headers: Settings.API_REQUEST_HEADER})).json();
                 videos.push({
                     name: response[i],
-                    videos: videoResponse
+                    videos: videoResponse.map(function (video){
+                        video.showType = lookedVideos.find(function (searched){
+                            return video.name === searched.name ? searched.type : false;
+                        }) || 'NOSHOW';
+                        video.isFull = false;
+                        return video;
+                    })
                 })
             }
-            console.log(videos)
             context.commit('addGroupVideos', videos);
         },
+        showVideo() {
 
+        }
     },
     getters: {
         getGroupVideo(state) {
