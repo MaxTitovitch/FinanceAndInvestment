@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from "vue-router"
 import App from './components/Layoyt/App.vue'
 import routes from './routes'
+import store from './storage/index'
 import vueHeadful from 'vue-headful';
 import 'normalize.css'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
@@ -22,5 +23,6 @@ const router = new VueRouter({
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')

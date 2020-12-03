@@ -25,10 +25,30 @@ export default {
     src: url('~@/assets/fonts/DMSans-Bold.ttf');
   }
 
-  /*body {*/
-  /*  overflow-y: scroll;*/
-  /*  overflow-x: hidden;*/
-  /*}*/
+  body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  body::-webkit-scrollbar-track
+  {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+  }
+
+  body::-webkit-scrollbar
+  {
+    width: 12px;
+    background-color: #F5F5F5;
+  }
+
+  body::-webkit-scrollbar-thumb
+  {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #4a4a4a;
+  }
 
   h1 {
     font-family: 'DM Sans Bolded', sans-serif;

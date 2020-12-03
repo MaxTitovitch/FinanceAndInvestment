@@ -17,7 +17,7 @@
     </div>
     <div class="dropdown-items" v-show="isOpen">
       <p :class="'menu-link ' + firstItemClaas">
-        <a class="text-dark" :href="Settings.MARKET_MAP" target="_blank">Карта рынка облигаций</a>
+        <a class="text-dark" :href="Settings.LINK_MARKET_MAP" target="_blank">Карта рынка облигаций</a>
       </p>
       <p class="menu-link">
         <router-link class="text-dark" to="/issuers">Оценки эмитентов</router-link>

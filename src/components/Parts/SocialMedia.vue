@@ -1,10 +1,10 @@
 <template>
   <div :class="containerClass + ' template'">
     <p class="font-weight-bold" :style="{fontSize: headerSize}">Социальные сети:</p>
-    <a :href="Settings.TELEGRAM" target="_blank">
+    <a :href="Settings.LINK_TELEGRAM" target="_blank">
       <img class="image-social" src="@/assets/telegram.svg" alt="Эмитеты Беларуси - YouTube">
     </a>
-    <a :href="Settings.YOUTUBE" target="_blank">
+    <a :href="Settings.LINK_YOUTUBE" target="_blank">
       <img class="image-social" src="@/assets/youtube.svg" alt="Эмитеты Беларуси - Телеграмм">
     </a>
   </div>

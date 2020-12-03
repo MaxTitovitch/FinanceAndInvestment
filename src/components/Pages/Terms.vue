@@ -5,7 +5,7 @@
     </div>
     <div class="container">
       <div class="row justify-content-center mt-3">
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-5">
           <b-nav-form class="search-form w-100" form-class="align-end justify-content-between w-100">
             <b-form-input id="searchInput" size="sm" class="mr-sm-2 search-input"></b-form-input>
             <b-link href="#" class="text-dark" @click.prevent="focusSearch">
@@ -16,20 +16,20 @@
       </div>
       <div class="row mt-3">
         <div class="col-12">
-          <div v-for="(group, index) in groups" :key="index">
+          <div v-for="(group, index) in groups" :key="index" class="mb-3">
             <h2 class="group-name">
               {{ group.name }}
             </h2>
             <div class="container-fluid">
               <div class="row">
-                <a href="#" :data-id="term.id" v-for="(term, id) in group.terms" :key="id" class="term-name col-6 col-md-3 px-0 py-1">
+                <a href="#" :data-id="term.english_name" v-for="(term, id) in group.terms" :key="id" class="term-name col-12 col-md-3 p-1">
                   {{ term.name }}
                   <img src="@/assets/eye.svg" alt="Просмотрено" class="eye" v-if="term.isShow">
                 </a>
               </div>
-              <div class="row justify-content-end" v-if="!group.isFull">
-                <a href="#" :data-group="group.name" class="term-all col-6 col-md-3 px-0 py-1">
-                  Показать все термины на букву
+              <div class="row justify-content-end mt-2" >
+                <a href="#" :data-group="group.name" class="term-all col-12 col-md-3 px-0 py-1" @click.prevent="changeIsFull(group.name)">
+                  {{!group.isFull ? 'Показать' : 'Свернуть'}} все термины на букву
                   <span class="font-weight-bold">{{ group.name }}</span>
                 </a>
               </div>
@@ -42,48 +42,21 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: "Terms",
+  mounted() {
+    this.$store.dispatch('initGroupTerms', {lastGroupName: 'Е'});
+  },
+  computed: {
+    ...mapGetters({
+      groups: 'getGroupTerms',
+    })
+  },
   data() {
     return {
-      groups: [
-        {
-          name: 'А',
-          isFull: false,
-          terms: [
-            {
-              id: '1',
-              name: 'Акции',
-              isShow: false
-            },
-            {
-              id: '2',
-              name: 'Акционерство',
-              isShow: true
-            },
-            {
-              id: '2',
-              name: 'Аблабла',
-              isShow: true
-            },
-            {
-              id: '1',
-              name: 'Акции',
-              isShow: false
-            },
-            {
-              id: '2',
-              name: 'Акционерство',
-              isShow: true
-            },
-            {
-              id: '2',
-              name: 'Аблабла',
-              isShow: true
-            },
-          ]
-        },
-      ],
+
     }
   },
   methods: {
@@ -91,7 +64,10 @@ export default {
       setTimeout(() => {
         document.getElementById('searchInput').focus()
       }, 200)
-    }
+    },
+    changeIsFull (groupName) {
+      this.$store.commit('changeIsFull', groupName)
+    },
   },
 }
 </script>
