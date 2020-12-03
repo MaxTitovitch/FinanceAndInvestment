@@ -7,6 +7,7 @@ const API_REQUEST_HEADER ={
 const API_HOST = 'https://faxmts50q5.execute-api.eu-central-1.amazonaws.com/';
 const API_VERSION = 'v1/';
 const API_TERM_PATH = 'term-group/';
+const API_TERM_DESC_PATH = 'term-name-ru/';
 
 
 const LINK_TELEGRAM = 'https://web.telegram.org';
@@ -18,6 +19,7 @@ export default {
     API_HOST,
     API_VERSION,
     API_TERM_PATH,
+    API_TERM_DESC_PATH,
     LINK_TELEGRAM,
     LINK_YOUTUBE,
     LINK_MARKET_MAP,

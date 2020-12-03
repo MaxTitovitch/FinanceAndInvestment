@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-scroll="handleScroll" id="terms">
     <div>
       <vue-headful title="Термины - Эмитеты Беларуси" description="Термины - Эмитеты Беларуси"/>
     </div>
@@ -7,7 +7,7 @@
       <div class="row justify-content-center mt-3">
         <div class="col-12 col-md-5">
           <b-nav-form class="search-form w-100" form-class="align-end justify-content-between w-100">
-            <b-form-input id="searchInput" size="sm" class="mr-sm-2 search-input"></b-form-input>
+            <b-form-input id="searchInput" size="sm" class="mr-sm-2 search-input" @input="filtrateData" v-model="searchQuery"></b-form-input>
             <b-link href="#" class="text-dark" @click.prevent="focusSearch">
               <img src="@/assets/search.svg" alt="Поиск">
             </b-link>
@@ -17,17 +17,20 @@
       <div class="row mt-3">
         <div class="col-12">
           <div v-for="(group, index) in groups" :key="index" class="mb-3">
-            <h2 class="group-name">
+            <h2 class="group-name" v-if="group.terms.length > 0">
               {{ group.name }}
             </h2>
             <div class="container-fluid">
               <div class="row">
-                <a href="#" :data-id="term.english_name" v-for="(term, id) in group.terms" :key="id" class="term-name col-12 col-md-3 p-1">
-                  {{ term.name }}
-                  <img src="@/assets/eye.svg" alt="Просмотрено" class="eye" v-if="term.isShow">
-                </a>
+                <div v-for="(term, id) in group.terms" :key="id" class="col-12 col-md-3 p-1">
+                  <a href="#" class="term-name" @click.prevent="showTerm(term.name)">
+                    {{ term.name }}
+                    <img src="@/assets/eye.svg" alt="Просмотрено" class="eye" v-if="term.isShow">
+                  </a>
+                  <TermDescription :term="term" :styleType="getStyleById(id)"/>
+                </div>
               </div>
-              <div class="row justify-content-end mt-2" >
+              <div class="row justify-content-end mt-2" v-if="group.terms.length >= 12">
                 <a href="#" :data-group="group.name" class="term-all col-12 col-md-3 px-0 py-1" @click.prevent="changeIsFull(group.name)">
                   {{!group.isFull ? 'Показать' : 'Свернуть'}} все термины на букву
                   <span class="font-weight-bold">{{ group.name }}</span>
@@ -37,26 +40,35 @@
           </div>
         </div>
       </div>
+      <div class="row" v-if="isLoad">
+        <div class="col-12 text-center my-2">
+          <b-spinner variant="secondary" label="Spinning"></b-spinner>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import TermDescription from "@/components/Parts/TermDescription";
 
 export default {
   name: "Terms",
+  components: {TermDescription},
   mounted() {
-    this.$store.dispatch('initGroupTerms', {lastGroupName: 'Е'});
+    this.$store.dispatch('initGroupTerms', {lastGroupName: this.groupGroups.shift()});
   },
   computed: {
     ...mapGetters({
       groups: 'getGroupTerms',
+      isLoad: 'getIsLoad',
     })
   },
   data() {
     return {
-
+      searchQuery: '',
+      groupGroups:  ['Г', 'Ж',  'К',  'О', 'Т', 'Ц',  'Я']
     }
   },
   methods: {
@@ -68,6 +80,27 @@ export default {
     changeIsFull (groupName) {
       this.$store.commit('changeIsFull', groupName)
     },
+    filtrateData (){
+      this.$store.commit('filtrateTerms', this.searchQuery)
+    },
+    showTerm (name){
+      this.$store.dispatch('addDescription', {name});
+    },
+    getStyleById(id){
+      switch (id % 4){
+        case 0: return {left: '0'};
+        case 1: return {left: '-10vw'};
+        case 2: return {left: '-20vw'};
+        case 3: return {left: '-30vw'};
+      }
+    },
+    handleScroll: function () {
+      if(window.innerHeight + window.pageYOffset >= document.body.scrollHeight - 100
+          && this.groupGroups.length > 0 && !this.isLoad) {
+        this.$store.dispatch('initGroupTerms', {lastGroupName: this.groupGroups.shift()})
+      }
+      return true
+    }
   },
 }
 </script>
