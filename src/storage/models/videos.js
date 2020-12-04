@@ -1,9 +1,11 @@
 import Settings from '@/settings'
+import {getYouTubeVideoId} from "@/helpers";
 
 export default {
     state: () => ({
         videos:  [],
         filtrateValue: '',
+        isFirst: true,
     }),
     mutations: {
         addGroupVideos(state, videos) {
@@ -32,6 +34,27 @@ export default {
                 }
             }
         },
+        updateStorage(state, data) {
+            for (let i = 0; i < state.videos.length; i++) {
+                for (let j = 0; j < state.videos[i].videos.length; j++) {
+                    let isShow = state.videos[i].videos[j].showType;
+                    let link = getYouTubeVideoId(state.videos[i].videos[j].link);
+                    if((isShow === 'NOSHOW' || (isShow === 'SHOW' && data.status === 'FULLSHOW')) && link === data.link) {
+                        let lookedVideos = JSON.parse(localStorage.getItem("lookedVideos") || '[]'), id = 0;
+                        for (let k = 0; k < lookedVideos.length; k++) {
+                            if(lookedVideos[i].link === link){
+                                id++;
+                                lookedVideos[i].type = data.status;
+                            }
+                        }
+                        if(id === 0) lookedVideos.push({link, type: data.status})
+                        localStorage.setItem("lookedVideos", JSON.stringify(lookedVideos));
+                        state.videos[i].videos[j].showType = data.status;
+                        break;
+                    }
+                }
+            }
+        }
     },
     actions: {
         async initGroupVideos(context) {
@@ -45,17 +68,39 @@ export default {
                     name: response[i],
                     videos: videoResponse.map(function (video){
                         video.showType = lookedVideos.find(function (searched){
-                            return video.name === searched.name ? searched.type : false;
-                        }) || 'NOSHOW';
+                            return getYouTubeVideoId(video.link) === searched.link ? searched.type : false;
+                        })?.type || 'NOSHOW';
                         video.isFull = false;
                         return video;
                     })
                 })
             }
             context.commit('addGroupVideos', videos);
+            context.dispatch('playPlayer');
         },
-        showVideo() {
+        playPlayer(context) {
+            function onYouTubeIframeAPIReady() {
+                let players = document.getElementsByClassName('player');
+                for (let i = 0; i < players.length; i++) {
+                    let url = players[i].dataset.url;
+                    new window.YT.Player(players[i].id, {
+                        height: '95%',
+                        width: '100%',
+                        videoId: players[i].dataset.url,
+                        events: {
+                            'onStateChange': function (event){
+                                if(event.data === 1) {
+                                    context.commit('updateStorage', {status: 'SHOW', link: url});
+                                } else if(event.data === 0) {
+                                    context.commit('updateStorage',  {status: 'FULLSHOW', link: url});
+                                }
 
+                            }
+                        }
+                    });
+                }
+            }
+            setTimeout(onYouTubeIframeAPIReady, 1000);
         }
     },
     getters: {
@@ -73,5 +118,8 @@ export default {
                 };
             });
         },
+        getIsFirst(state) {
+            return state.isFirst;
+        }
     }
 }

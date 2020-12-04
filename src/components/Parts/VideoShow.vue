@@ -4,13 +4,15 @@
       <div class="header">
         <b-link href="#" class="text-dark close" @click.prevent="togglePopup">×</b-link>
       </div>
-      <iframe width="100%" :src="changeVideoLink(video.link)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<!--      <iframe width="100%" :src="changeVideoLink(video.link)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+      <div class="player" :id="'player' + id" :data-url="getVideoId(video.link)"></div>
     </div>
   </div>
 </template>
 
 <script>
+
+import {getYouTubeVideoId} from "@/helpers";
 
 export default {
   props: {
@@ -18,13 +20,6 @@ export default {
       default: {}
     },
     id: {}
-  },
-  mounted() {
-    // let YT;
-    let link = this.video.link
-    if(link.lastIndexOf('watch') !== -1){
-      link = link.replaceAll('?v=', '/')
-    }
   },
   name: "VideoShow",
   data(){
@@ -35,12 +30,8 @@ export default {
     togglePopup(){
       this.$store.commit('setFullVideo', this.video.name);
     },
-    changeVideoLink(link){
-      if(link.lastIndexOf('watch') !== -1){
-        link = link.replaceAll('?v=', '/')
-      }
-      return 'https://www.youtube.com/embed/' + link.split('/').reverse()[0]
-
+    getVideoId(link){
+      return getYouTubeVideoId(link);
     }
   }
 }

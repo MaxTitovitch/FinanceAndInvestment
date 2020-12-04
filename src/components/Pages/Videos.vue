@@ -29,7 +29,7 @@
                     <img src="@/assets/fullshow.svg" alt="Просмотрено полностью" class="eye" v-if="video.showType === 'FULLSHOW'">
                     <span>{{ video.name }}</span>
                   </a>
-                  <VideoShow :video="video" :id="id"/>
+                  <VideoShow :video="video" :id="index + '-' + id"/>
                 </div>
               </div>
             </div>
@@ -67,6 +67,7 @@ export default {
       }, 200)
     },
     filtrateData (){
+      this.$store.dispatch('playPlayer');
       this.$store.commit('filtrateVideos', this.searchQuery)
     },
     showVideo (name){
