@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-100 d-flex justify-content-center align-items-center">
     <div>
       <vue-headful title="Страница не найдена - Эмитеты Беларуси" description="Страница не найдена - Эмитеты Беларуси"/>
     </div>
@@ -33,10 +33,4 @@ name: "Error404"
       height: auto;
     }
   }
-</style>
-
-<style>
-#app {
-  height: 100vh;
-}
 </style>

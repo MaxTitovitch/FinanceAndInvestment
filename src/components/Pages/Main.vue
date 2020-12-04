@@ -63,7 +63,7 @@ export default {
 <style scoped>
    main {
      padding: 0.5rem 1rem;
-     height: 125%;
+     /*height: 125%;*/
    }
 
   .template  {
@@ -80,13 +80,13 @@ export default {
 
   .main-row {
     background-image: url(~@/assets/main-photo.svg);
-    height: 70%;
+    /*height: 70%;*/
     background-size: 60%;
     background-repeat: no-repeat;
     background-position-x: right;
   }
   .carousel-row {
-    height: 30%;
+    /*height: 30%;*/
   }
 
   .buttons {

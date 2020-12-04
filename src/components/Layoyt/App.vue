@@ -112,4 +112,10 @@ export default {
       display: none!important;
     }
   }
+
+  @media (min-width: 1450px) {
+    #app {
+      min-height: auto;
+    }
+  }
 </style>
