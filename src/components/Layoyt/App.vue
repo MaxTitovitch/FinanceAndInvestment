@@ -109,6 +109,9 @@ export default {
     width: 33.333% !important;
   }
 
+  nav {
+    z-index: 1001;
+  }
 
   @media screen and (max-device-width: 767px) {
     div.mobile-hidden, ul.mobile-hidden, .mobile-hidden {

@@ -34,7 +34,7 @@
       </div>
       <div class="row mt-3">
         <div class="col-12">
-          <b-table
+          <b-table striped hover
               :items="banks"
               :fields="fields"
               :sort-by.sync="sortBy"
