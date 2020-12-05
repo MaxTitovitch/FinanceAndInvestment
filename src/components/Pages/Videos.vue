@@ -11,6 +11,7 @@
                 id="searchInput"
                 size="sm"
                 class="mr-sm-2 search-input"
+                @keypress.enter.prevent
                 @input="filtrateData"
                 v-model="searchQuery"
                 autocomplete="off">
@@ -47,7 +48,7 @@
       </div>
       <div class="row mt-3">
         <div class="col-12">
-          <div v-for="(group, index) in groups" :key="index" class="mb-3" v-show="group.terms.length > 0">
+          <div v-for="(group, index) in groups" :key="index" class="mb-3" v-show="group.videos.length > 0">
             <h2 class="group-name">
               {{ group.name }}
             </h2>
@@ -181,7 +182,7 @@ input:focus, input:active {
   background: white;
   border-radius: 10px;
   max-height: 60vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .video-name {

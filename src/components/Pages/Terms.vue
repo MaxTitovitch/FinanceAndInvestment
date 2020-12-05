@@ -11,6 +11,7 @@
                 id="searchInput"
                 size="sm"
                 class="mr-sm-2 search-input"
+                @keypress.enter.prevent
                 @input="filtrateData"
                 v-model="searchQuery"
                 autocomplete="off">
@@ -110,7 +111,7 @@ export default {
   data() {
     return {
       searchQuery: '',
-      groupGroups: ['З', 'К', 'О', 'Т', 'Ц', 'Я']
+      groupGroups: ['З', 'К', 'О', 'Т', 'Ц', 'Я', '!']
     }
   },
   methods: {
@@ -211,7 +212,7 @@ input:focus, input:active {
   background: white;
   border-radius: 10px;
   max-height: 60vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .term-name {

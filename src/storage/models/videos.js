@@ -105,6 +105,7 @@ export default {
     },
     getters: {
         getGroupVideo(state) {
+            // return state.videos;
             return state.videos.map(function (group) {
                 let videos = group.videos;
                 if (state.filtrateValue) {
