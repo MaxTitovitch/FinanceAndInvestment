@@ -42,7 +42,7 @@ export default {
     display: block;
     position: fixed;
     background: #5d5d5d55;
-    z-index: 1000;
+    z-index: 1002;
     width: 100vw;
     left: 0;
     height: 100vh;

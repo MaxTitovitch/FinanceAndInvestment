@@ -89,9 +89,7 @@ export default {
   },
   methods: {
     focusSearch() {
-      setTimeout(() => {
         document.getElementById('searchInput').focus()
-      }, 200)
     },
     toggleFilter() {
       this.$store.commit('toggleIsShowBanksFilter');

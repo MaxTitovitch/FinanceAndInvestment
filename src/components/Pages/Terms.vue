@@ -111,17 +111,22 @@ export default {
   data() {
     return {
       searchQuery: '',
+      scrollTop: 0,
       groupGroups: ['З', 'К', 'О', 'Т', 'Ц', 'Я', '!']
     }
   },
+  beforeUpdate() {
+    this.scrollTop = document.documentElement.scrollTop;
+  },
+  updated() {
+    document.documentElement.scrollTop = this.scrollTop;
+  },
   methods: {
     focusSearch() {
-      setTimeout(() => {
-        document.getElementById('searchInput').focus()
-      }, 200)
+      document.getElementById('searchInput').focus()
     },
     changeIsFull(groupName) {
-      this.$store.commit('changeIsFull', groupName)
+      this.$store.commit('changeIsFull', groupName);
     },
     filtrateData() {
       this.$store.commit('filtrateTerms', this.searchQuery)

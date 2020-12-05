@@ -23,7 +23,7 @@
                 v-model="searchQuery"
             ></b-form-input>
             <b-link href="#" class="text-dark search-close mobile-hidden" @click.prevent="toggleSearch">×</b-link>
-            <b-link href="#" class="text-dark search-close mobile-show" @click.prevent="() => {}">
+            <b-link href="#" class="text-dark search-close mobile-show" @click.prevent="focusSearch">
               <img src="@/assets/search.svg" alt="Поиск">
             </b-link>
           </b-nav-form>
@@ -123,17 +123,15 @@ export default {
       return count === 0 ? 0 : entity;
     }
   },
+  updated() {
+    if (this.showSearch) {
+      document.getElementById('searchInput').focus();
+    }
+  },
   methods: {
     toggleSearch() {
-      // this.$store.commit('filtrateTerms', '')
-      // this.$store.commit('filtrateVideos', '')
       this.searchQuery = ''
       this.showSearch = !this.showSearch;
-      if (this.showSearch) {
-        setTimeout(() => {
-          document.getElementById('searchInput').focus()
-        }, 200)
-      }
     },
     find(name, type, isGo = true) {
       this.searchQuery = name
@@ -159,7 +157,10 @@ export default {
       this.$store.dispatch('initGroupTerms', {lastGroupName: '!'});
       this.$store.commit('filtrateVideos', this.searchQuery)
       this.$store.commit('filtrateTerms', this.searchQuery)
-    }
+    },
+    focusSearch() {
+      document.getElementById('searchInput').focus();
+    },
   },
 }
 </script>
