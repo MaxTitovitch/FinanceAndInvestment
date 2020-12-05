@@ -1,7 +1,7 @@
 <template>
   <div v-scroll="handleScroll" id="terms">
     <div>
-      <vue-headful title="Термины - Эмитеты Беларуси" description="Термины - Эмитеты Беларуси"/>
+      <vue-headful title="Термины - Эмитенты Беларуси" description="Термины - Эмитенты Беларуси"/>
     </div>
     <div class="container">
       <div class="row justify-content-center mt-3">

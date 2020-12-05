@@ -67,7 +67,7 @@ export default {
       dateMax: this.issuersFiltrateValue.dateMax,
     }
   },
-  name: "TermDescription",
+  name: "FilterIssuersModal",
   data(){
     return {
       filtrateValue: {}
@@ -81,6 +81,13 @@ export default {
       this.$store.commit('filtrateIssuers', {...this.filtrateValue});
     },
     clearFilter(){
+      this.filtrateValue = {
+        name: '',
+        minPoint: '',
+        maxPoint: '',
+        dateMin: '',
+        dateMax: '',
+      };
       this.$store.commit('clearIsShowIssuersFilter');
     }
   }

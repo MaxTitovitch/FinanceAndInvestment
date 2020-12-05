@@ -1,0 +1,150 @@
+<template>
+  <div class="show">
+    <div class="header">
+      <h2 class="main-text font-weight-bold">Фильтрация</h2>
+      <b-link href="#" class="text-dark close" @click.prevent="togglePopup">×</b-link>
+    </div>
+    <p>
+      <b-form inline @submit.prevent="()=>{}">
+        <label class="w-33 text-center" :for="'value-min' + id">Цена (млн USD)</label>
+        <b-form-input
+            :id="'value-min' + id"
+            class="w-33"
+            placeholder="От"
+            v-model="filtrateValue.valueMin"
+            autocomplete="off"
+        ></b-form-input>
+
+        <b-form-input
+            :id="'value-max' + id"
+            class="w-33"
+            placeholder="до"
+            v-model="filtrateValue.valueMax"
+            autocomplete="off"
+        ></b-form-input>
+
+        <label class="w-33 mt-2" :for="'rating-min' + id">Рейтинг</label>
+        <b-form-input
+            :id="'rating-min' + id"
+            class="w-33 mt-2"
+            placeholder="От"
+            v-model="filtrateValue.minPoint"
+            autocomplete="off"
+        ></b-form-input>
+
+        <b-form-input
+            :id="'rating-max' + id"
+            class="w-33 mt-2"
+            placeholder="до"
+            v-model="filtrateValue.maxPoint"
+            autocomplete="off"
+        ></b-form-input>
+
+        <b-button class="mt-3 buttons w-50 btn-sm" @click="updateFilter">Применить</b-button>
+        <b-button class="mt-3 buttons w-50 btn-sm" @click="clearFilter">Очистить</b-button>
+      </b-form>
+    </p>
+  </div>
+</template>
+
+<script>
+
+export default {
+
+  props: {
+    banksFiltrateValue: {},
+    isShowFilter: {},
+    id: {
+      default: 1
+    }
+  },
+  mounted() {
+    this.filtrateValue = {
+      name: this.banksFiltrateValue.name,
+      minPoint: this.banksFiltrateValue.minPoint,
+      maxPoint: this.banksFiltrateValue.maxPoint,
+      valueMin: this.banksFiltrateValue.valueMin,
+      valueMax: this.banksFiltrateValue.valueMax,
+    }
+  },
+  name: "FilterBanksModal",
+  data(){
+    return {
+      filtrateValue: {}
+    }
+  },
+  methods: {
+    togglePopup(){
+      this.$store.commit('toggleIsShowBanksFilter');
+    },
+    updateFilter(){
+      this.$store.commit('filtrateBanks', {...this.filtrateValue});
+    },
+    clearFilter(){
+      this.filtrateValue = {
+        name: '',
+        minPoint: '',
+        maxPoint: '',
+        valueMin: '',
+        valueMax: '',
+      }
+      this.$store.commit('clearIsShowBanksFilter');
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+  .show {
+    display: block;
+    position: absolute;
+    right: 15px;
+    width: calc(100% - 30px);
+    top: 52px;
+    height: auto;
+    background: #F5F5F5;
+    box-shadow: 0 30px 25px -12px rgba(190, 190, 190, 0.35);
+    border-radius: 10px;
+    z-index: 1000;
+    padding: 10px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .main-text {
+    font-size: 18px;
+  }
+
+  .close {
+    font-size: 25px;
+    line-height: 25px;
+  }
+
+  p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-bottom: 2px;
+    font-size: .8em;
+  }
+
+  .buttons {
+    background: #243EE9!important;
+    color: white;
+    padding: 10px;
+    max-width: 65%;
+    text-align: center;
+    display: block;
+    border-radius: 10px;
+    width: 205px;
+    box-shadow: 0 22px 20px -12px rgba(36, 62, 233, 0.35);
+  }
+
+  .buttons:hover {
+    text-decoration: none;
+    background: #0f21a5!important;
+  }
+</style>

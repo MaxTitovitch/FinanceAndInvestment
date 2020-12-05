@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <vue-headful title="Оценки эмитетов - Эмитеты Беларуси" description="Оценки эмитетов - Эмитеты Беларуси"/>
+      <vue-headful title="Оценки эмитентов - Эмитенты Беларуси" description="Оценки эмитентов - Эмитенты Беларуси"/>
     </div>
     <div class="container">
       <div class="row justify-content-between mt-3">
@@ -29,7 +29,7 @@
             <img v-if="isShowFilter || isIssuersFiltrate" src="@/assets/filter-active.svg" alt="Фильтрация">
             <img v-if="!isShowFilter && !isIssuersFiltrate" src="@/assets/filter.svg" alt="Фильтрация">
           </b-link>
-          <FilterModal v-show="isShowFilter" :issuersFiltrateValue="issuersFiltrateValue"/>
+          <FilterIssuersModal v-show="isShowFilter" :issuersFiltrateValue="issuersFiltrateValue"/>
         </div>
       </div>
       <div class="row mt-3">
@@ -48,7 +48,7 @@
             </template>
           </b-table>
           <div v-if="issuers.length <= 0" class="main-header font-weight-bold w-100 text-center text-secondary">
-            Данные не найдены
+            Эмитенты не найдены
           </div>
         </div>
       </div>
@@ -58,11 +58,11 @@
 
 <script>
 import {mapGetters} from "vuex";
-import FilterModal from "@/components/Parts/FilterModal";
+import FilterIssuersModal from "@/components/Parts/FilterIssuersModal";
 
 export default {
   name: "Issuers",
-  components: {FilterModal},
+  components: {FilterIssuersModal},
   mounted() {
     this.$store.dispatch('initIssuers');
   },

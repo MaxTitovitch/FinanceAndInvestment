@@ -1,7 +1,7 @@
 <template>
  <main>
    <div>
-     <vue-headful title="Главная - Эмитеты Беларуси" description="Главная - Эмитеты Беларуси"/>
+     <vue-headful title="Главная - Эмитенты Беларуси" description="Главная - Эмитенты Беларуси"/>
    </div>
    <div class="container template">
      <div class="row main-row">

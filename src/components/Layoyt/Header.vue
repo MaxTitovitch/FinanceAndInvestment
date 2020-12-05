@@ -2,7 +2,7 @@
   <header class="container pb-2">
     <b-navbar toggleable="lg" variant="faded" type="light" class="flex-nowrap header-height">
       <b-navbar-brand to="/" :class="showSearch ? 'mobile-hidden' : ''">
-        <img class="image-logo" src="@/assets/logo.png" alt="Эмитеты Беларуси">
+        <img class="image-logo" src="@/assets/logo.png" alt="Эмитенты Беларуси">
       </b-navbar-brand>
 
       <b-nav id="nav-collapse" is-nav class="w-100">

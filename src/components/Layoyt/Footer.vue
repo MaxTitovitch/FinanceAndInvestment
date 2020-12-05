@@ -5,7 +5,7 @@
         <div class="col-12 col-md-4 d-flex justify-content-center">
           <div class="w-50 mt-1">
             <router-link to="/">
-              <img class="w-100 image-logo" src="@/assets/logo.png" alt="Эмитеты Беларуси">
+              <img class="w-100 image-logo" src="@/assets/logo.png" alt="Эмитенты Беларуси">
             </router-link>
           </div>
           <SocialMedia container-class="w-50"/>
