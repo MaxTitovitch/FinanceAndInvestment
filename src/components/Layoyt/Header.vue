@@ -1,5 +1,5 @@
 <template>
-  <header class="container pb-2">
+  <header class="container pb-4">
     <b-navbar toggleable="lg" variant="faded" type="light" class="flex-nowrap header-height">
       <b-navbar-brand to="/" :class="showSearch ? 'mobile-hidden' : ''">
         <img class="image-logo" src="@/assets/logo.png" alt="Эмитенты Беларуси">
