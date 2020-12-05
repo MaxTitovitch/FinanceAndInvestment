@@ -94,7 +94,7 @@ export default {
   }
 
   .buttons a {
-    background: #243EE9;
+    background: #243EE9!important;
     color: white;
     padding: 10px;
     max-width: 65%;
@@ -107,7 +107,7 @@ export default {
 
    .buttons a:hover {
      text-decoration: none;
-     background: #0f21a5;
+     background: #0f21a5!important;
   }
 
    @media screen and (max-device-width: 767px) {

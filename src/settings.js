@@ -10,6 +10,8 @@ const API_TERM_PATH = 'term-group/';
 const API_TERM_DESC_PATH = 'term-name-ru/';
 const API_VIDEOS_PATH = 'video/tags';
 const API_VIDEOS_DESC_PATH = 'video/tag/';
+const API_ISSUERS_PATH = 'issuer/all/';
+const API_BANKS_PATH = '/banks/';
 
 
 const LINK_TELEGRAM = 'https://web.telegram.org';
@@ -24,6 +26,8 @@ export default {
     API_TERM_DESC_PATH,
     API_VIDEOS_PATH,
     API_VIDEOS_DESC_PATH,
+    API_ISSUERS_PATH,
+    API_BANKS_PATH,
     LINK_TELEGRAM,
     LINK_YOUTUBE,
     LINK_MARKET_MAP,

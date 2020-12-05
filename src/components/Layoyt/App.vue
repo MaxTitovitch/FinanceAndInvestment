@@ -105,6 +105,11 @@ export default {
     background: rgba(0,0,0,0)!important;
   }
 
+  .w-33 {
+    width: 33.333% !important;
+  }
+
+
   @media screen and (max-device-width: 767px) {
     div.mobile-hidden, ul.mobile-hidden, .mobile-hidden {
       display: none!important;
