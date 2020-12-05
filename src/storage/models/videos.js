@@ -8,8 +8,8 @@ export default {
         isFirst: true,
     }),
     mutations: {
-        addGroupVideos(state, videos) {
-            state.videos = [...state.videos, ...videos]
+        setGroupVideos(state, videos) {
+            state.videos = videos
         },
         filtrateVideos(state, filtrateValue){
             state.filtrateValue = filtrateValue;
@@ -75,7 +75,7 @@ export default {
                     })
                 })
             }
-            context.commit('addGroupVideos', videos);
+            context.commit('setGroupVideos', videos);
             context.dispatch('playPlayer');
         },
         playPlayer(context) {

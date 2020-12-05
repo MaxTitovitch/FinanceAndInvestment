@@ -71,6 +71,7 @@ export default {
             for (const group of context.state.groups) {
                 if(context.state.gottenGroups.lastIndexOf(group) !== -1) continue;
                 if(group === payload.lastGroupName) break;
+                context.commit('addToGottenGroup', group)
                 let response = await (await fetch(path + group, {headers: Settings.API_REQUEST_HEADER})).json();
                 terms.push({
                     name: group,
@@ -84,7 +85,6 @@ export default {
                         }
                     }),
                 });
-                context.commit('addToGottenGroup', group)
             }
             context.commit('addGroupTerms', terms);
             context.commit('changeIsLoad');
@@ -118,6 +118,10 @@ export default {
                     isFull:  group.isFull,
                     terms: group.isFull ? terms : terms.slice(0, 12),
                 };
+            }).sort(function(first, second){
+                if(first.name < second.name) { return -1; }
+                if(first.name > second.name) { return 1; }
+                return 0;
             });
         },
         getTermDescriptions(state){

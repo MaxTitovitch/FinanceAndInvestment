@@ -12,7 +12,7 @@
 
         <b-navbar-nav class="search-area w-100 mt-2" v-if="showSearch">
           <b-nav-form class="search-form" form-class="align-end justify-content-between">
-            <b-form-input id="searchInput" size="sm" class="mr-sm-2 search-input" placeholder="Поиск по терминам и видео"></b-form-input>
+            <b-form-input id="searchInput" size="sm" class="mr-sm-2 search-input" placeholder="Поиск по терминам и видео" autocomplete="off"></b-form-input>
             <b-link href="#" class="text-dark search-close mobile-hidden" @click.prevent="toggleSearch">×</b-link>
             <b-link href="#" class="text-dark search-close mobile-show" @click.prevent="() => {}">
               <img src="@/assets/search.svg" alt="Поиск">

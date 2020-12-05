@@ -25,25 +25,29 @@ export default {
     src: url('~@/assets/fonts/DMSans-Bold.ttf');
   }
 
+  html,body {
+    min-height: 100vh;
+  }
+
   body {
     overflow-y: scroll;
     overflow-x: hidden;
   }
 
-  body::-webkit-scrollbar-track
+  *::-webkit-scrollbar-track
   {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 10px;
     background-color: #F5F5F5;
   }
 
-  body::-webkit-scrollbar
+  *::-webkit-scrollbar
   {
     width: 12px;
     background-color: #F5F5F5;
   }
 
-  body::-webkit-scrollbar-thumb
+  *::-webkit-scrollbar-thumb
   {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
@@ -113,9 +117,9 @@ export default {
     }
   }
 
-  @media (min-width: 1450px) {
+  @media (min-width: 2000px) {
     #app {
-      min-height: auto;
+      /*min-height: auto;*/
     }
   }
 </style>
