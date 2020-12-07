@@ -239,4 +239,11 @@ input:focus, input:active {
 
   color: #243EE9;
 }
+
+
+@media screen and (max-device-width: 767px) {
+  .term {
+    columns: 1;
+  }
+}
 </style>

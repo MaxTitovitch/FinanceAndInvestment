@@ -4,7 +4,6 @@
       <div class="header">
         <b-link href="#" class="text-dark close" @click.prevent="togglePopup">×</b-link>
       </div>
-<!--      <iframe width="100%" :src="changeVideoLink(video.link)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
       <div class="player" :id="'player' + id" :data-url="getVideoId(video.link)"></div>
     </div>
   </div>
@@ -56,10 +55,10 @@ export default {
     display: block;
 
     position: absolute;
-    width: 90%;
-    left: 5%;
-    height: 90%;
-    top: 5%;
+    width: 70%;
+    left: 15%;
+    height: 70%;
+    top: 15%;
   }
 
   iframe {

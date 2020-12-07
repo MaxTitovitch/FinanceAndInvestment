@@ -110,6 +110,10 @@ export default {
      background: #0f21a5!important;
   }
 
+   a:hover {
+     text-decoration: none;
+   }
+
    @media screen and (max-device-width: 767px) {
      h1 {
        font-size: 30px;
