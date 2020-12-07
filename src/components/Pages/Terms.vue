@@ -49,13 +49,13 @@
               {{ group.name }}
             </h2>
             <div class="container-fluid">
-              <div class="row">
-                <div v-for="(term, id) in group.terms" :key="id" class="col-12 col-md-3 p-1">
-                  <a href="#" class="term-name" @click.prevent="showTerm(term.name)">
+              <div class="d-block term">
+                <div v-for="(term, id) in group.terms" :key="id" class="p-1">
+                  <a href="#" class="term-name d-inline-block" @click.prevent="showTerm(term.name, $event)">
                     {{ term.name }}
                     <img src="@/assets/eye.svg" alt="Просмотрено" class="eye" v-if="term.isShow">
                   </a>
-                  <TermDescription :term="term" :styleType="getStyleById(id)"/>
+                  <TermDescription :term="term"/>
                 </div>
               </div>
               <div class="row justify-content-end mt-2" v-if="group.terms.length >= 12">
@@ -133,20 +133,22 @@ export default {
       this.$store.dispatch('initGroupTerms', {lastGroupName: this.groupGroups.reverse()[0]});
       this.groupGroups = [];
     },
-    showTerm(name) {
-      this.$store.dispatch('addDescription', {name});
-    },
-    getStyleById(id) {
-      switch (id % 4) {
-        case 0:
-          return {left: '0'};
-        case 1:
-          return {left: '-10vw'};
-        case 2:
-          return {left: '-20vw'};
-        case 3:
-          return {left: '-30vw'};
+    showTerm(name, event) {
+      let containerWidth = event.target.closest('.container').offsetWidth;
+      let offset = (document.body.offsetWidth - containerWidth) / 2, left, right;
+      if (event.clientX - offset >  (containerWidth / 4) * 3){
+        right = '0';
+      } else if (event.clientX - offset >  (containerWidth / 4) * 2){
+        right = '10vw';
+      } else if (event.clientX - offset >  containerWidth / 4){
+        left = '10vw';
+      } else if (event.clientX - offset <  containerWidth / 4){
+        left = '0';
       }
+      event.target.parentNode.querySelector('.hide,.show').style.left = left ?? '';
+      event.target.parentNode.querySelector('.hide,.show').style.right = right ?? '';
+      event.target.parentNode.querySelector('.hide,.show').style.top = `${event.layerY + 20}px`;
+      this.$store.dispatch('addDescription', {name});
     },
     handleScroll: function () {
       if (window.innerHeight + window.pageYOffset >= document.body.scrollHeight - 100
@@ -187,6 +189,11 @@ input:focus, input:active {
   width: 30px;
   height: 30px;
   padding: 5px;
+}
+
+.term {
+  columns: 4;
+  position: relative;
 }
 
 .group-name {

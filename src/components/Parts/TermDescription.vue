@@ -1,5 +1,5 @@
 <template>
-  <div :class="term.isFull ? 'show' : 'hide'" :style="styleType">
+  <div :class="term.isFull ? 'show' : 'hide'">
     <div class="header">
       <h2 class="main-text"><strong>{{term.name}}</strong> (англ. {{term.english_name}})</h2>
       <b-link href="#" class="text-dark close mobile-hidden" @click.prevent="togglePopup">×</b-link>
@@ -15,7 +15,6 @@ export default {
     term: {
       default: {}
     },
-    styleType: {},
   },
   name: "TermDescription",
   data(){
@@ -34,7 +33,6 @@ export default {
   .show {
     display: block;
     position: absolute;
-    /*left: 0;*/
     top: 30px;
     width: 55vw;
     height: auto;
