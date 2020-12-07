@@ -49,11 +49,11 @@
               {{ group.name }}
             </h2>
             <div class="container-fluid">
-              <div class="d-block term">
-                <div v-for="(term, id) in group.terms" :key="id" class="p-1">
+              <div class="d-block term p-1" >
+                <div v-for="(term, id) in group.terms" :key="id">
                   <a href="#" class="term-name d-inline-block" @click.prevent="showTerm(term.name, $event)">
                     {{ term.name }}
-                    <img src="@/assets/eye.svg" alt="Просмотрено" class="eye" v-if="term.isShow">
+                    <img src="@/assets/eye.svg" alt="Просмотрено" class="eye p-1" v-if="term.isShow">
                   </a>
                   <TermDescription :term="term"/>
                 </div>
@@ -86,6 +86,12 @@ export default {
   name: "Terms",
   components: {TermDescription},
   mounted() {
+    this.$store.commit('setSearch', false);
+    let isFromSearch = this.$store.getters.getFromSearch;
+    if(!isFromSearch){
+      this.$store.commit('filtrateTerms', '');
+    }
+    this.$store.commit('setFromSearch', false);
     this.$store.dispatch('initGroupTerms', {lastGroupName: this.groupGroups.shift()});
   },
   computed: {

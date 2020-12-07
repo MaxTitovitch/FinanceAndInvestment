@@ -4,11 +4,12 @@ import banks from './models/banks'
 import issuers from './models/issuers'
 import terms from './models/terms'
 import videos from './models/videos'
+import header from "@/storage/models/header";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules: [
-        banks, issuers, terms, videos
+        banks, issuers, terms, videos, header
     ]
 })

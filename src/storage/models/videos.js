@@ -6,6 +6,7 @@ export default {
         videos:  [],
         filtrateValue: '',
         isFirst: true,
+        players: []
     }),
     mutations: {
         setGroupVideos(state, videos) {
@@ -25,10 +26,16 @@ export default {
             }
         },
         setFullVideo (state, name){
+
             for (let i = 0; i < state.videos.length; i++) {
                 for (let j = 0; j < state.videos[i].videos.length; j++) {
                     if(state.videos[i].videos[j].name === name) {
                         state.videos[i].videos[j].isFull = !state.videos[i].videos[j].isFull;
+                        if(!state.videos[i].videos[j].isFull) {
+                            state.players.filter(function (player) {
+                                return player.f.id === 'player' + i + '-' + j;
+                            })[0].pauseVideo();
+                        }
                         break;
                     }
                 }
@@ -54,6 +61,9 @@ export default {
                     }
                 }
             }
+        },
+        setPlayers(state, players){
+            state.players = players;
         }
     },
     actions: {
@@ -80,10 +90,10 @@ export default {
         },
         playPlayer(context) {
             function onYouTubeIframeAPIReady() {
-                let players = document.getElementsByClassName('player');
+                let players = document.getElementsByClassName('player'), youtubePlayers = [];
                 for (let i = 0; i < players.length; i++) {
                     let url = players[i].dataset.url;
-                    new window.YT.Player(players[i].id, {
+                    youtubePlayers.push(new window.YT.Player(players[i].id, {
                         height: '95%',
                         width: '100%',
                         videoId: players[i].dataset.url,
@@ -94,11 +104,11 @@ export default {
                                 } else if(event.data === 0) {
                                     context.commit('updateStorage',  {status: 'FULLSHOW', link: url});
                                 }
-
                             }
                         }
-                    });
+                    }));
                 }
+                context.commit('setPlayers', youtubePlayers);
             }
             setTimeout(onYouTubeIframeAPIReady, 1000);
         }

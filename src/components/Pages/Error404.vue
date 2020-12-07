@@ -11,7 +11,10 @@
 
 <script>
 export default {
-name: "Error404"
+  mounted() {
+    this.$store.commit('setSearch', false)
+  },
+  name: "Error404"
 }
 </script>
 

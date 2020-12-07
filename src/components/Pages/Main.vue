@@ -41,6 +41,9 @@ import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 export default {
   name: "Main",
   components: {TileLink, Splide, SplideSlide},
+  mounted() {
+    this.$store.commit('setSearch', false)
+  },
   data (){
     return {
       options: {

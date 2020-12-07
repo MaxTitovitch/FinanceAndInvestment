@@ -65,6 +65,7 @@ export default {
   name: "Banks",
   components: {FilterBanksModal},
   mounted() {
+    this.$store.commit('setSearch', false);
     this.$store.dispatch('initBanks');
   },
   computed: {

@@ -81,6 +81,12 @@ export default {
   name: "Videos",
   components: {VideoShow},
   mounted() {
+    this.$store.commit('setSearch', false)
+    let isFromSearch = this.$store.getters.getFromSearch;
+    if(!isFromSearch){
+      this.$store.commit('filtrateVideos', '');
+    }
+    this.$store.commit('setFromSearch', false);
     this.$store.dispatch('initGroupVideos');
   },
   computed: {

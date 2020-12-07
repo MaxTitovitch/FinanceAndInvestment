@@ -64,6 +64,7 @@ export default {
   name: "Issuers",
   components: {FilterIssuersModal},
   mounted() {
+    this.$store.commit('setSearch', false)
     this.$store.dispatch('initIssuers');
   },
   computed: {

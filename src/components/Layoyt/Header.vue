@@ -95,11 +95,10 @@ export default {
   name: "Header",
   components: {SocialMedia, MenuNavbar},
   mounted() {
-
   },
   data() {
     return {
-      showSearch: false,
+      // showSearch: false,
       searchQuery: '',
     }
   },
@@ -107,6 +106,7 @@ export default {
     ...mapGetters({
       videoGroups: 'getGroupVideo',
       termGroups: 'getGroupTerms',
+      showSearch: 'getSearch',
     }),
     allGroups() {
       return [{array: this.videoGroups, type: 'videos'}, {array: this.termGroups, type: 'terms'}]
@@ -131,7 +131,7 @@ export default {
   methods: {
     toggleSearch() {
       this.searchQuery = ''
-      this.showSearch = !this.showSearch;
+      this.$store.commit('toggleSearch')
     },
     find(name, type, isGo = true) {
       this.searchQuery = name
@@ -147,9 +147,12 @@ export default {
           this.$store.commit('filtrateTerms', this.searchQuery)
           break;
       }
-      if(isGo && this.$route.name !== type) {
-        this.showSearch = false;
-        this.$router.push(type)
+      if(isGo) {
+        this.$store.commit('setSearch', false)
+        if (this.$route.name !== type) {
+          this.$store.commit('setFromSearch', true)
+          this.$router.push(type)
+        }
       }
     },
     filtrateData() {
