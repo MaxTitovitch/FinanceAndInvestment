@@ -20,14 +20,6 @@ export default {
         filtrateBanks(state, banksFiltrateValue){
             state.banksFiltrateValue = banksFiltrateValue;
         },
-        // changeIsShowResume(state, name) {
-        //     for (let i = 0; i < state.banks.length; i++) {
-        //         if(state.banks[i].name === name){
-        //             state.banks[i].isShowResume = !state.banks[i].isShowResume;
-        //             break;
-        //         }
-        //     }
-        // },
         toggleIsShowBanksFilter(state){
             state.isShowBanksFilter = !state.isShowBanksFilter;
         },
@@ -51,8 +43,6 @@ export default {
                     name: response[i].name,
                     value: Number.parseFloat(response[i].value),
                     rating: Number.parseFloat(response[i].rating),
-                    // resume: response[i].current_rating.resume,
-                    // isShowResume: false
                 })
             }
             context.commit('setBanks', banks);

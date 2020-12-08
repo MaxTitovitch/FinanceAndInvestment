@@ -41,11 +41,6 @@
               :sort-desc.sync="sortDesc"
               responsive="sm"
           >
-<!--            <template #cell(resume)="data">-->
-<!--              <a href="#" :class="'text-dark ' + (data.item.isShowResume ? '' : 'font-weight-bold')" @click="toggleIsShow(data.item.name)">-->
-<!--                {{ data.item.isShowResume ? data.item.resume : 'Подробнее...' }}-->
-<!--              </a>-->
-<!--            </template>-->
           </b-table>
           <div v-if="banks.length <= 0" class="main-header font-weight-bold w-100 text-center text-secondary">
             Банки не найдены
@@ -84,7 +79,6 @@ export default {
         {key: 'name', label: 'Название', sortable: true},
         {key: 'value', label: 'Цена, в млн USD', sortable: true},
         {key: 'rating', label: 'Рейтинг', sortable: true},
-        // {key: 'resume', label: '', sortable: false}
       ],
     }
   },
@@ -102,9 +96,6 @@ export default {
       this.banksFiltrateValue.name = '';
       this.updateFilter();
     },
-    toggleIsShow(name) {
-      this.$store.commit('changeIsShowResume', name);
-    }
   }
 }
 </script>

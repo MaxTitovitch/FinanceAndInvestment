@@ -21,14 +21,6 @@ export default {
         filtrateIssuers(state, issuersFiltrateValue){
             state.issuersFiltrateValue = issuersFiltrateValue;
         },
-        changeIsShowResume(state, name) {
-            for (let i = 0; i < state.issuers.length; i++) {
-                if(state.issuers[i].name === name){
-                    state.issuers[i].isShowResume = !state.issuers[i].isShowResume;
-                    break;
-                }
-            }
-        },
         toggleIsShowIssuersFilter(state){
             state.isShowIssuersFilter = !state.isShowIssuersFilter;
         },
@@ -52,8 +44,8 @@ export default {
                     name: response[i].issuer_type + ' ' + response[i].issuer_name,
                     date: getDateByQuarter(response[i].current_rating.quarter) + response[i].current_rating.year,
                     rating: Number.parseFloat(response[i].current_rating.rating),
-                    resume: response[i].current_rating.resume,
-                    isShowResume: false
+                    overview: response[i].current_rating.overview,
+                    express: response[i].current_rating.express ?? false
                 })
             }
             context.commit('setIssuers', issuers);

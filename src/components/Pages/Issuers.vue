@@ -41,10 +41,13 @@
               :sort-desc.sync="sortDesc"
               responsive="sm"
           >
-            <template #cell(resume)="data">
-              <a href="#" :class="'text-dark ' + (data.item.isShowResume ? '' : 'font-weight-bold')" @click="toggleIsShow(data.item.name)">
-                {{ data.item.isShowResume ? data.item.resume : 'Подробнее...' }}
+            <template #cell(overview)="data">
+              <a :href="data.item.overview" class="text-dark font-weight-bold" target="_blank">
+                Подробнее...
               </a>
+            </template>
+            <template #cell(express)="data">
+                {{ data.item.express ? 'Экспресс' : 'Стандартная'}}
             </template>
           </b-table>
           <div v-if="issuers.length <= 0" class="main-header font-weight-bold w-100 text-center text-secondary">
@@ -83,7 +86,8 @@ export default {
         {key: 'name', label: 'Наименование', sortable: true},
         {key: 'date', label: 'Дата оценки', sortable: true},
         {key: 'rating', label: 'Оценка', sortable: true},
-        {key: 'resume', label: '', sortable: false}
+        {key: 'express', label: 'Модель оценки', sortable: true},
+        {key: 'overview', label: '', sortable: false},
       ],
     }
   },
@@ -101,9 +105,6 @@ export default {
       this.issuersFiltrateValue.name = '';
       this.updateFilter();
     },
-    toggleIsShow(name) {
-      this.$store.commit('changeIsShowResume', name);
-    }
   }
 }
 </script>
