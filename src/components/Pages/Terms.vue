@@ -48,12 +48,12 @@
             <h2 class="group-name" >
               {{ group.name }}
             </h2>
-            <div class="container-fluid">
+            <div>
               <div class="d-block term p-1" >
                 <div v-for="(term, id) in group.terms" :key="id">
                   <a href="#" class="term-name d-inline-block" @click.prevent="showTerm(term.name, $event)">
                     {{ term.name }}
-                    <img src="@/assets/eye.svg" alt="Просмотрено" class="eye p-1" v-if="term.isShow">
+<!--                    <img src="@/assets/eye.svg" alt="Просмотрено" class="eye p-1" v-if="term.isShow">-->
                   </a>
                   <TermDescription :term="term"/>
                 </div>

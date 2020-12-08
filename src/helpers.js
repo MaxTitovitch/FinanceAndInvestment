@@ -5,3 +5,12 @@ export function getYouTubeVideoId(link){
     }
     return link.split('/').reverse()[0];
 }
+
+export function getDateByQuarter(quarter){
+    switch (quarter){
+        case 'Q1': return '31.03.';
+        case 'Q2': return '30.06.';
+        case 'Q3': return '30.09.';
+        case 'Q4': return '31.12.';
+    }
+}

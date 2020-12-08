@@ -110,6 +110,7 @@ export default {
 </script>
 
 <style scoped>
+
 .search-close {
   padding-left: 3px;
   width: 6%;
@@ -166,6 +167,9 @@ input:focus, input:active {
 
 <style>
 
+td:not(:first-child) {
+  text-align: center;
+}
 th[role="columnheader"] {
   text-align: center;
   vertical-align: middle !important;

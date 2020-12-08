@@ -1,4 +1,5 @@
 import Settings from '@/settings'
+import {getDateByQuarter} from "@/helpers";
 
 export default {
     state: () => ({
@@ -49,7 +50,7 @@ export default {
             for (let i = 0; i < response.length; i++) {
                 issuers.push({
                     name: response[i].issuer_type + ' ' + response[i].issuer_name,
-                    date: response[i].current_rating.year + ' ' + response[i].current_rating.quarter,
+                    date: getDateByQuarter(response[i].current_rating.quarter) + response[i].current_rating.year,
                     rating: Number.parseFloat(response[i].current_rating.rating),
                     resume: response[i].current_rating.resume,
                     isShowResume: false
@@ -69,14 +70,13 @@ export default {
                 if((issuer.rating < minPoint && minPoint) || (issuer.rating > maxPoint && maxPoint)){
                     return false;
                 }
-                let year = Number.parseInt(issuer.date.split(' ')[0]), quarter = issuer.date.split(' ')[1].replace('Q', '');
-                let minYear = Number.parseInt(state.issuersFiltrateValue.dateMin.split(' ')[0]),
-                    maxYear = Number.parseInt(state.issuersFiltrateValue.dateMax.split(' ')[0])
-                if((year < minYear && minYear) || (year > maxYear && maxYear)){
+                let date = new Date(issuer.date);
+                let dateMin = new Date(state.issuersFiltrateValue.dateMin),
+                    dateMax = new Date(state.issuersFiltrateValue.dateMax)
+                if((date < dateMin && dateMin) || (date > dateMax && dateMax)){
                     return false;
                 }
-                return !((quarter < state.issuersFiltrateValue.dateMin.split(' ')[1]?.replace('Q', '') && state.issuersFiltrateValue.dateMin && year === minYear)
-                    || (quarter > state.issuersFiltrateValue.dateMax.split(' ')[1]?.replace('Q', '') && state.issuersFiltrateValue.dateMax && year === maxYear));
+                return true;
 
             });
         },
