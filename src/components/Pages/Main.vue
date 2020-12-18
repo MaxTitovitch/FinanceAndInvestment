@@ -131,7 +131,7 @@ export default {
        background-image: url(~@/assets/main-photo-mobile.svg);
        background-size: 95%;
        background-position-x: left;
-       padding-top: 260px;
+       padding-top: 240px;
      }
 
      main {
@@ -145,7 +145,7 @@ export default {
   .splide__arrow {
     background: rgba(0,0,0,0);
     fill: none;
-    height: 3em;
+    height: 100%;
     width: 3em;
   }
 

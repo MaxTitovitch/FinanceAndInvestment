@@ -1,5 +1,5 @@
 import Settings from '@/settings'
-import {getDateByQuarter} from "@/helpers";
+import {getDate, getDateByQuarter} from "@/helpers";
 
 export default {
     state: () => ({
@@ -10,6 +10,7 @@ export default {
             maxPoint: '',
             dateMin: '',
             dateMax: '',
+            type: '',
 
         },
         isShowIssuersFilter: false,
@@ -32,6 +33,7 @@ export default {
                 maxPoint: '',
                 dateMin: '',
                 dateMax: '',
+                type: '',
             };
         }
     },
@@ -62,10 +64,14 @@ export default {
                 if((issuer.rating < minPoint && minPoint) || (issuer.rating > maxPoint && maxPoint)){
                     return false;
                 }
-                let date = new Date(issuer.date);
-                let dateMin = new Date(state.issuersFiltrateValue.dateMin),
-                    dateMax = new Date(state.issuersFiltrateValue.dateMax)
+                let date = getDate(issuer.date);
+                let dateMin = getDate(state.issuersFiltrateValue.dateMin),
+                    dateMax = getDate(state.issuersFiltrateValue.dateMax)
                 if((date < dateMin && dateMin) || (date > dateMax && dateMax)){
+                    return false;
+                }
+                console.log(issuer)
+                if((issuer.express && state.issuersFiltrateValue.type === "false") || (!issuer.express && state.issuersFiltrateValue.type === "true") || state.type === ""){
                     return false;
                 }
                 return true;

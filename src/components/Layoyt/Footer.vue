@@ -25,7 +25,7 @@
       </div>
       <div class="row">
         <div class="col-12 text-center">
-          <p class="font-weight-bold">© {{ year }} ЭБ Беларусь . Все права защищены.</p>
+          <p class="font-weight-bold">© {{ year }} ЭБ Инвестиции. Все права защищены.</p>
         </div>
       </div>
     </div>

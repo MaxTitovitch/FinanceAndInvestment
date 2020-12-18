@@ -35,11 +35,12 @@
       <div class="row mt-3">
         <div class="col-12">
           <b-table striped hover
-              :items="issuers"
-              :fields="fields"
-              :sort-by.sync="sortBy"
-              :sort-desc.sync="sortDesc"
-              responsive="sm"
+                   :items="issuers"
+                   :fields="fields"
+                   :sort-by.sync="sortBy"
+                   :sort-desc.sync="sortDesc"
+                   responsive="sm"
+                   table-class="table-fixed"
           >
             <template #cell(overview)="data">
               <a :href="data.item.overview" class="text-dark font-weight-bold" target="_blank">
@@ -47,7 +48,7 @@
               </a>
             </template>
             <template #cell(express)="data">
-                {{ data.item.express ? 'Экспресс' : 'Стандартная'}}
+              {{ data.item.express ? 'Экспресс' : 'Стандартная' }}
             </template>
           </b-table>
           <div v-if="issuers.length <= 0" class="main-header font-weight-bold w-100 text-center text-secondary">
@@ -87,13 +88,13 @@ export default {
         {key: 'date', label: 'Дата оценки', sortable: true},
         {key: 'rating', label: 'Оценка', sortable: true},
         {key: 'express', label: 'Модель оценки', sortable: true},
-        {key: 'overview', label: '', sortable: false},
+        {key: 'overview', label: 'Подробнее', sortable: false},
       ],
     }
   },
   methods: {
     focusSearch() {
-        document.getElementById('searchInput').focus()
+      document.getElementById('searchInput').focus()
     },
     toggleFilter() {
       this.$store.commit('toggleIsShowIssuersFilter');
@@ -173,13 +174,70 @@ td:not(:first-child) {
 th[role="columnheader"] {
   text-align: center;
   vertical-align: middle !important;
-  width: 20%;
 }
 
-th[role="columnheader"]:first-child {
-  width: 35%;
+.table-fixed, .table-fixed tbody, .table-fixed thead, .table-fixed tr {
+  width: 100%;
+  display: block;
 }
-th[role="columnheader"]:last-child {
+
+.table-fixed td, .table-fixed th {
+  display: inline-block;
+}
+
+.table-fixed thead {
+
+  padding-right: 12px;
+  border-top: 2px solid #dee2e6;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table-fixed thead tr {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.table-fixed thead tr th {
+  border: none;
+}
+
+.table-fixed td:first-child, .table-fixed th:first-child {
+  width: 33%;
+}
+
+.table-fixed td:nth-child(2), .table-fixed th:nth-child(2) {
+  width: 13%;
+}
+
+.table-fixed td:nth-child(3), .table-fixed th:nth-child(3) {
+  width: 10%;
+}
+
+.table-fixed td:nth-child(4), .table-fixed th:nth-child(4) {
+  width: 19%;
+}
+
+.table-fixed td:last-child , .table-fixed th:last-child  {
   width: 25%;
 }
+
+.table-fixed tbody {
+  overflow-y: auto;
+  height: 70vh;
+}
+
+.table-fixed tbody tr {
+  display: flex;
+  align-items: center;
+
+}
+.table-fixed tbody tr td {
+  border: none;
+}
+.table-fixed td:focus, .table-fixed th:focus {
+  outline: none;
+}
+
 </style>

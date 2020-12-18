@@ -48,7 +48,7 @@
       </div>
       <div class="row mt-3">
         <div class="col-12">
-          <div v-for="(group, index) in groups" :key="index" class="mb-3" v-show="group.videos.length > 0">
+          <div v-for="(group, index) in groups" :key="index" class="mb-4" v-show="group.videos.length > 0">
             <h2 class="group-name">
               {{ group.name }}
             </h2>
@@ -195,7 +195,7 @@ input:focus, input:active {
   color: #000000;
   display: flex;
   justify-content: left;
-  align-items: end;
+  align-items: center;
   width: 100%;
 }
 

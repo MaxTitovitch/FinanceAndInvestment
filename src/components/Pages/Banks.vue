@@ -40,6 +40,7 @@
               :sort-by.sync="sortBy"
               :sort-desc.sync="sortDesc"
               responsive="sm"
+              table-class="table-fixed-bank"
           >
           </b-table>
           <div v-if="banks.length <= 0" class="main-header font-weight-bold w-100 text-center text-secondary">
@@ -77,8 +78,8 @@ export default {
       sortDesc: false,
       fields: [
         {key: 'name', label: 'Название', sortable: true},
-        {key: 'value', label: 'Цена, в млн USD', sortable: true},
-        {key: 'rating', label: 'Рейтинг', sortable: true},
+        {key: 'value', label: 'Цена, млн USD', sortable: true},
+        {key: 'rating', label: 'Место в рейтинге надежности', sortable: true},
       ],
     }
   },
@@ -164,13 +165,59 @@ td:not(:first-child) {
 th[role="columnheader"] {
   text-align: center;
   vertical-align: middle !important;
-  width: 20%;
+
 }
 
-th[role="columnheader"]:first-child {
-  width: 35%;
+.table-fixed-bank, .table-fixed-bank tbody, .table-fixed-bank thead, .table-fixed-bank tr {
+  width: 100%;
+  display: block;
 }
-th[role="columnheader"]:last-child {
-  width: 25%;
+
+.table-fixed-bank td, .table-fixed-bank th {
+  display: inline-block;
 }
+
+.table-fixed-bank thead {
+
+  padding-right: 12px;
+  border-top: 2px solid #dee2e6;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table-fixed-bank thead tr {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.table-fixed-bank thead tr th {
+  border: none;
+}
+
+.table-fixed-bank td:first-child, .table-fixed-bank th:first-child {
+  width: 40%;
+}
+
+.table-fixed-bank td, .table-fixed-bank th {
+  width: 30%;
+}
+
+.table-fixed-bank tbody {
+  overflow-y: auto;
+  height: 70vh;
+}
+
+.table-fixed-bank tbody tr {
+  display: flex;
+  align-items: center;
+
+}
+.table-fixed-bank tbody tr td {
+  border: none;
+}
+.table-fixed-bank td:focus, .table-fixed-bank th:focus {
+  outline: none;
+}
+
 </style>

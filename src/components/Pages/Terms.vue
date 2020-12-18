@@ -49,7 +49,7 @@
               {{ group.name }}
             </h2>
             <div>
-              <div class="d-block term p-1" >
+              <div class="d-block term py-1" >
                 <div v-for="(term, id) in group.terms" :key="id">
                   <a href="#" class="term-name d-inline-block" @click.prevent="showTerm(term.name, $event)">
                     {{ term.name }}
@@ -58,8 +58,8 @@
                   <TermDescription :term="term"/>
                 </div>
               </div>
-              <div class="row justify-content-end mt-2" v-if="group.terms.length >= 12">
-                <a href="#" :data-group="group.name" class="term-all col-12 col-md-3 px-0 py-1"
+              <div class="d-flex justify-content-end mt-2" v-if="group.terms.length >= 12">
+                <a href="#" :data-group="group.name" class="term-all col-12 col-md-3 py-1"
                    @click.prevent="changeIsFull(group.name)">
                   {{ !group.isFull ? 'Показать' : 'Свернуть' }} все термины на букву
                   <span class="font-weight-bold">{{ group.name }}</span>
@@ -200,6 +200,7 @@ input:focus, input:active {
 .term {
   columns: 4;
   position: relative;
+  column-gap: 5px;
 }
 
 .group-name {
@@ -240,6 +241,8 @@ input:focus, input:active {
 }
 
 .term-all {
+  padding-left: 5px;
+  padding-right: 0;
   font-size: 12px;
   line-height: 14px;
 

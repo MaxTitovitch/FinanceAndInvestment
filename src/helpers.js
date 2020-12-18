@@ -14,3 +14,8 @@ export function getDateByQuarter(quarter){
         case 'Q4': return '31.12.';
     }
 }
+
+export function getDate (stringDate) {
+    let dateParts = stringDate.split('.');
+    return new Date(`${dateParts[1]}.${dateParts[0]}.${dateParts[2]}`);
+}

@@ -96,6 +96,10 @@ export default {
     padding: 0.3rem 0 0.9rem 0;
   }
 
+  p.menu-link>a {
+    padding-top: 7px;
+  }
+
   .menu-link, .menu-link>a {
     padding: 0;
     display: block;

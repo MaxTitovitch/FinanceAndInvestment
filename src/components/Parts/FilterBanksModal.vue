@@ -6,7 +6,7 @@
     </div>
     <p>
       <b-form inline @submit.prevent="()=>{}">
-        <label class="w-33 text-center" :for="'value-min' + id">Цена (млн USD)</label>
+        <label class="w-33 text-center" :for="'value-min' + id">Цена, млн USD</label>
         <b-form-input
             :id="'value-min' + id"
             class="w-33"
@@ -23,7 +23,7 @@
             autocomplete="off"
         ></b-form-input>
 
-        <label class="w-33 mt-2" :for="'rating-min' + id">Рейтинг</label>
+        <label class="w-33 mt-2" :for="'rating-min' + id">Место в рейтинге</label>
         <b-form-input
             :id="'rating-min' + id"
             class="w-33 mt-2"
