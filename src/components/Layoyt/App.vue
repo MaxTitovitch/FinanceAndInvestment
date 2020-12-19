@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="isBlur ? 'blur' : ''" @click="hideBlur($event)">
     <Header />
     <router-view />
     <Footer />
@@ -9,6 +9,7 @@
 <script>
 import Header from "@/components/Layoyt/Header";
 import Footer from "@/components/Layoyt/Footer";
+import {mapGetters} from "vuex";
 
 export default {
   name: 'App',
@@ -16,6 +17,19 @@ export default {
     Header,
     Footer
   },
+  computed: {
+  ...mapGetters({
+      isBlur: 'getIsBlur',
+    })
+  },
+  methods: {
+    hideBlur($event) {
+      if(window.mobileCheck()){
+        $event.preventDefault()
+        this.$store.commit('hideTerms')
+      }
+    }
+  }
 }
 </script>
 
@@ -23,6 +37,10 @@ export default {
   @font-face {
     font-family: 'DM Sans Bolded';
     src: url('~@/assets/fonts/DMSans-Bold.ttf');
+  }
+
+  .blur {
+    background: rgba(0,0,0,.1);
   }
 
   html,body {

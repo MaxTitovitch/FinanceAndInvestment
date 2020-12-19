@@ -51,7 +51,7 @@
             <div>
               <div class="d-block term py-1" >
                 <div v-for="(term, id) in group.terms" :key="id">
-                  <a href="#" class="term-name d-inline-block" @click.prevent="showTerm(term.name, $event)">
+                  <a href="#" class="term-name d-inline-block" @click.prevent="showTerm(term, $event)">
                     {{ term.name }}
 <!--                    <img src="@/assets/eye.svg" alt="Просмотрено" class="eye p-1" v-if="term.isShow">-->
                   </a>
@@ -139,7 +139,8 @@ export default {
       this.$store.dispatch('initGroupTerms', {lastGroupName: this.groupGroups.reverse()[0]});
       this.groupGroups = [];
     },
-    showTerm(name, event) {
+    showTerm(term, event) {
+      if(window.mobileCheck() && term.isFull) return;
       let containerWidth = event.target.closest('.container').offsetWidth;
       let offset = (document.body.offsetWidth - containerWidth) / 2, left, right;
       if (event.clientX - offset >  (containerWidth / 4) * 3){
@@ -154,7 +155,7 @@ export default {
       event.target.parentNode.querySelector('.hide,.show').style.left = left ?? '';
       event.target.parentNode.querySelector('.hide,.show').style.right = right ?? '';
       event.target.parentNode.querySelector('.hide,.show').style.top = `${event.layerY + 20}px`;
-      this.$store.dispatch('addDescription', {name});
+      this.$store.dispatch('addDescription', {name: term.name});
     },
     handleScroll: function () {
       if (window.innerHeight + window.pageYOffset >= document.body.scrollHeight - 100

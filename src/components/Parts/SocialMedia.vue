@@ -49,6 +49,9 @@ export default {
   }
 
   @media screen and (max-device-width: 767px) {
+    .template {
+      margin-bottom: 2rem;
+    }
     .image-social {
       width: 30%;
     }

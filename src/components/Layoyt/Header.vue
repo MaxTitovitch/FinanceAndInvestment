@@ -75,7 +75,7 @@
         <b-link href="#" v-b-toggle.sidebar-right>
           <img src="@/assets/menu.svg" alt="Меню" class="image-search">
         </b-link>
-        <b-sidebar id="sidebar-right" right shadow backdrop class="sidebar" body-class="px-3">
+        <b-sidebar id="sidebar-right" right shadow no-header backdrop class="sidebar" body-class="px-3">
           <MenuNavbar dropdown-class="menu-link" main-class="sidebar" first-item-claas="mt-1" type="mobile"/>
           <template slot="footer">
             <SocialMedia container-class="p-3 w-50" header-size=".9em"/>
@@ -316,6 +316,11 @@ img {
     margin-left: 0;
   }
 }
+</style>
 
-
+<style>
+  .b-sidebar {
+    overflow: hidden;
+    padding-bottom: 3rem;
+  }
 </style>

@@ -26,15 +26,14 @@ export default {
             }
         },
         setFullVideo (state, name){
-
             for (let i = 0; i < state.videos.length; i++) {
                 for (let j = 0; j < state.videos[i].videos.length; j++) {
                     if(state.videos[i].videos[j].name === name) {
                         state.videos[i].videos[j].isFull = !state.videos[i].videos[j].isFull;
                         if(!state.videos[i].videos[j].isFull) {
-                            state.players.filter(function (player) {
-                                return player.f.id === 'player' + i + '-' + j;
-                            })[0].pauseVideo();
+                            state.players.forEach(function (player) {
+                                return player.stopVideo();
+                            })
                         }
                         break;
                     }

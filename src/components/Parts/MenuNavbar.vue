@@ -1,5 +1,5 @@
 <template>
-<div :class="mainClass">
+<div :class="mainClass + ' template'">
   <div class="w-33 text-center">
     <router-link to="/terms" class="menu-link">Термины</router-link>
   </div>
@@ -122,6 +122,12 @@ export default {
     cursor: pointer;
   }
 
+
+
+  .template {
+    padding-top: 2rem;
+  }
+
   @media (max-width: 992px) {
     .navbar-expand-lg .navbar-nav>* {
       flex-direction: row !important;
@@ -136,24 +142,32 @@ export default {
     a.menu-link{
       padding: 3px 0;
       font-size: 1.2rem;
+      margin-top: 1.1rem;
+      font-weight: bold!important;
     }
 
     p.menu-link>a {
       padding: 3px 0 3px 0;
       font-size: 1.2rem!important;
-      font-weight: 600!important;
+      margin-top: 1.1rem;
+    }
+
+    .dropdown-items p.menu-link>a {
+      font-weight: 400!important;
     }
 
     div.menu-link{
       padding: 0;
       font-size: 1.2rem;
+      margin-top: 1.1rem;
+      font-weight: bold!important;
     }
 
     .menu-link, .dropdown-button {
       font-size: 1.2rem;
       text-align: left;
       width: 100%;
-      font-weight: 600;
+      font-weight: bold!important;
     }
 
     .menu-link a:hover, .menu-link:hover,  .dropdown-button:hover, .dropdown-body:hover .dropdown-button {
@@ -165,9 +179,8 @@ export default {
     div.menu-link.d-flex {
       justify-content: end!important;
     }
-
-    .b-sidebar-body>div>.menu-link .dropdown-items .menu-link>a {
-      font-weight: 600!important;
-    }
+    /*.b-sidebar-body>div>.menu-link .dropdown-items .menu-link>a {*/
+    /*  font-weight: 600!important;*/
+    /*}*/
   }
 </style>

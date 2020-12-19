@@ -61,6 +61,13 @@ export default {
                     }
                 }
             }
+        },
+        hideTerms (state){
+            for (let i = 0; i < state.terms.length; i++) {
+                for (let j = 0; j < state.terms[i].terms.length; j++) {
+                    state.terms[i].terms[j].isFull = false;
+                }
+            }
         }
     },
     actions: {
@@ -129,6 +136,18 @@ export default {
         },
         getIsLoad(state){
             return state.isLoad;
+        },
+        getIsBlur(state){
+            if(window.mobileCheck()) {
+                for (let i = 0; i < state.terms.length; i++) {
+                    for (let j = 0; j < state.terms[i].terms.length; j++) {
+                        if (state.terms[i].terms[j].isFull) {
+                            return true
+                        }
+                    }
+                }
+            }
+            return false
         }
     },
 }

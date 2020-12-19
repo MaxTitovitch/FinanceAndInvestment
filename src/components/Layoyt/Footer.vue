@@ -77,6 +77,7 @@ export default {
   }
 
   @media screen and (max-device-width: 767px) {
+
     .container {
       padding: 0 70px;
     }

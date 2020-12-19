@@ -1,5 +1,6 @@
 <template>
   <div :class="term.isFull ? 'show' : 'hide'">
+    <div class="blur"></div>
     <div class="header">
       <h2 class="main-text"><strong>{{term.name}}</strong> (англ. {{term.english_name}})</h2>
       <b-link href="#" class="text-dark close mobile-hidden" @click.prevent="togglePopup">×</b-link>
