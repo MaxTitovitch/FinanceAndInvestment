@@ -45,6 +45,7 @@ export default {
 
   html,body {
     min-height: 100vh;
+    overflow-x: hidden;
   }
 
   body {

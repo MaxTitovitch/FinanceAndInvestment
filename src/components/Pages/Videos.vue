@@ -6,20 +6,25 @@
     <div class="container">
       <div class="row justify-content-center mt-3">
         <div class="col-12 col-md-5">
-          <b-nav-form class="search-form w-100" form-class="align-end justify-content-between w-100">
-            <b-form-input
-                id="searchInput"
-                size="sm"
-                class="mr-sm-2 search-input"
-                @keypress.enter.prevent
-                @input="filtrateData"
-                v-model="searchQuery"
-                autocomplete="off">
-            </b-form-input>
-            <b-link href="#" class="text-dark" @click.prevent="focusSearch">
-              <img src="@/assets/search.svg" alt="Поиск">
-            </b-link>
-          </b-nav-form>
+          <div class="w-100 form-container">
+            <b-nav-form class="search-form" form-class="align-end justify-content-between w-100">
+              <b-form-input
+                  id="searchInput"
+                  size="sm"
+                  class="mr-sm-2 search-input"
+                  @keypress.enter.prevent
+                  @input="filtrateData"
+                  v-model="searchQuery"
+                  autocomplete="off">
+              </b-form-input>
+              <b-link href="#" class="text-dark" @click.prevent="focusSearch">
+                <img src="@/assets/search.svg" alt="Поиск">
+              </b-link>
+            </b-nav-form>
+            <a href="#" class="text-dark search-close mobile-show" @click.prevent="clearNameFilter">
+              ×
+            </a>
+          </div>
           <div class="item-list" v-if="searchQuery && isHaveElements !== searchQuery">
             <div class="item-list-body">
               <div v-for="(group, index) in groups" :key="index">
@@ -54,7 +59,7 @@
             </h2>
             <div class="container-fluid">
               <div class="row">
-                <div v-for="(video, id) in group.videos" :key="id" class="col-12 col-md-4 p-1">
+                <div v-for="(video, id) in group.videos" :key="id" class="col-12 col-md-4 p-1 mt-3">
                   <a href="#" class="video-name" @click.prevent="showVideo(video.name)">
                     <img src="@/assets/noshow.svg" alt="Не просмотрено" class="eye" v-if="video.showType === 'NOSHOW'">
                     <img src="@/assets/show.svg" alt="Просмотрено" class="eye" v-if="video.showType === 'SHOW'">
@@ -83,7 +88,7 @@ export default {
   mounted() {
     this.$store.commit('setSearch', false)
     let isFromSearch = this.$store.getters.getFromSearch;
-    if(!isFromSearch){
+    if (!isFromSearch) {
       this.$store.commit('filtrateVideos', '');
     }
     this.$store.commit('setFromSearch', false);
@@ -97,7 +102,7 @@ export default {
       let count = 0, video;
       for (let i = 0; i < this.groups?.length; i++) {
         for (let j = 0; j < this.groups[i].videos?.length; j++) {
-          if(count === 0) {
+          if (count === 0) {
             count++;
             video = this.groups[i].videos[j].name;
           } else {
@@ -115,7 +120,7 @@ export default {
   },
   methods: {
     focusSearch() {
-        document.getElementById('searchInput').focus()
+      document.getElementById('searchInput').focus()
     },
     filtrateData() {
       this.$store.dispatch('playPlayer');
@@ -127,6 +132,9 @@ export default {
     findVideo(name) {
       this.searchQuery = name;
       this.$store.commit('filtrateVideos', this.searchQuery)
+    },
+    clearNameFilter() {
+      this.findVideo('');
     },
   },
 }
@@ -203,4 +211,32 @@ input:focus, input:active {
   padding-right: 8px;
 }
 
+.search-close {
+  padding-left: 3px;
+  width: 6%;
+  text-align: center;
+  line-height: 100%;
+  color: black !important;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.search-close:hover {
+  text-decoration: none;
+}
+
+.form-container {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+</style>
+
+<style>
+.search-form {
+  width: 90%;
+}
 </style>

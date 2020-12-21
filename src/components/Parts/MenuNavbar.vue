@@ -1,10 +1,10 @@
 <template>
 <div :class="mainClass + ' template'">
-  <div class="w-33 text-center">
-    <router-link to="/terms" class="menu-link">Термины</router-link>
+  <div class="w-33 text-center d-flex justify-content-center align-items-center">
+    <router-link to="/terms" class="menu-link" @click.native="hideMenu">Термины</router-link>
   </div>
-  <div class="w-33 text-center">
-    <router-link to="/videos" class="menu-link">Видео</router-link>
+  <div class="w-33 text-center d-flex justify-content-center align-items-center">
+    <router-link to="/videos" class="menu-link" @click.native="hideMenu">Видео</router-link>
   </div>
   <div :class="dropdownClass + ' d-flex justify-content-center font-weight-bold w-33'">
     <div class="d-flex align-items-center h-100">
@@ -24,10 +24,10 @@
             <a class="text-dark" :href="Settings.LINK_MARKET_MAP" target="_blank">Карта рынка облигаций</a>
           </p>
           <p class="menu-link">
-            <router-link class="text-dark" to="/issuers">Оценки эмитентов</router-link>
+            <router-link class="text-dark" to="/issuers" @click.native="hideMenu">Оценки эмитентов</router-link>
           </p>
           <p class="menu-link">
-            <router-link class="text-dark" to="/banks">Оценки банков</router-link>
+            <router-link class="text-dark" to="/banks" @click.native="hideMenu">Оценки банков</router-link>
           </p>
         </div>
       </div>
@@ -51,7 +51,7 @@ export default {
     },
     type: {
       default: 'desktop'
-    }
+    },
   },
   data (){
     return {
@@ -64,6 +64,9 @@ export default {
       if(isNeedType){
         this.isOpen = !this.isOpen
       }
+    },
+    hideMenu() {
+      this.$emit('hide-sidebar')
     }
   },
 }
@@ -122,11 +125,6 @@ export default {
     cursor: pointer;
   }
 
-
-
-  .template {
-    padding-top: 2rem;
-  }
 
   @media (max-width: 992px) {
     .navbar-expand-lg .navbar-nav>* {

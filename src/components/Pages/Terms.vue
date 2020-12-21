@@ -6,20 +6,25 @@
     <div class="container">
       <div class="row justify-content-center mt-3">
         <div class="col-12 col-md-5">
-          <b-nav-form class="search-form w-100" form-class="align-end justify-content-between w-100">
-            <b-form-input
-                id="searchInput"
-                size="sm"
-                class="mr-sm-2 search-input"
-                @keypress.enter.prevent
-                @input="filtrateData"
-                v-model="searchQuery"
-                autocomplete="off">
-            </b-form-input>
-            <b-link href="#" class="text-dark" @click.prevent="focusSearch">
-              <img src="@/assets/search.svg" alt="Поиск">
-            </b-link>
-          </b-nav-form>
+          <div class="w-100 form-container">
+            <b-nav-form class="search-form" form-class="align-end justify-content-between w-100">
+              <b-form-input
+                  id="searchInput"
+                  size="sm"
+                  class="mr-sm-2 search-input"
+                  @keypress.enter.prevent
+                  @input="filtrateData"
+                  v-model="searchQuery"
+                  autocomplete="off">
+              </b-form-input>
+              <b-link href="#" class="text-dark" @click.prevent="focusSearch">
+                <img src="@/assets/search.svg" alt="Поиск">
+              </b-link>
+            </b-nav-form>
+            <a href="#" class="text-dark search-close mobile-show" @click.prevent="clearNameFilter">
+              ×
+            </a>
+          </div>
           <div class="item-list" v-if="searchQuery && isHaveElements !== searchQuery">
             <div class="item-list-body">
               <div v-for="(group, index) in groups" :key="index">
@@ -168,6 +173,9 @@ export default {
       this.searchQuery = name;
       this.filtrateData();
     },
+    clearNameFilter() {
+      this.findTerm('');
+    },
   },
 }
 </script>
@@ -250,10 +258,37 @@ input:focus, input:active {
   color: #243EE9;
 }
 
+.search-close {
+  padding-left: 3px;
+  width: 6%;
+  text-align: center;
+  line-height: 100%;
+  color: black !important;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.search-close:hover {
+  text-decoration: none;
+}
+
+.form-container {
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
 @media screen and (max-device-width: 767px) {
   .term {
     columns: 1;
   }
 }
+</style>
+
+<style>
+  .search-form {
+    width: 90%;
+  }
 </style>

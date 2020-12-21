@@ -50,7 +50,8 @@
                              v-if="entity.showType === 'FULLSHOW'">
                         <span class="ml-2">{{ entity.name }}</span>
                       </a>
-                      <a href="#" class="entity-name" @click.prevent="find(entity.name, groups.type)" v-if="groups.type === 'terms'">
+                      <a href="#" class="entity-name" @click.prevent="find(entity.name, groups.type)"
+                         v-if="groups.type === 'terms'">
                         {{ entity.name }}
                         <img src="@/assets/eye.svg" alt="Просмотрено" class="eye" v-if="entity.isShow">
                       </a>
@@ -75,8 +76,10 @@
         <b-link href="#" v-b-toggle.sidebar-right>
           <img src="@/assets/menu.svg" alt="Меню" class="image-search">
         </b-link>
-        <b-sidebar id="sidebar-right" right shadow no-header backdrop class="sidebar" body-class="px-3">
-          <MenuNavbar dropdown-class="menu-link" main-class="sidebar" first-item-claas="mt-1" type="mobile"/>
+        <b-sidebar id="sidebar-right" right shadow no-header backdrop class="sidebar" body-class="px-3"
+                   v-model="isShowSidebar">
+          <MenuNavbar dropdown-class="menu-link" main-class="sidebar" first-item-claas="mt-1" type="mobile"
+                      isShowSidebar="isShowSidebar" v-on:hide-sidebar="hideMenu"/>
           <template slot="footer">
             <SocialMedia container-class="p-3 w-50" header-size=".9em"/>
           </template>
@@ -98,8 +101,8 @@ export default {
   },
   data() {
     return {
-      // showSearch: false,
       searchQuery: '',
+      isShowSidebar: false,
     }
   },
   computed: {
@@ -115,7 +118,7 @@ export default {
       let count = 0, entity;
       for (let k = 0; k < this.allGroups.length; k++) {
         for (let i = 0; i < this.allGroups[k].array?.length; i++) {
-          for (let j = 0; j <  this.allGroups[k].array[i][this.allGroups[k].type]?.length; j++) {
+          for (let j = 0; j < this.allGroups[k].array[i][this.allGroups[k].type]?.length; j++) {
             return ++count;
           }
         }
@@ -137,7 +140,7 @@ export default {
       this.searchQuery = name
       this.$store.dispatch('initGroupVideos');
       this.$store.dispatch('initGroupTerms', {lastGroupName: '!'});
-      switch (type){
+      switch (type) {
         case 'videos':
           this.$store.commit('filtrateVideos', this.searchQuery)
           this.$store.commit('filtrateTerms', '')
@@ -147,7 +150,7 @@ export default {
           this.$store.commit('filtrateTerms', this.searchQuery)
           break;
       }
-      if(isGo) {
+      if (isGo) {
         this.$store.commit('setSearch', false)
         if (this.$route.name !== type) {
           this.$store.commit('setFromSearch', true)
@@ -163,6 +166,9 @@ export default {
     },
     focusSearch() {
       document.getElementById('searchInput').focus();
+    },
+    hideMenu: function () {
+      this.isShowSidebar = false;
     },
   },
 }
@@ -319,8 +325,8 @@ img {
 </style>
 
 <style>
-  .b-sidebar {
-    overflow: hidden;
-    padding-bottom: 3rem;
-  }
+.b-sidebar {
+  overflow: hidden;
+  padding-bottom: 3rem;
+}
 </style>

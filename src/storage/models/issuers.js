@@ -70,7 +70,6 @@ export default {
                 if((date < dateMin && dateMin) || (date > dateMax && dateMax)){
                     return false;
                 }
-                console.log(issuer)
                 if((issuer.express && state.issuersFiltrateValue.type === "false") || (!issuer.express && state.issuersFiltrateValue.type === "true") || state.type === ""){
                     return false;
                 }

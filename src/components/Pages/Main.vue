@@ -129,9 +129,9 @@ export default {
 
      .main-row {
        background-image: url(~@/assets/main-photo-mobile.svg);
-       background-size: 95%;
        background-position-x: left;
-       padding-top: 240px;
+       padding-top: 15.5rem;
+       background-size: 100% 15rem;
      }
 
      main {
@@ -146,15 +146,18 @@ export default {
     background: rgba(0,0,0,0);
     fill: none;
     height: 100%;
-    width: 3em;
+    width: 6em;
+    display: flex;
   }
 
   .splide__arrow--next {
-    right: -15px;
+    right: 0;
+    justify-content: flex-end;
   }
 
   .splide__arrow--prev {
-    left: -15px;
+    left: 0;
+    justify-content: flex-start;
   }
 
   .splide__pagination {

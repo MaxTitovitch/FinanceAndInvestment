@@ -41,6 +41,7 @@
                    :sort-desc.sync="sortDesc"
                    responsive="sm"
                    table-class="table-fixed"
+                   class="table-fixed-container"
           >
             <template #cell(overview)="data">
               <a :href="data.item.overview" class="text-dark font-weight-bold" target="_blank">
@@ -174,6 +175,15 @@ td:not(:first-child) {
 th[role="columnheader"] {
   text-align: center;
   vertical-align: middle !important;
+}
+
+.table-fixed-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-fixed {
+  min-width: 750px;
 }
 
 .table-fixed, .table-fixed tbody, .table-fixed thead, .table-fixed tr {

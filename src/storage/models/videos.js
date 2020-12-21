@@ -30,15 +30,13 @@ export default {
                 for (let j = 0; j < state.videos[i].videos.length; j++) {
                     if(state.videos[i].videos[j].name === name) {
                         state.videos[i].videos[j].isFull = !state.videos[i].videos[j].isFull;
-                        if(!state.videos[i].videos[j].isFull) {
-                            state.players.forEach(function (player) {
-                                return player.stopVideo();
-                            })
-                        }
                         break;
                     }
                 }
             }
+            state.players.forEach(function (player) {
+                if(player.stopVideo) player.stopVideo();
+            })
         },
         updateStorage(state, data) {
             for (let i = 0; i < state.videos.length; i++) {
@@ -62,7 +60,7 @@ export default {
             }
         },
         setPlayers(state, players){
-            state.players = players;
+            state.players = [...state.players, ...players];
         }
     },
     actions: {

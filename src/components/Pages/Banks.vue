@@ -41,6 +41,7 @@
               :sort-desc.sync="sortDesc"
               responsive="sm"
               table-class="table-fixed-bank"
+              class="table-fixed-container"
           >
           </b-table>
           <div v-if="banks.length <= 0" class="main-header font-weight-bold w-100 text-center text-secondary">
@@ -77,7 +78,7 @@ export default {
       sortBy: 'age',
       sortDesc: false,
       fields: [
-        {key: 'name', label: 'Название', sortable: true},
+        {key: 'name', label: 'Наименование', sortable: true},
         {key: 'value', label: 'Цена, млн USD', sortable: true},
         {key: 'rating', label: 'Место в рейтинге надежности', sortable: true},
       ],
@@ -168,6 +169,15 @@ th[role="columnheader"] {
 
 }
 
+.table-fixed-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-fixed-bank {
+  min-width: 650px;
+}
+
 .table-fixed-bank, .table-fixed-bank tbody, .table-fixed-bank thead, .table-fixed-bank tr {
   width: 100%;
   display: block;
@@ -205,7 +215,7 @@ th[role="columnheader"] {
 
 .table-fixed-bank tbody {
   overflow-y: auto;
-  height: 70vh;
+  max-height: 70vh;
 }
 
 .table-fixed-bank tbody tr {

@@ -88,7 +88,6 @@ export default {
       this.$store.commit('toggleIsShowIssuersFilter');
     },
     updateFilter() {
-      console.log(this.filtrateValue)
       this.$store.commit('filtrateIssuers', {...this.filtrateValue});
     },
     clearFilter() {
