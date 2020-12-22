@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     hideBlur($event) {
-      if(window.mobileCheck()){
+      if(window.mobileCheck() && $event.target.getAttribute('target') !== '_blank'){
         $event.preventDefault()
         this.$store.commit('hideTerms')
       }

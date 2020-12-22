@@ -156,6 +156,17 @@ input:focus, input:active {
     font-size: 22px;
   }
 }
+
+@media screen and (max-device-width: 375px) {
+  .search-close {
+    font-size: 1.9rem;
+    padding-left: 0;
+  }
+
+  a img {
+    width: 28px;
+  }
+}
 </style>
 
 <style>
