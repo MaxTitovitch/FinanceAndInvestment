@@ -155,12 +155,18 @@ input:focus, input:active {
   .main-header {
     font-size: 22px;
   }
-}
-
-@media screen and (max-device-width: 375px) {
   .search-close {
     font-size: 1.9rem;
     padding-left: 0;
+    width: 10%;
+    line-height: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .search-form {
+    width: 75%;
   }
 
   a img {
