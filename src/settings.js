@@ -16,7 +16,6 @@ const API_BANKS_PATH = '/banks/';
 
 const LINK_TELEGRAM = 'https://t.me/binvesting';
 const LINK_YOUTUBE = 'https://www.youtube.com/channel/UCCYBFYPvN_47MDWIm5c2Bxg';
-const LINK_MARKET_MAP = 'https://issuers-front.herokuapp.com';
 
 export default {
     API_REQUEST_HEADER,
@@ -30,5 +29,4 @@ export default {
     API_BANKS_PATH,
     LINK_TELEGRAM,
     LINK_YOUTUBE,
-    LINK_MARKET_MAP,
 }

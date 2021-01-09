@@ -18,7 +18,7 @@
         </div>
         <div class="col-6 col-md-4 mobile-hidden">
           <p class="font-weight-bold">Беларусь</p>
-          <p class="p-no-line"><a class="text-dark" :href="Settings.LINK_MARKET_MAP" target="_blank">Карта рынка облигаций</a></p>
+          <p class="p-no-line"><router-link class="text-dark" to="/map">Карта рынка облигаций</router-link></p>
           <p class="p-no-line"><router-link class="text-dark" to="/issuers">Оценки эмитентов</router-link></p>
           <p class="p-no-line"><router-link class="text-dark" to="/banks">Оценки банков</router-link></p>
         </div>

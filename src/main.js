@@ -8,14 +8,12 @@ import 'normalize.css'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import VueApexCharts from 'vue-apexcharts'
 
 Vue.directive('scroll', {
   inserted: function (el, binding) {
     let f = function (evt) {
       binding.value(evt, el)
-      // if (binding.value(evt, el)) {
-      //   window.removeEventListener('scroll', f)
-      // }
     }
     window.addEventListener('scroll', f)
   }
@@ -25,6 +23,8 @@ Vue.component('vue-headful', vueHeadful);
 Vue.use(VueRouter);
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(VueApexCharts)
+Vue.component('apexchart', VueApexCharts)
 
 Vue.config.productionTip = false
 

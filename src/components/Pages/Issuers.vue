@@ -44,7 +44,7 @@
                    class="table-fixed-container"
           >
             <template #cell(overview)="data">
-              <a :href="data.item.overview" class="text-dark font-weight-bold" target="_blank">
+              <a v-if="!data.item.express" :href="data.item.overview" class="text-dark font-weight-bold" target="_blank">
                 Подробнее...
               </a>
             </template>

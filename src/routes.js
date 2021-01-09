@@ -4,6 +4,7 @@ import Terms from "@/components/Pages/Terms";
 import Videos from "@/components/Pages/Videos";
 import Issuers from "@/components/Pages/Issuers";
 import Error404 from "@/components/Pages/Error404";
+import App from "@/components/Modules/Map/App";
 
 export default [
     {
@@ -30,6 +31,11 @@ export default [
         path: "/banks",
         name: 'banks',
         component: Banks,
+    },
+    {
+        path: "/map",
+        name: 'map',
+        component: App,
     },
     {
         path: '/404',

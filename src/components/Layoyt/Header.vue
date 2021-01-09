@@ -1,5 +1,5 @@
 <template>
-  <header class="container pb-4">
+  <header class="container">
     <b-navbar toggleable="lg" variant="faded" type="light" class="flex-nowrap header-height">
       <b-navbar-brand to="/" :class="showSearch ? 'mobile-hidden' : ''">
         <img class="image-logo" src="@/assets/logo.png" alt="Эмитенты Беларуси">
@@ -22,10 +22,10 @@
                 @input="filtrateData"
                 v-model="searchQuery"
             ></b-form-input>
-            <b-link href="#" class="text-dark search-close mobile-hidden" @click.prevent="toggleSearch">×</b-link>
-            <b-link href="#" class="text-dark search-close mobile-show" @click.prevent="focusSearch">
-              <img src="@/assets/search.svg" alt="Поиск">
-            </b-link>
+<!--            <b-link href="#" class="text-dark search-close mobile-hidden" @click.prevent="toggleSearch">×</b-link>-->
+<!--            <b-link href="#" class="text-dark search-close mobile-show" @click.prevent="focusSearch">-->
+<!--              <img src="@/assets/search.svg" alt="Поиск">-->
+<!--            </b-link>-->
           </b-nav-form>
           <b-nav-item href="#" class="text-dark search-close mobile-show" @click.prevent="toggleSearch">
             ×
@@ -66,11 +66,11 @@
         </div>
       </b-nav>
 
-      <b-navbar-nav class="ml-auto mr-2 search-area" v-if="!showSearch">
-        <b-link href="#" @click.prevent="toggleSearch" class="image-search">
-          <img src="@/assets/search.svg" alt="Поиск">
-        </b-link>
-      </b-navbar-nav>
+<!--      <b-navbar-nav class="ml-auto mr-2 search-area" v-if="!showSearch">-->
+<!--        <b-link href="#" @click.prevent="toggleSearch" class="image-search">-->
+<!--          <img src="@/assets/search.svg" alt="Поиск">-->
+<!--        </b-link>-->
+<!--      </b-navbar-nav>-->
 
       <b-navbar-nav class="ml-auto mobile-show" v-if="!showSearch">
         <b-link href="#" v-b-toggle.sidebar-right>
@@ -175,6 +175,10 @@ export default {
 </script>
 
 <style scoped>
+header {
+  padding-bottom: 1.5rem;
+}
+
 .header-height {
   height: 72px;
 }
@@ -281,6 +285,10 @@ img {
 
 
 @media screen and (max-device-width: 767px) {
+  header {
+    padding-bottom: 0;
+  }
+
   .search-area {
     display: flex;
     flex-direction: row;

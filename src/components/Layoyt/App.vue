@@ -49,8 +49,11 @@ export default {
   }
 
   body {
-    overflow-y: scroll;
     overflow-x: hidden;
+  }
+
+  html {
+    overflow-y: scroll;
   }
 
   *::-webkit-scrollbar-track
