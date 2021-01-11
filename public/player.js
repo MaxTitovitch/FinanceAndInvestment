@@ -1,4 +1,8 @@
-window.YT = YT
+try {
+  window.YT = YT
+} catch (ex){
+  console.log('Youtube заблокирован!');
+}
 
 window.mobileCheck = function() {
   let check = false;

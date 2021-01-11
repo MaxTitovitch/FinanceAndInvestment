@@ -1,6 +1,6 @@
 <template>
-  <div id="app" :class="isBlur ? 'blur' : ''" @click="hideBlur($event)">
-    <Header />
+  <div id="app" :class="isBlur ? 'blur' : ''" @click="hideBlur($event)" >
+    <Header v-if="isOtherComponent()"/>
     <router-view />
     <Footer />
   </div>
@@ -28,6 +28,15 @@ export default {
         $event.preventDefault()
         this.$store.commit('hideTerms')
       }
+    },
+    isOtherComponent(){
+      const modulesMap = ['/map'];
+      for (let i = 0; i < modulesMap.length; i++) {
+        if(location.pathname === modulesMap[i]){
+          return false;
+        }
+      }
+      return true;
     }
   }
 }
