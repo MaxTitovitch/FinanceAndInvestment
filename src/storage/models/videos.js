@@ -127,7 +127,7 @@ export default {
         }
         return {
           name: group.name,
-          videos: videos,
+          videos: videos.reverse(),
         };
       });
     },
