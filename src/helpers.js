@@ -1,7 +1,7 @@
 
 export function getYouTubeVideoId(link){
     if(link.lastIndexOf('watch') !== -1){
-        link = link.replaceAll('?v=', '/')
+        link = link.replace('?v=', '/')
     }
     return link.split('/').reverse()[0];
 }
