@@ -118,6 +118,7 @@ export default {
                 if(state.filtrateValue){
                     terms = terms.filter(function (term){
                         return term.name.toLocaleLowerCase().lastIndexOf(state.filtrateValue.toLocaleLowerCase()) !== -1
+                            || term.english_name.toLocaleLowerCase().lastIndexOf(state.filtrateValue.toLocaleLowerCase()) !== -1;
                     })
                 }
                 return {

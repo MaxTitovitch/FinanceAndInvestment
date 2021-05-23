@@ -46,7 +46,7 @@ export default {
   },
   computed: {
     year: () => {
-      let yearStart = 2020;
+      let yearStart = 2019;
       let currentYear = (new Date).getFullYear();
       return yearStart === currentYear ? currentYear : `${yearStart}-${currentYear}`;
     },

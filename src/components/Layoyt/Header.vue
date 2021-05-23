@@ -1,6 +1,6 @@
 <template>
   <header class="container">
-    <b-navbar toggleable="lg" variant="faded" type="light" class="flex-nowrap header-height">
+    <b-navbar toggleable="lg" variant="faded" type="light" class="flex-nowrap header-height pb-0">
       <b-navbar-brand to="/" :class="showSearch ? 'mobile-hidden' : ''">
         <img class="image-logo" src="@/assets/logo.png" alt="Эмитенты Беларуси">
       </b-navbar-brand>
@@ -176,7 +176,7 @@ export default {
 
 <style scoped>
 header {
-  padding-bottom: 1.5rem;
+  padding-bottom: 0;
 }
 
 .header-height {

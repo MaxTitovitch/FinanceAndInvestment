@@ -87,7 +87,7 @@ export default {
       fields: [
         {
           key: 'issuer',
-          label: 'Наименование',
+          label: 'Название',
           sortable: true,
           thStyle: {
             textAlign: 'left',

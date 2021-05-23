@@ -43,7 +43,7 @@ export default {
             let response = await (await fetch(path, {headers: Settings.API_REQUEST_HEADER})).json();
             for (let i = 0; i < response.length; i++) {
                 issuers.push({
-                    name: response[i].issuer_type + ' ' + response[i].issuer_name,
+                    name: response[i].issuer_name + ' ' + response[i].issuer_type,
                     date: getDateByQuarter(response[i].current_rating.quarter) + response[i].current_rating.year,
                     rating: Number.parseFloat(response[i].current_rating.rating),
                     overview: response[i].current_rating.overview,
