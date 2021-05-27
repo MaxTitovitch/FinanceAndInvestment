@@ -1,12 +1,15 @@
 <template>
     <div :class="mainClass + ' template'">
-        <div class="w-33 text-center d-flex justify-content-center align-items-center">
+        <div class="w-25 text-center d-flex justify-content-center align-items-center">
             <router-link to="/terms" class="menu-link" @click.native="hideMenu">Термины</router-link>
         </div>
-        <div class="w-33 text-center d-flex justify-content-center align-items-center">
+        <div class="w-25 text-center d-flex justify-content-center align-items-center">
             <router-link to="/videos" class="menu-link" @click.native="hideMenu">Видео</router-link>
         </div>
-        <div :class="dropdownClass + ' d-flex justify-content-center font-weight-bold w-33'">
+        <div class="w-25 text-center d-flex justify-content-center align-items-center">
+            <router-link to="/etf" class="menu-link" @click.native="hideMenu">ETF</router-link>
+        </div>
+        <div :class="dropdownClass + ' d-flex justify-content-center font-weight-bold w-25'">
             <div class="d-flex align-items-center h-100">
                 <div
                         class="dropdown-body"

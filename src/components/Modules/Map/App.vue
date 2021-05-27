@@ -242,7 +242,7 @@ export default {
       this.formSeriesArrays();
       if (this.filtersProps[5].key !== '') {
         for (let i = 0; i < this.formattedDataItems.length; i++) {
-          if (!this.formattedDataItems[i].issuer.includes(this.filtersProps[5].key)) {
+          if (!this.formattedDataItems[i].issuer_name.includes(this.filtersProps[5].key)) {
             this.formattedDataItems.splice(i, 1);
             i--;
           }

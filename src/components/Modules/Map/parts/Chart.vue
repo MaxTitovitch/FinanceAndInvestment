@@ -109,7 +109,7 @@ export default {
               result += '<div class="childCh">' +
                   '<div class="bluePanelCh"></div>' +
                   '<header class="tooltipHeader">\n' +
-                  w.globals.seriesNames[seriesIndex][i].issuer +
+                  w.globals.seriesNames[seriesIndex][i].issuer_name +
                   '</header>' +
 
                   '<div class="leftCh">' +

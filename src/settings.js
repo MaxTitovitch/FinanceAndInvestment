@@ -11,6 +11,7 @@ const API_TERM_DESC_PATH = 'term-name-ru/';
 const API_VIDEOS_PATH = 'video/tags';
 const API_VIDEOS_DESC_PATH = 'video/tag/';
 const API_ISSUERS_PATH = 'issuer/all';
+const API_ETFS_PATH = 'etf';
 const API_BANKS_PATH = '/banks/';
 
 
@@ -26,6 +27,7 @@ export default {
     API_VIDEOS_PATH,
     API_VIDEOS_DESC_PATH,
     API_ISSUERS_PATH,
+    API_ETFS_PATH,
     API_BANKS_PATH,
     LINK_TELEGRAM,
     LINK_YOUTUBE,

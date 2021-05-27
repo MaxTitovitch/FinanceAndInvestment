@@ -2,6 +2,7 @@ import Main from "@/components/Pages/Main";
 import Banks from "@/components/Pages/Banks";
 import Terms from "@/components/Pages/Terms";
 import Videos from "@/components/Pages/Videos";
+import Etf from "@/components/Pages/Etf";
 import Issuers from "@/components/Pages/Issuers";
 import Error404 from "@/components/Pages/Error404";
 import App from "@/components/Modules/Map/App";
@@ -21,6 +22,11 @@ export default [
         path: "/videos",
         name: "videos",
         component: Videos,
+    },
+    {
+        path: "/etf",
+        name: "etf",
+        component: Etf,
     },
     {
         path: "/issuers",

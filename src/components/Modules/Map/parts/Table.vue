@@ -3,8 +3,8 @@
     <div class="table-desktop">
       <b-table :items="$attrs.dataItems" :fields="fields" responsive sticky-header="calc(100vh - 213px)" striped
                hover borderless :sort-compare="sortData">
-        <template v-slot:cell(issuer)={item}>
-          <div class="text-left">{{ item.issuer }}</div>
+        <template v-slot:cell(issuer_name)={item}>
+          <div class="text-left">{{ item.issuer_name }}</div>
         </template>
         <template v-slot:cell(security)={item}>
           <img src="@/assets/map/houseIcon.svg" v-if="item.security === 'да' || item.security === true" alt="houseIcon">
@@ -38,8 +38,8 @@
     <div class="table-mobile">
       <b-table :items="$attrs.dataItems" :fields="fieldsMobile" responsive sticky-header="calc(100vh - 230px)" striped
                hover borderless :sort-compare="sortData">
-        <template v-slot:cell(issuer)={item}>
-          <div class="text-left">{{ item.issuer }}</div>
+        <template v-slot:cell(issuer_name)={item}>
+          <div class="text-left">{{ item.issuer_name }}</div>
         </template>
         <template v-slot:cell(security)={item}>
           <img src="@/assets/map/houseIcon.svg" v-if="item.security === 'да' || item.security === true" alt="houseIcon">
@@ -86,7 +86,7 @@ export default {
     return {
       fields: [
         {
-          key: 'issuer',
+          key: 'issuer_name',
           label: 'Название',
           sortable: true,
           thStyle: {
@@ -189,7 +189,7 @@ export default {
 
       fieldsMobile: [
         {
-          key: 'issuer',
+          key: 'issuer_name',
           label: 'Эмитент',
           sortable: true,
           thStyle: {
