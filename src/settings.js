@@ -1,8 +1,8 @@
 const API_REQUEST_HEADER ={
-    'x-api-key': 'BRyUJ8LA9n7HFczCvJsj930nKHffs98u5N9sEaCO',
-    'AccessKey': 'AKIAXM5LWD25CIZKWURM',
-    'SecretKey': '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',
-    'AWSRegion': 'eu-central-1',
+    // 'x-api-key': 'BRyUJ8LA9n7HFczCvJsj930nKHffs98u5N9sEaCO',
+    // 'AccessKey': 'AKIAXM5LWD25CIZKWURM',
+    // 'SecretKey': '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',
+    // 'AWSRegion': 'eu-central-1',
 }
 const API_HOST = 'https://faxmts50q5.execute-api.eu-central-1.amazonaws.com/';
 const API_VERSION = 'v1/';

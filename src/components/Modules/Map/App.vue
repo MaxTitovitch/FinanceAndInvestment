@@ -90,7 +90,7 @@ export default {
     },
   },
   mounted: function() {
-    fetch('https://xw8ummkxkf.execute-api.eu-central-1.amazonaws.com/dev/api/list_sd&k3LasDL?format=json', {
+    fetch('https://faxmts50q5.execute-api.eu-central-1.amazonaws.com/v1/issue/all', {
       method: 'get',
     }).then((response) => {
       return response.json();

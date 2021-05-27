@@ -3,7 +3,7 @@
         <div class="child-panel">
 
             <router-link to="/">
-                <img src="@/assets/map/logo.svg" class="img-logo" alt="logoImage">
+                <img src="@/assets/logo.png" class="img-logo" alt="logoImage">
             </router-link>
 
             <button
@@ -64,7 +64,7 @@
         </div>
 
         <div class="mobile-layout">
-            <img src="@/assets/map/logo.svg" class="img-logo" alt="logoImage">
+            <img src="@/assets/logo.png" class="img-logo" alt="logoImage">
 
             <button class="button menu" @click="onMenuClick">
                 <img src="@/assets/map/menuIcon.svg" class="img-menu" alt="menuImage">

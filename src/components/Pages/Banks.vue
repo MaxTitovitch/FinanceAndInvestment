@@ -80,7 +80,9 @@ export default {
       fields: [
         {key: 'name', label: 'Название', sortable: true},
         {key: 'value', label: 'Цена, млн USD', sortable: true},
+        {key: 'date_price', label: 'Дата оценки', sortable: true},
         {key: 'rating', label: 'Место в рейтинге надежности', sortable: true},
+        {key: 'date_rating', label: 'Дата оценки', sortable: true},
       ],
     };
   },

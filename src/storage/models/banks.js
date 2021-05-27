@@ -42,7 +42,9 @@ export default {
                 banks.push({
                     name: response[i].name,
                     value: Number.parseFloat(response[i].value),
+                    date_price: new Date(response[i].date_price).toLocaleDateString(),
                     rating: Number.parseFloat(response[i].rating),
+                    date_rating: new Date(response[i].date_rating).toLocaleDateString(),
                 })
             }
             context.commit('setBanks', banks);

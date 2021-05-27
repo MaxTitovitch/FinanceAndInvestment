@@ -78,6 +78,7 @@ export default {
               return getYouTubeVideoId(video.link) === searched.link ? searched.type : false;
             })?.type || 'NOSHOW';
             video.isFull = false;
+            video.image = `https://img.youtube.com/vi/${getYouTubeVideoId(video.link)}/mqdefault.jpg`;
             return video;
           })
         })

@@ -60,12 +60,15 @@
             <div class="container-fluid">
               <div class="row">
                 <div v-for="(video, id) in group.videos" :key="id" class="col-12 col-md-4 p-1 mt-3">
-                  <a href="#" class="video-name" @click.prevent="showVideo(video.name)">
-                    <img src="@/assets/noshow.svg" alt="Не просмотрено" class="eye" v-if="video.showType === 'NOSHOW'">
-                    <img src="@/assets/show.svg" alt="Просмотрено" class="eye" v-if="video.showType === 'SHOW'">
-                    <img src="@/assets/fullshow.svg" alt="Просмотрено полностью" class="eye"
-                         v-if="video.showType === 'FULLSHOW'">
-                    <span>{{ video.name }}</span>
+                  <a href="#" class="video-name d-flex flex-column" @click.prevent="showVideo(video.name)">
+                      <img
+                          class="w-75 video-image"
+                          :class="{'is-half': video.showType === 'SHOW', 'is-full': video.showType === 'FULLSHOW'}"
+                          :src="video.image"
+                          alt="Просмотрено"
+                      >
+
+                      <span class="mt-2 text-center">{{ video.name }}</span>
                   </a>
                   <VideoShow :video="video" :id="index + '-' + id"/>
                 </div>
@@ -231,6 +234,10 @@ input:focus, input:active {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.video-image {
+    border: 5px solid black;
 }
 
 </style>
