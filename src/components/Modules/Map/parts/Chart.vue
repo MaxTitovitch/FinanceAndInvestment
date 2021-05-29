@@ -152,7 +152,7 @@ export default {
               }
 
               result += '<span style="color: white">' +
-                  w.globals.seriesNames[seriesIndex][i].rating + '<br>' +
+                  w.globals.seriesNames[seriesIndex][i].current_rating.rating + '<br>' +
                   w.globals.seriesNames[seriesIndex][i].ib_coef + '<br>' +
                   '</span>' +
                   '</div>' +

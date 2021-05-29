@@ -111,22 +111,22 @@ export default {
     formSeriesArraysChange(items, series) {
       for (let i = 0; i < items.length; i++) {
         let tmp = items[i];
-        if (tmp.rating === null || tmp.bond_yield === null) {
+        if (tmp.current_rating.rating === null || tmp.bond_yield === null) {
           continue;
         }
         tmp.lacerta = tmp.lacerta === true ? 'да' : 'нет';
         tmp.security = tmp.security === true ? 'да' : 'нет';
 
         if (series.length === 0) {
-          series.push({name: [tmp], data: [[tmp.bond_yield, tmp.rating]]});
+          series.push({name: [tmp], data: [[tmp.bond_yield, tmp.current_rating.rating]]});
         } else {
           for (let j = 0; j < series.length; j++) {
-            if (series[j].data[0][0] === tmp.bond_yield && series[j].data[0][1] === tmp.rating) {
+            if (series[j].data[0][0] === tmp.bond_yield && series[j].data[0][1] === tmp.current_rating.rating) {
               series[j].name.push(tmp);
               break;
             }
             if (j === series.length - 1) {
-              series.push({name: [tmp], data: [[tmp.bond_yield, tmp.rating]]});
+              series.push({name: [tmp], data: [[tmp.bond_yield, tmp.current_rating.rating]]});
               break;
             }
           }
@@ -212,8 +212,8 @@ export default {
     },
     searchOneItem(items, tmpFrom, tmpTo) {
       for (let i = 0; i < items.length; i++) {
-        if (this.filtersProps[0].from !== '' && this.filtersProps[0].from > items[i].rating ||
-            this.filtersProps[0].to !== '' && this.filtersProps[0].to < items[i].rating) {
+        if (this.filtersProps[0].from !== '' && this.filtersProps[0].from > items[i].current_rating.rating ||
+            this.filtersProps[0].to !== '' && this.filtersProps[0].to < items[i].current_rating.rating) {
           items.splice(i, 1);
           i--;
         } else if (this.filtersProps[1].from !== '' && this.filtersProps[1].from > items[i].ib_coef ||

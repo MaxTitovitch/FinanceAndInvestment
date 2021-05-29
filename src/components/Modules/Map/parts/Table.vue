@@ -162,7 +162,7 @@ export default {
           }
         },
         {
-          key: 'rating',
+          key: 'current_rating.rating',
           label: 'Надежность',
           sortable: true,
           thStyle: {
@@ -264,7 +264,7 @@ export default {
           }
         },
         {
-          key: 'rating',
+          key: 'current_rating.rating',
           label: 'Оценка надежности',
           sortable: true,
           thStyle: {
