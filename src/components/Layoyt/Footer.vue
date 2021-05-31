@@ -12,6 +12,8 @@
         </div>
         <div class="col-6 col-md-4 d-flex flex-wrap justify-content-center mobile-hidden">
           <div>
+            <p class="font-weight-bold"><router-link class="text-dark" to="/">Главная</router-link></p>
+            <p class="font-weight-bold"><router-link class="text-dark" to="/etf">ETF</router-link></p>
             <p class="font-weight-bold"><router-link class="text-dark" to="/videos">Видео</router-link></p>
             <p class="font-weight-bold"><router-link class="text-dark" to="/terms">Термины</router-link></p>
           </div>
