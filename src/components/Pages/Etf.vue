@@ -1,8 +1,7 @@
 <template>
     <div>
         <div>
-            <vue-headful title="ETF - ЭБ Беларусь"
-                         description="ETF - ЭБ Беларусь"/>
+            <vue-headful title="ETF - ЭБ Инвестиции" description="ETF - ЭБ Инвестиции"/>
         </div>
         <div class="container">
             <div class="row justify-content-between mt-3">

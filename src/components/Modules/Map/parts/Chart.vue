@@ -64,7 +64,7 @@ export default {
             style: {
               color: undefined,
               fontSize: '15px',
-              fontFamily: 'Helvetica, Arial, sans-serif',
+              fontFamily: 'Rubik, serif',
               fontWeight: 600,
               cssClass: 'apexcharts-xaxis-title',
             },
@@ -85,7 +85,7 @@ export default {
             style: {
               color: undefined,
               fontSize: '15px',
-              fontFamily: 'Helvetica, Arial, sans-serif',
+              fontFamily: 'Rubik, serif',
               fontWeight: 600,
               cssClass: 'apexcharts-xaxis-title',
             },

@@ -3,7 +3,7 @@
    <div>
      <vue-headful title="Главная - ЭБ Инвестиции" description="Главная - ЭБ Инвестиции"/>
    </div>
-   <div class="container template">
+   <div class="container template mt-4">
      <div class="row main-row">
        <div class="col-12 col-md-5">
          <h1 class="pb-5">Про финансы <br>и инвестиции простыми словами</h1>

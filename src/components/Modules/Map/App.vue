@@ -256,9 +256,19 @@ export default {
 </script>
 
 <style>
+@font-face {
+    font-family: 'Rubik';
+    src: local('Rubik'),
+    local('Rubik-Regular'),
+    url('~@/assets/fonts/Rubik.woff2') format('woff2'),
+    url('~@/assets/fonts/Rubik.woff') format('woff'),
+    url('~@/assets/fonts/Rubik.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
 
 #app-module {
-    font-family: "Open Sans", sans-serif;
+    font-family: Rubik,serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     width: 100vw;

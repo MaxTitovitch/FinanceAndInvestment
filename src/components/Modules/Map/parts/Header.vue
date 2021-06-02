@@ -64,7 +64,9 @@
         </div>
 
         <div class="mobile-layout">
-            <img src="@/assets/logo.png" class="img-logo" alt="logoImage">
+            <router-link to="/">
+                <img src="@/assets/logo.png" class="img-logo" alt="logoImage">
+            </router-link>
 
             <button class="button menu" @click="onMenuClick">
                 <img src="@/assets/map/menuIcon.svg" class="img-menu" alt="menuImage">

@@ -210,7 +210,7 @@ input:focus, input:active {
   width: 100%;
 }
 
-.video-name > * {
+.video-name > *:not(img) {
   padding-right: 8px;
 }
 
