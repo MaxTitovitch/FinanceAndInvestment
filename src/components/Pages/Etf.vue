@@ -218,6 +218,11 @@ th[role="columnheader"] {
     border: none;
 }
 
+
+td:first-child {
+    text-align: left;
+}
+
 .table-fixed td:first-child, .table-fixed th:first-child {
     width: 33% !important;
 }

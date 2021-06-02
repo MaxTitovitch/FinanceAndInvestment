@@ -191,6 +191,10 @@ input:focus, input:active {
 
 <style>
 
+td:first-child {
+    text-align: left;
+}
+
 td:not(:first-child) {
     text-align: center;
 }
@@ -235,25 +239,28 @@ th[role="columnheader"] {
 .table-fixed thead tr th {
     border: none;
 }
+.table-fixed td {
+    word-break: break-word;
+}
 
 .table-fixed td:first-child, .table-fixed th:first-child {
-    width: 33%;
+    width: 40% !important;
 }
 
 .table-fixed td:nth-child(2), .table-fixed th:nth-child(2) {
-    width: 13%;
+    width: 15% !important;
 }
 
 .table-fixed td:nth-child(3), .table-fixed th:nth-child(3) {
-    width: 10%;
+    width: 10% !important;
 }
 
 .table-fixed td:nth-child(4), .table-fixed th:nth-child(4) {
-    width: 19%;
+    width: 15% !important;
 }
 
 .table-fixed td:last-child, .table-fixed th:last-child {
-    width: 25%;
+    width: 20% !important;
 }
 
 .table-fixed tbody {

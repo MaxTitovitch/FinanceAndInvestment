@@ -182,6 +182,10 @@ input:focus, input:active {
 
 <style>
 
+td:first-child {
+    text-align: left;
+}
+
 td:not(:first-child) {
     text-align: center;
 }
