@@ -35,7 +35,7 @@
                              :sort-by.sync="sortBy"
                              :sort-desc.sync="sortDesc"
                              responsive="sm"
-                             table-class="table-fixed"
+                             table-class="table-fixed etf"
                              class="table-fixed-container"
                     >
                         <template #cell(links)="data">
@@ -223,16 +223,16 @@ td:first-child {
     text-align: left;
 }
 
-.table-fixed td:first-child, .table-fixed th:first-child {
-    width: 33% !important;
+.table-fixed.etf td:first-child, .table-fixed.etf th:first-child {
+    width: 40% !important;
 }
 
-.table-fixed td:nth-child(2), .table-fixed th:nth-child(2) {
-    width: 33% !important;
+.table-fixed.etf td:nth-child(2), .table-fixed.etf th:nth-child(2) {
+    width: 30% !important;
 }
 
-.table-fixed td:nth-child(3), .table-fixed th:nth-child(3) {
-    width: 33% !important;
+.table-fixed.etf td:nth-child(3), .table-fixed.etf th:nth-child(3) {
+    width: 30% !important;
 }
 
 

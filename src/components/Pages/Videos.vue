@@ -61,12 +61,17 @@
               <div class="row">
                 <div v-for="(video, id) in group.videos" :key="id" class="col-12 col-md-4 p-1 mt-3">
                   <a href="#" class="video-name d-flex flex-column" @click.prevent="showVideo(video.name)">
-                      <img
-                          class="w-75 video-image"
-                          :class="{'is-half': video.showType === 'SHOW', 'is-full': video.showType === 'FULLSHOW'}"
-                          :src="video.image"
-                          alt="Просмотрено"
-                      >
+                      <div class="w-75 position-relative">
+                          <img
+                                  class="w-100 video-image"
+                                  :class="{'is-half': video.showType === 'SHOW', 'is-full': video.showType === 'FULLSHOW'}"
+                                  :src="video.image"
+                                  alt="Просмотрено"
+                          >
+                          <div class="img-tooltip">
+                              <img src="@/assets/play.svg" alt="Play">
+                          </div>
+                      </div>
 
                       <span class="mt-2 text-center">{{ video.name }}</span>
                   </a>
@@ -210,9 +215,22 @@ input:focus, input:active {
   width: 100%;
 }
 
-.video-name > *:not(img) {
-  padding-right: 8px;
+.img-tooltip {
+    display: none;
 }
+
+.video-name:hover .img-tooltip {
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,.4);
+}
+
 
 .search-close {
   padding-left: 3px;
