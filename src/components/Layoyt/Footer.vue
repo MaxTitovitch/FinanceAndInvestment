@@ -13,14 +13,13 @@
         <div class="col-6 col-md-4 d-flex flex-wrap justify-content-center mobile-hidden">
           <div>
             <p class="font-weight-bold"><router-link class="text-dark" to="/">Главная</router-link></p>
-            <p class="font-weight-bold"><router-link class="text-dark" to="/etf">ETF</router-link></p>
+<!--            <p class="font-weight-bold"><router-link class="text-dark" to="/etf">ETF</router-link></p>-->
             <p class="font-weight-bold"><router-link class="text-dark" to="/videos">Видео</router-link></p>
             <p class="font-weight-bold"><router-link class="text-dark" to="/terms">Термины</router-link></p>
           </div>
         </div>
         <div class="col-6 col-md-4 mobile-hidden">
           <p class="font-weight-bold">Беларусь</p>
-          <p class="p-no-line"><router-link class="text-dark" to="/map" target="_blank">Карта рынка облигаций</router-link></p>
           <p class="p-no-line"><router-link class="text-dark" to="/issuers">Оценки эмитентов</router-link></p>
           <p class="p-no-line"><router-link class="text-dark" to="/banks">Оценки банков</router-link></p>
         </div>

@@ -5,7 +5,11 @@ import Videos from "@/components/Pages/Videos";
 import Etf from "@/components/Pages/Etf";
 import Issuers from "@/components/Pages/Issuers";
 import Error404 from "@/components/Pages/Error404";
-import App from "@/components/Modules/Map/App";
+import Book from "@/components/Pages/Book";
+import Cases from "@/components/Pages/Cases";
+import Hook from "@/components/Pages/Hook";
+import Learning from "@/components/Pages/Learning";
+import Services from "@/components/Pages/Services";
 
 export default [
     {
@@ -39,14 +43,34 @@ export default [
         component: Banks,
     },
     {
-        path: "/map",
-        name: 'map',
-        component: App,
-    },
-    {
         path: '/404',
         name: '404',
         component: Error404,
+    },
+    {
+        path: '/book',
+        name: 'book',
+        component: Book,
+    },
+    {
+        path: '/cases',
+        name: 'cases',
+        component: Cases,
+    },
+    {
+        path: '/hook',
+        name: 'hook',
+        component: Hook,
+    },
+    {
+        path: '/learning',
+        name: 'learning',
+        component: Learning,
+    },
+    {
+        path: '/services',
+        name: 'services',
+        component: Services,
     },
     {
         path: '*',

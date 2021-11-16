@@ -40,6 +40,7 @@
                              :fields="fields"
                              :sort-by.sync="sortBy"
                              :sort-desc.sync="sortDesc"
+                             :sort-compare="sortCompare"
                              responsive="sm"
                              table-class="table-fixed"
                              class="table-fixed-container"
@@ -67,6 +68,7 @@
 <script>
 import {mapGetters} from 'vuex';
 import FilterIssuersModal from '@/components/Parts/FilterIssuersModal';
+import {getDate} from "@/helpers";
 
 export default {
   name: 'Issuers',
@@ -109,6 +111,12 @@ export default {
     clearNameFilter() {
       this.issuersFiltrateValue.name = '';
       this.updateFilter();
+    },
+    sortCompare(aRow, bRow, key) {
+      const aValue = !['date'].includes(key) ? aRow[key] : new Date(getDate(aRow[key]));
+      const bValue = !['date'].includes(key) ? bRow[key] : new Date(getDate(bRow[key]));
+
+      return aValue < bValue ? -1 : aValue > bValue ? 1 : 0
     },
   },
 };
