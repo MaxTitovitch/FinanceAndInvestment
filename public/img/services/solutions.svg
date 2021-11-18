@@ -1,0 +1,27 @@
+<svg width="500" height="500" viewBox="0 0 587 477" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M586.735 233.339C586.735 572.839 402.586 465.071 249.235 442.338C129.419 424.577 -36.7652 369.339 7.2349 248.339C89.6793 21.6171 193.735 98.8388 361.235 20.8386C509.452 -48.1822 586.735 62.3389 586.735 233.339Z" fill="#E0F0FF"/>
+    <path d="M489.735 138.839L380.735 69.3389L284.735 38.3389L447.735 260.339" stroke="#BFE0FF" stroke-width="6"/>
+    <path d="M313.735 236.839L286.735 40.8389" stroke="#BFE0FF" stroke-width="8"/>
+    <path d="M317.235 240.339L464.735 411.339" stroke="#BFE0FF" stroke-width="8"/>
+    <path d="M314.735 238.839L488.235 141.339" stroke="#BFE0FF" stroke-width="8"/>
+    <path d="M314.235 240.339L73.7349 329.839" stroke="#BFE0FF" stroke-width="8"/>
+    <path d="M560.735 275.839L488.235 138.839L448.735 260.839L466.235 410.339L560.735 275.839Z" stroke="#BFE0FF" stroke-width="6"/>
+    <path d="M287.235 38.8389L134.735 153.339" stroke="#BFE0FF" stroke-width="6"/>
+    <path d="M287.235 37.3389L119.235 258.839" stroke="#BFE0FF" stroke-width="6"/>
+    <path d="M73.2349 327.339L131.235 154.839" stroke="#BFE0FF" stroke-width="6"/>
+    <path d="M73.2349 329.339L316.235 399.339L466.235 410.339" stroke="#BFE0FF" stroke-width="6"/>
+    <path d="M73.2349 330.839L103.735 431.339L317.735 400.839L120.735 258.839" stroke="#BFE0FF" stroke-width="6"/>
+    <path d="M316.235 399.339L450.735 261.839" stroke="#BFE0FF" stroke-width="6"/>
+    <circle cx="313.235" cy="238.839" r="51.5" fill="#243EE9"/>
+    <circle cx="487.735" cy="139.339" r="30" fill="#0385FD"/>
+    <circle cx="558.735" cy="274.339" r="15" fill="#E83A49"/>
+    <circle cx="448.735" cy="259.339" r="15" fill="#86D1FE"/>
+    <circle cx="316.735" cy="399.339" r="15" fill="#E83A49"/>
+    <circle cx="103.735" cy="429.339" r="15" fill="#86D1FE"/>
+    <circle cx="118.735" cy="259.339" r="15" fill="#86D1FE"/>
+    <circle cx="379.735" cy="69.3389" r="15" fill="#86D1FE"/>
+    <circle cx="133.735" cy="153.339" r="15" fill="#E83A49"/>
+    <circle cx="463.735" cy="409.339" r="30" fill="#0385FD"/>
+    <circle cx="73.7349" cy="327.339" r="30" fill="#0385FD"/>
+    <circle cx="286.735" cy="39.3389" r="30" fill="#0385FD"/>
+</svg>

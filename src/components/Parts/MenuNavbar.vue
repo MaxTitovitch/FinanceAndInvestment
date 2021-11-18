@@ -71,7 +71,7 @@
     </div>
     <div class="text-center d-flex justify-content-center align-items-center"
          :class="{'w-20': type === 'desktop'}">
-      <router-link to="/contacts" class="menu-link" @click.native.prevent="hideMenu">Контакты</router-link>
+      <router-link to="#contacts" class="menu-link" @click.native.prevent="hideMenu">Контакты</router-link>
     </div>
   </div>
 </template>

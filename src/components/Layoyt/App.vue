@@ -1,8 +1,9 @@
 <template>
     <div id="app" :class="isBlur ? 'blur' : ''" @click="hideBlur($event)">
-        <Header v-if="isOtherComponent()"/>
+        <Header/>
         <router-view/>
         <Footer/>
+        <Contacts />
     </div>
 </template>
 
@@ -10,10 +11,12 @@
 import Header from '@/components/Layoyt/Header';
 import Footer from '@/components/Layoyt/Footer';
 import {mapGetters} from 'vuex';
+import Contacts from '@/components/Parts/Contacts';
 
 export default {
   name: 'App',
   components: {
+    Contacts,
     Header,
     Footer,
   },
@@ -28,15 +31,6 @@ export default {
         $event.preventDefault();
         this.$store.commit('hideTerms');
       }
-    },
-    isOtherComponent() {
-      const modulesMap = ['/map'];
-      for (let i = 0; i < modulesMap.length; i++) {
-        if (location.pathname === modulesMap[i]) {
-          return false;
-        }
-      }
-      return true;
     },
   },
 };
@@ -65,11 +59,17 @@ html, body {
 }
 
 body {
-    overflow-x: hidden;
+    overflow-x: hidden!important;
+    overflow-y: hidden!important;
 }
 
 html {
     overflow-y: scroll;
+}
+
+.modal-open {
+    overflow-y: hidden!important;
+    padding-right: 0!important;
 }
 
 *::-webkit-scrollbar-track {
@@ -88,6 +88,7 @@ html {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     background-color: #4a4a4a;
 }
+
 
 h1, h2, h3, h4, h5, p, span, div {
     font-family: Rubik, serif;

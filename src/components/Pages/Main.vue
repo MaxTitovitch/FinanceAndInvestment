@@ -1,103 +1,142 @@
 <template>
- <main>
-   <div>
-     <vue-headful title="Главная - ЭБ Инвестиции" description="Главная - ЭБ Инвестиции"/>
-   </div>
-   <div class="container template mt-4">
-     <div class="row main-row">
-       <div class="col-12 col-md-5">
-         <h1 class="pb-5">Про финансы <br>и инвестиции простыми словами</h1>
-         <div class="buttons d-flex align-items-center flex-wrap mb-4 mobile-hidden">
-           <div class="w-100 mb-4">
-             <router-link to="/terms">Термины</router-link>
-           </div>
-           <div class="w-100 mb-4">
-             <router-link to="/videos">Видео</router-link>
-           </div>
-         </div>
-       </div>
-     </div>
-     <div class="row carousel-row justify-content-between pb-5 mobile-hidden">
-      <TileLink :model="link" v-for="(link, index) in links" :key="index"/>
-     </div>
-     <div class="row mobile-show">
-       <div class="col-12">
-         <splide :options="options" class="mb-5">
-           <splide-slide v-for="(link, index) in links" :key="index">
-             <TileLink :model="link" width="100%"/>
-           </splide-slide>
-         </splide>
-       </div>
-     </div>
-   </div>
- </main>
+    <main>
+        <div>
+            <vue-headful title="Главная - ЭБ Инвестиции" description="Главная - ЭБ Инвестиции"/>
+        </div>
+        <div class="container-fluid p-0 position-relative">
+            <img src="@/assets/main/main-photo.png" alt="Background" class="background-image">
+            <div class="main-row d-flex justify-content-center align-items-center main-text">
+                <h1>Ваш проводник в <br> финансовый мир!</h1>
+            </div>
+        </div>
+        <div class="container mt-5">
+            <div class="row">
+                <div v-for="(link, i) in links" :key="i" class="col-12 links-row">
+                    <div class="links-row-body">
+                        <div v-if="link.position === 'right'" class="w-50 d-flex justify-content-center">
+                            <img :src="`/img/main/${link.photo}`" :alt="link.title" class="w-75">
+                        </div>
+                        <div class="d-flex flex-column justify-content-between w-50 p-3 pl-5">
+                            <div>
+                                <h2>{{ link.title }}</h2>
+                                <p>{{ link.description }}</p>
+                            </div>
+                            <div class="buttons d-flex align-items-end flex-wrap mobile-hidden">
+                                <div class="w-100">
+                                    <router-link :to="link.link">Подробнее</router-link>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-if="link.position === 'left'" class="w-50 d-flex justify-content-center">
+                            <img :src="`/img/main/${link.photo}`" :alt="link.title" class="w-75">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </template>
 
 <script>
-import TileLink from "@/components/Parts/TileLink";
-import { Splide, SplideSlide } from '@splidejs/vue-splide';
-import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 
 export default {
-  name: "Main",
-  components: {TileLink, Splide, SplideSlide},
+  name: 'Main',
   mounted() {
-    this.$store.commit('setSearch', false)
+    this.$store.commit('setSearch', false);
   },
-  data (){
+  data() {
     return {
-      options: {
-        slide: 'loop',
-        rewind: true,
-        autoplay: true,
-        speed: 500,
-        arrowPath: 'M1 1L13 13L1 25'
-      },
       links: [
-        {title: 'Все инвестиционные понятия в разделе термины', link: '/terms', photo: 'terms.svg'},
-        {title: 'Делаем короткие мультики на тему финансов', link: '/videos', photo: 'videos.svg'},
-        {title: 'Представляем аналитику по белорусским компаниям', link: '/issuers', photo: 'issuers.svg'},
+        {
+          title: 'Консультации и софт для компаний',
+          description: 'Поможем вашему бизнесу оптимизировать внутренние финансы и привлечь внешнее финансирование на выгодных условиях. Соберем инвестиционный портфель под ваши цели.',
+          position: 'right',
+          link: '/services',
+          photo: 'services.svg',
+        },
+        {
+          title: 'Обучение инвестированию и финансам',
+          description: 'Библиотека терминов и образовательные видео по теме инвестиций и финансов',
+          position: 'left',
+          link: '/terms',
+          photo: 'terms.svg',
+        },
+        {
+          title: 'Аналитика по компаниям и банкам',
+          description: 'Аналитика по различным аспектам деятельности сотен компаний и банков',
+          position: 'right',
+          link: '/issuers',
+          photo: 'issuers.svg',
+        },
+        {
+          title: 'Наша книга',
+          description: 'В нашей книге мы собрали все необходимые знания для старта в инвестициях с нуля. В ней вы найдете обзор основных инвестиционных инструментов, рекомендации по выбору портфеля, а также в книге развенчаны основные мифы и заблуждения новичков.',
+          position: 'left',
+          link: '/book',
+          photo: 'book.svg',
+        },
       ],
-    }
+    };
   },
-}
+};
 </script>
 
 <style scoped>
-   main {
-     padding: 0.5rem 1rem;
-     /*height: 125%;*/
-   }
 
-  .template  {
-    padding-right: 45px;
-    padding-left: 30px;
-  }
-
-  h1 {
+h1 {
     font-style: normal;
     font-weight: bold;
-    font-size: 60px;
-    line-height: 60px;
-  }
+    text-align: center;
+    color: #FFFFFF;
+    padding-bottom: 5rem;
+    font-size: 4rem;
+    line-height: 4rem;
+}
 
-  .main-row {
-    background-image: url(~@/assets/main-photo.svg);
-    /*height: 70%;*/
-    background-size: 60%;
-    background-repeat: no-repeat;
-    background-position-x: right;
-  }
-  .carousel-row {
-    /*height: 30%;*/
-  }
+h2 {
+    font-weight: bold;
+}
 
-  .buttons {
+.main-row {
+    height: calc(100vh - 72px);
+}
+
+.main-text {
+    position: relative;
+    z-index: 100;
+}
+
+.background-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: calc(100vh - 72px);
+}
+
+.links-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.links-row-body {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: #FFFFFF;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+    border-radius: 45px;
+    padding: 3rem;
+}
+
+.buttons {
     margin-top: 10px;
-  }
+}
 
-  .buttons a {
-    background: #243EE9!important;
+.buttons a {
+    background: #243EE9 !important;
     color: white;
     padding: 10px;
     max-width: 65%;
@@ -106,91 +145,33 @@ export default {
     border-radius: 10px;
     width: 205px;
     box-shadow: 0 22px 20px -12px rgba(36, 62, 233, 0.35);
-  }
+}
 
-   .buttons a:hover {
-     text-decoration: none;
-     background: #0f21a5!important;
-  }
+.buttons a:hover {
+    text-decoration: none;
+    background: #0f21a5 !important;
+}
 
-   a:hover {
-     text-decoration: none;
-   }
+a:hover {
+    text-decoration: none;
+}
 
-   @media screen and (max-device-width: 767px) {
-     h1 {
-       font-size: 30px;
-       line-height: 30px;
-     }
+@media screen and (max-device-width: 767px) {
+    h1 {
+        font-size: 30px;
+        line-height: 30px;
+    }
 
-     .template {
-       padding: 0;
-     }
+    .main-row {
+        background-image: url(~@/assets/main-photo-mobile.svg);
+        background-position-x: left;
+        padding-top: 15.5rem;
+        background-size: 100% 15rem;
+    }
 
-     .main-row {
-       background-image: url(~@/assets/main-photo-mobile.svg);
-       background-position-x: left;
-       padding-top: 15.5rem;
-       background-size: 100% 15rem;
-     }
+    main {
+        min-height: auto;
+    }
+}
 
-     main {
-       min-height: auto;
-     }
-   }
-
-</style>
-
-<style>
-  .splide__arrow {
-    background: rgba(0,0,0,0);
-    fill: none;
-    height: 100%;
-    width: 6em;
-    display: flex;
-  }
-
-  .splide__arrow--next {
-    right: 0;
-    justify-content: flex-end;
-  }
-
-  .splide__arrow--prev {
-    left: 0;
-    justify-content: flex-start;
-  }
-
-  .splide__pagination {
-    bottom: -1.5em;
-  }
-
-  .splide__pagination__page {
-    background: #C4C4C4;
-  }
-
-  .splide__pagination__page.is-active {
-    background: #222;
-  }
-
-  .splide__track {
-    box-shadow: 0px 22px 20px -5px rgba(117, 117, 117, 0.25);
-  }
-
-  .splide__arrow>svg {
-    height: 40px;
-    width: 40px;
-    stroke: #000;
-    stroke-width: 3px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .splide__arrow>svg {
-    height: 40px;
-    width: 40px;
-    stroke: #000;
-    stroke-width: 3px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
 </style>
