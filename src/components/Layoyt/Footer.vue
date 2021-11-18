@@ -1,49 +1,78 @@
 <template>
-  <footer>
-    <div class="container">
-      <div class="row mb-3">
-        <div class="col-12 col-md-4 d-flex justify-content-center">
-          <div class="w-50 mt-1">
-            <router-link to="/">
-              <img class="w-100 image-logo" src="@/assets/logo.png" alt="Эмитенты Беларуси">
-            </router-link>
-          </div>
-          <SocialMedia container-class="w-50"/>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-2 d-flex justify-content-center footer-logo-body">
+                    <div class="w-100 mt-1">
+                        <router-link to="/" class="footer-logo">
+                            <h3 class="font-weight-bold">Binvesting</h3>
+                        </router-link>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 pl-5 d-flex flex-wrap justify-content-between align-items-center footer-link">
+                    <router-link v-for="(link, i) in filtratedLinks" :key="i" class="text-dark" :to="link.link">
+                        {{ link.title }}
+                    </router-link>
+                </div>
+                <div class="col-12 col-md-4 d-flex flex-wrap align-items-end flex-column footer-link mt-4 mt-md-0">
+                    <router-link class="text-dark" :to="Settings.LINK_PHONE">
+                        <img :src="`/img/contacts/phone.svg`" class="mobile-show mr-1" alt="Phone">
+                        <span>+375 (29) 768-19-40</span>
+                    </router-link>
+                    <div class="footer-social d-flex justify-content-end mt-2">
+                        <router-link class="text-dark" :to="link.link" v-for="(link, i) in socialLinks" :key="i">
+                            <img :src="`/img/contacts/${link.photo}`" :alt="link.title" class="mr-1">
+                            <span class="mobile-show">{{ link.title }}</span>
+                        </router-link>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4 mobile-hidden">
+                <div class="col-12 text-center">
+                    <p class="font-weight-bold">© {{ year }} ЭБ Беларусь. Все права защищены.</p>
+                </div>
+            </div>
         </div>
-        <div class="col-6 col-md-4 d-flex flex-wrap justify-content-center mobile-hidden">
-          <div>
-            <p class="font-weight-bold"><router-link class="text-dark" to="/">Главная</router-link></p>
-<!--            <p class="font-weight-bold"><router-link class="text-dark" to="/etf">ETF</router-link></p>-->
-            <p class="font-weight-bold"><router-link class="text-dark" to="/videos">Видео</router-link></p>
-            <p class="font-weight-bold"><router-link class="text-dark" to="/terms">Термины</router-link></p>
-          </div>
-        </div>
-        <div class="col-6 col-md-4 mobile-hidden">
-          <p class="font-weight-bold">Беларусь</p>
-          <p class="p-no-line"><router-link class="text-dark" to="/issuers">Оценки эмитентов</router-link></p>
-          <p class="p-no-line"><router-link class="text-dark" to="/banks">Оценки банков</router-link></p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 text-center">
-          <p class="font-weight-bold">© {{ year }} ЭБ Инвестиции. Все права защищены.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
 </template>
 
 <script>
-import Settings from '@/settings'
-import SocialMedia from "@/components/Parts/SocialMedia";
+import Settings from '@/settings';
 
 export default {
-  name: "Footer",
-  components: {SocialMedia},
-  data(){
+  name: 'Footer',
+  data() {
     return {
-      Settings
-    }
+      Settings,
+      links: [
+        {title: 'Услуги', link: '/services'},
+        {title: 'Кейсы', link: '/cases'},
+        {title: 'Книга', link: '/book'},
+        {title: 'Обучение', link: '/terms', onlyDesktop: true},
+        {title: 'Аналитика', link: '/issuers', onlyDesktop: true},
+        {title: 'Видео', link: '/videos', onlyMobile: true},
+        {title: 'Термины', link: '/terms', onlyMobile: true},
+        {title: 'Оценка эмитентов', link: '/issuers', onlyMobile: true},
+        {title: 'Оценка банков', link: '/banks', onlyMobile: true},
+      ],
+      socialLinks: [
+        {
+          title: '@eugene_levy',
+          link: Settings.LINK_TELEGRAM,
+          photo: 'telegram.svg',
+        },
+        {
+          title: 'ЭБ Инвестиции',
+          link: Settings.LINK_YOUTUBE,
+          photo: 'youtube.svg',
+        },
+        {
+          title: 'sales@binvesting.ru',
+          link: Settings.LINK_EMAIL,
+          photo: 'email.svg',
+        },
+      ],
+    };
   },
   computed: {
     year: () => {
@@ -51,40 +80,75 @@ export default {
       let currentYear = (new Date).getFullYear();
       return yearStart === currentYear ? currentYear : `${yearStart}-${currentYear}`;
     },
-  }
-}
+    filtratedLinks() {
+      return this.links.filter(link => {
+        return window.mobileCheck() ? !link.onlyDesktop : !link.onlyMobile;
+      })
+    }
+  },
+};
 </script>
 
 <style scoped>
 
-  footer {
-    background: #F5F5F5;
-    padding: 32px 0;
-  }
-  p.p-no-line {
-    margin-block-start: 0;
-    margin-block-end: 0;
-  }
+.footer-logo {
+    color: black;
+}
 
-  p {
+.footer-logo:hover {
+    text-decoration: none;
+}
+
+footer {
+    background: #F5F5F5;
+    padding: 32px 0 10px;
+}
+
+.footer-link {
+    color: black;
+}
+
+.footer-link a:hover {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+p {
     margin-block-start: 0;
     margin-block-end: 0;
     padding-bottom: 2px;
     font-size: .8em;
-  }
+}
 
-  .container {
+.container {
     padding: 0 100px;
-  }
+}
 
-  @media screen and (max-device-width: 767px) {
+@media screen and (max-device-width: 767px) {
+    .footer-link {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start!important;
+        padding: 0!important;
+    }
 
     .container {
-      padding: 0 70px;
+        padding: 30px!important;
     }
 
-    .image-logo {
-      padding: 0 15px;
+    footer {
+        padding: 10px 0!important;
     }
-  }
+
+    .footer-social {
+        flex-direction: column;
+        margin-top: 0!important;
+    }
+
+    .footer-logo-body {
+        padding: 0!important;
+    }
+}
 </style>
