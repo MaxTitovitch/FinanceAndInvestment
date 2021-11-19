@@ -16,7 +16,7 @@
              :class="{'w-20': type === 'desktop'}">
             <router-link to="/book" class="menu-link" @click.native="hideMenu">Книга</router-link>
         </div>
-        <div class="d-flex justify-content-start"
+        <div class="d-flex justify-content-start submenu-link"
              :class="{'w-20': type === 'desktop', [dropdownClass]: true}">
             <div class="d-flex align-items-center h-100">
                 <div
@@ -25,8 +25,9 @@
                         @mouseleave="changeDropdown(type === 'desktop', 0)"
                         @click="changeDropdown(type === 'mobile', 0)"
                 >
-                    <span class="dropdown-button py-1 py-md-3">
+                    <span class="dropdown-button py-1 py-md-3" :class="{open: isOpen[0]}">
                         Обучение
+                        <img class="mobile-show" :src="!isOpen[0] ? '/img/arrow-down.svg' : '/img/arrow-up.svg'" alt="Arrow">
                     </span>
                     <div class="dropdown-items" v-show="isOpen[0]">
                         <p :class="'menu-link ' + firstItemClaas">
@@ -41,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-start"
+        <div class="d-flex justify-content-start submenu-link"
              :class="{'w-20': type === 'desktop', [dropdownClass]: true}">
             <div class="d-flex align-items-center h-100">
                 <div class="dropdown-body"
@@ -49,8 +50,9 @@
                      @mouseleave="changeDropdown(type === 'desktop', 1)"
                      @click="changeDropdown(type === 'mobile', 1)"
                 >
-                    <span class="dropdown-button py-1 py-md-3">
+                    <span class="dropdown-button py-1 py-md-3" :class="{open: isOpen[1]}">
                         Аналититка
+                        <img class="mobile-show" :src="!isOpen[1] ? '/img/arrow-down.svg' : '/img/arrow-up.svg'" alt="Arrow">
                     </span>
                     <div class="dropdown-items" v-show="isOpen[1]">
                         <p :class="'menu-link ' + firstItemClaas">
@@ -263,7 +265,7 @@ p.menu-link > a {
         text-decoration: none;
         /*font-size: 1.2rem;*/
         /*line-height: 1.2rem;*/
-        color: #243EE9 !important;
+        color: white !important;
     }
 
     div.menu-link.d-flex {
@@ -271,21 +273,38 @@ p.menu-link > a {
     }
 
     .dark-text {
-        color: black !important;
+        color: white !important;
     }
 
     .dark-text {
-        color: #243EE9 !important;
+        color: white !important;
     }
 
     .dropdown-items {
-        background-color: unset;
+        border: none;
+        background: none;
         padding: 0;
         border-radius: 0;
+        position: static;
+        margin: 10px 0;
     }
 
-    /*.b-sidebar-body>div>.menu-link .dropdown-items .menu-link>a {*/
-    /*  font-weight: 600!important;*/
-    /*}*/
+    .dropdown-items .menu-link > a {
+        color: white!important;
+        font-size: 1rem!important;
+    }
+
+    .dropdown-button {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .submenu-link > div {
+        width: 100%;
+    }
+
+    .submenu-link .dropdown-body {
+        width: 100%;
+    }
 }
 </style>
