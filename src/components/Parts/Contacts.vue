@@ -95,15 +95,19 @@ export default {
   watch: {
     showModal(value) {
       if (value) {
-        document.querySelector('body').classList.add('show-scroll')
         document.querySelector('html').classList.add('hide-scroll')
-        document.querySelector('body').classList.remove('hide-scroll')
         document.querySelector('html').classList.remove('show-scroll')
+        if (!window.mobileCheck()) {
+          document.querySelector('body').classList.add('show-scroll')
+          document.querySelector('body').classList.remove('hide-scroll')
+        }
       } else  {
-        document.querySelector('body').classList.add('hide-scroll')
         document.querySelector('html').classList.add('show-scroll')
-        document.querySelector('body').classList.remove('show-scroll')
         document.querySelector('html').classList.remove('hide-scroll')
+        if (!window.mobileCheck()) {
+          document.querySelector('body').classList.add('hide-scroll')
+          document.querySelector('body').classList.remove('show-scroll')
+        }
       }
     }
   },

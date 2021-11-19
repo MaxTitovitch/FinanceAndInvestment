@@ -1,18 +1,18 @@
 <template>
     <div :class="{[mainClass]: true, ['light-color']: isMainClass}" class="main-menu d-flex justify-content-between">
-        <div class="text-center d-flex justify-content-center align-items-center py-3"
+        <div class="text-center d-flex justify-content-center align-items-center py-1 py-md-3"
              :class="{'w-20': type === 'desktop'}">
             <router-link to="/" class="menu-link" @click.native="hideMenu">Главная</router-link>
         </div>
-        <div class="text-center d-flex justify-content-center align-items-center py-3"
+        <div class="text-center d-flex justify-content-center align-items-center py-1 py-md-3"
              :class="{'w-20': type === 'desktop'}">
             <router-link to="/services" class="menu-link" @click.native="hideMenu">Услуги</router-link>
         </div>
-        <div class="text-center d-flex justify-content-center align-items-center py-3"
+        <div class="text-center d-flex justify-content-center align-items-center py-1 py-md-3"
              :class="{'w-20': type === 'desktop'}">
             <router-link to="/cases" class="menu-link" @click.native="hideMenu">Кейсы</router-link>
         </div>
-        <div class="text-center d-flex justify-content-center align-items-center py-3"
+        <div class="text-center d-flex justify-content-center align-items-center py-1 py-md-3"
              :class="{'w-20': type === 'desktop'}">
             <router-link to="/book" class="menu-link" @click.native="hideMenu">Книга</router-link>
         </div>
@@ -25,7 +25,7 @@
                         @mouseleave="changeDropdown(type === 'desktop', 0)"
                         @click="changeDropdown(type === 'mobile', 0)"
                 >
-                    <span class="dropdown-button py-3">
+                    <span class="dropdown-button py-1 py-md-3">
                         Обучение
                     </span>
                     <div class="dropdown-items" v-show="isOpen[0]">
@@ -49,7 +49,7 @@
                      @mouseleave="changeDropdown(type === 'desktop', 1)"
                      @click="changeDropdown(type === 'mobile', 1)"
                 >
-                    <span class="dropdown-button py-3">
+                    <span class="dropdown-button py-1 py-md-3">
                         Аналититка
                     </span>
                     <div class="dropdown-items" v-show="isOpen[1]">
@@ -65,7 +65,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-center d-flex justify-content-center align-items-center py-3"
+        <div class="text-center d-flex justify-content-center align-items-center py-1 py-md-3"
              :class="{'w-20': type === 'desktop'}">
             <router-link to="#contacts" class="menu-link" @click.native.prevent="hideMenu">Контакты</router-link>
         </div>
@@ -214,6 +214,10 @@ p.menu-link > a {
 
 
 @media (max-width: 992px) {
+    .main-menu {
+        flex-direction: column;
+    }
+
     .navbar-expand-lg .navbar-nav > * {
         flex-direction: row !important;
     }
