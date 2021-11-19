@@ -72,6 +72,14 @@ html {
     padding-right: 0!important;
 }
 
+body.hide-scroll, html.hide-scroll {
+    overflow-y: hidden!important;
+}
+
+body.show-scroll, html.show-scroll {
+    overflow-y: scroll!important;
+}
+
 *::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;

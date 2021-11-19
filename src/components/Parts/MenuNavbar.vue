@@ -25,9 +25,9 @@
                         @mouseleave="changeDropdown(type === 'desktop', 0)"
                         @click="changeDropdown(type === 'mobile', 0)"
                 >
-          <span class="dropdown-button py-3">
-            Обучение
-          </span>
+                    <span class="dropdown-button py-3">
+                        Обучение
+                    </span>
                     <div class="dropdown-items" v-show="isOpen[0]">
                         <p :class="'menu-link ' + firstItemClaas">
                             <router-link class="dark-text" to="/terms" @click.native="hideMenu">Термины
@@ -44,15 +44,14 @@
         <div class="d-flex justify-content-start"
              :class="{'w-20': type === 'desktop', [dropdownClass]: true}">
             <div class="d-flex align-items-center h-100">
-                <div
-                        class="dropdown-body"
-                        @mouseenter="changeDropdown(type === 'desktop', 1)"
-                        @mouseleave="changeDropdown(type === 'desktop', 1)"
-                        @click="changeDropdown(type === 'mobile', 1)"
+                <div class="dropdown-body"
+                     @mouseenter="changeDropdown(type === 'desktop', 1)"
+                     @mouseleave="changeDropdown(type === 'desktop', 1)"
+                     @click="changeDropdown(type === 'mobile', 1)"
                 >
-          <span class="dropdown-button py-3">
-            Аналититка
-          </span>
+                    <span class="dropdown-button py-3">
+                        Аналититка
+                    </span>
                     <div class="dropdown-items" v-show="isOpen[1]">
                         <p :class="'menu-link ' + firstItemClaas">
                             <router-link class="dark-text" to="/issuers" @click.native="hideMenu">Оценки эмитентов

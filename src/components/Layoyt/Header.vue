@@ -1,8 +1,8 @@
 <template>
-    <header class="container-fluid" :class="{['main-class']: isMainClass}">
+    <header class="container-fluid" :class="{['main-class']: isMainClass || isShowSidebar}">
         <b-navbar toggleable="lg" variant="faded" type="light" class="flex-nowrap header-height pb-0">
             <b-navbar-brand to="/" :class="showSearch ? 'mobile-hidden' : ''">
-                <h2 class="font-weight-bold" :class="{['light-color']: isMainClass}">Binvesting</h2>
+                <h2 class="font-weight-bold" :class="{['light-color']: isMainClass || isShowSidebar}">Binvesting</h2>
             </b-navbar-brand>
 
             <b-nav id="nav-collapse" is-nav class="w-100">
@@ -26,10 +26,6 @@
                                 @input="filtrateData"
                                 v-model="searchQuery"
                         ></b-form-input>
-                        <!--            <b-link href="#" class="text-dark search-close mobile-hidden" @click.prevent="toggleSearch">×</b-link>-->
-                        <!--            <b-link href="#" class="text-dark search-close mobile-show" @click.prevent="focusSearch">-->
-                        <!--              <img src="@/assets/search.svg" alt="Поиск">-->
-                        <!--            </b-link>-->
                     </b-nav-form>
                     <b-nav-item href="#" class="text-dark search-close mobile-show" @click.prevent="toggleSearch">
                         ×
@@ -74,29 +70,35 @@
                 </div>
             </b-nav>
 
-            <!--      <b-navbar-nav class="ml-auto mr-2 search-area" v-if="!showSearch">-->
-            <!--        <b-link href="#" @click.prevent="toggleSearch" class="image-search">-->
-            <!--          <img src="@/assets/search.svg" alt="Поиск">-->
-            <!--        </b-link>-->
-            <!--      </b-navbar-nav>-->
-
             <b-navbar-nav class="ml-auto mobile-show" v-if="!showSearch">
                 <b-link href="#" v-b-toggle.sidebar-right>
-                    <img :src="require(`@/assets/menu${isMainClass ? '' : '-dark'}.svg`)" alt="Меню" class="image-search mt-0">
+                    <img :src="require(`@/assets/menu${isMainClass || isShowSidebar ? '' : '-dark'}.svg`)" alt="Меню"
+                         class="image-search mt-0">
                 </b-link>
-                <b-sidebar id="sidebar-right" right shadow no-header backdrop class="sidebar" body-class="px-3"
-                           v-model="isShowSidebar">
+                <b-sidebar
+                        id="sidebar-right"
+                        right
+                        no-header
+                        body-class="sidebar px-3"
+                        width="100%"
+                        v-model="isShowSidebar"
+                >
                     <MenuNavbar
                             dropdown-class="menu-link"
                             main-class="sidebar"
                             first-item-claas="mt-1"
                             type="mobile"
                             isShowSidebar="isShowSidebar"
-                            :isMainClass="isMainClass"
+                            :isMainClass="isMainClass || isShowSidebar"
                             v-on:hide-sidebar="hideMenu"
                     />
                     <template slot="footer">
-                        <SocialMedia container-class="p-3 w-50" header-size=".9em"/>
+                        <div class="links pa-2">
+                            <a :href="link.link" v-for="(link, i) in links" :key="i">
+                                <img :src="`/img/contacts/${link.photo}`" :alt="link.title">
+                                {{ link.title }}
+                            </a>
+                        </div>
                     </template>
                 </b-sidebar>
             </b-navbar-nav>
@@ -105,19 +107,41 @@
 </template>
 
 <script>
-import SocialMedia from '@/components/Parts/SocialMedia';
 import MenuNavbar from '@/components/Parts/MenuNavbar';
 import {mapGetters} from 'vuex';
+import Settings from '@/settings';
 
 export default {
   name: 'Header',
-  components: {SocialMedia, MenuNavbar},
+  components: {MenuNavbar},
   mounted() {
   },
   data() {
     return {
       searchQuery: '',
       isShowSidebar: false,
+      links: [
+        {
+          title: '+375 (29) 768-19-40',
+          link: Settings.LINK_PHONE,
+          photo: `phone-light.svg`,
+        },
+        {
+          title: '@eugene_levy',
+          link: Settings.LINK_TELEGRAM,
+          photo: `telegram-light.svg`,
+        },
+        {
+          title: 'ЭБ Инвестиции',
+          link: Settings.LINK_YOUTUBE,
+          photo: `youtube-light.svg`,
+        },
+        {
+          title: 'sales@binvesting.ru',
+          link: Settings.LINK_EMAIL,
+          photo: `email-light.svg`,
+        },
+      ],
     };
   },
   computed: {
@@ -143,6 +167,17 @@ export default {
       }
       return count === 0 ? 0 : entity;
     },
+  },
+  watch: {
+    isShowSidebar(value) {
+      if (value) {
+        document.querySelector('html').classList.add('hide-scroll')
+        document.querySelector('html').classList.remove('show-scroll')
+      } else  {
+        document.querySelector('html').classList.add('show-scroll')
+        document.querySelector('html').classList.remove('hide-scroll')
+      }
+    }
   },
   updated() {
     if (this.showSearch) {
@@ -221,6 +256,29 @@ header {
 
 .light-color {
     color: white;
+}
+
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.links a {
+    width: 100%;
+    margin-top: 1rem;
+    color: #494949;
+}
+
+.links a:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.links a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }
 
 .group-name-small {
@@ -362,5 +420,15 @@ img {
 .b-sidebar {
     overflow: hidden;
     padding-bottom: 3rem;
+    top: 72px!important;
+    height: calc(100vh - 72px)!important;
+}
+
+.b-sidebar.bg-light, .b-sidebar-footer, .b-sidebar-body {
+    background-color: #243EE9!important;
+}
+
+.b-sidebar-footer {
+    padding: 0 1rem;
 }
 </style>

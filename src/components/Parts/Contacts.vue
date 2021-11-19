@@ -92,6 +92,21 @@ export default {
       return this.$route.path === '/';
     },
   },
+  watch: {
+    showModal(value) {
+      if (value) {
+        document.querySelector('body').classList.add('show-scroll')
+        document.querySelector('html').classList.add('hide-scroll')
+        document.querySelector('body').classList.remove('hide-scroll')
+        document.querySelector('html').classList.remove('show-scroll')
+      } else  {
+        document.querySelector('body').classList.add('hide-scroll')
+        document.querySelector('html').classList.add('show-scroll')
+        document.querySelector('body').classList.remove('show-scroll')
+        document.querySelector('html').classList.remove('hide-scroll')
+      }
+    }
+  },
   methods: {
     closeModal() {
       this.$router.replace(this.$route.path);
