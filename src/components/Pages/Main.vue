@@ -4,7 +4,7 @@
             <vue-headful title="Главная - ЭБ Инвестиции" description="Главная - ЭБ Инвестиции"/>
         </div>
         <div class="container-fluid p-0 position-relative">
-            <img src="@/assets/main/main-photo.png" alt="Background" class="background-image">
+            <img :src="require(`@/assets/main/${backgroundImage}`)" alt="Background" class="background-image">
             <div class="main-row d-flex justify-content-center align-items-center main-text">
                 <h1>Ваш проводник в <br> финансовый мир!</h1>
             </div>
@@ -13,21 +13,24 @@
             <div class="row">
                 <div v-for="(link, i) in links" :key="i" class="col-12 links-row">
                     <div class="links-row-body">
-                        <div v-if="link.position === 'right'" class="w-50 d-flex justify-content-center">
+                        <div v-if="link.position === 'right' && !isMobile" class="w-50 d-flex justify-content-center">
                             <img :src="`/img/main/${link.photo}`" :alt="link.title" class="w-75">
                         </div>
-                        <div class="d-flex flex-column justify-content-between w-50 p-3 pl-5">
+                        <div class="d-flex flex-column justify-content-between links-description p-3">
                             <div>
                                 <h2>{{ link.title }}</h2>
-                                <p>{{ link.description }}</p>
+                                <p class="mobile-hidden">{{ link.description }}</p>
                             </div>
-                            <div class="buttons d-flex align-items-end flex-wrap mobile-hidden">
+                            <div v-if="isMobile" class="w-100 d-flex justify-content-center">
+                                <img :src="`/img/main/${link.photo}`" :alt="link.title" class="w-75">
+                            </div>
+                            <div class="buttons mt-3 mt-md-0">
                                 <div class="w-100">
                                     <router-link :to="link.link">Подробнее</router-link>
                                 </div>
                             </div>
                         </div>
-                        <div v-if="link.position === 'left'" class="w-50 d-flex justify-content-center">
+                        <div v-if="link.position === 'left' && !isMobile" class="w-50 d-flex justify-content-center">
                             <img :src="`/img/main/${link.photo}`" :alt="link.title" class="w-75">
                         </div>
                     </div>
@@ -78,6 +81,14 @@ export default {
       ],
     };
   },
+  computed: {
+    backgroundImage() {
+      return window.mobileCheck() ? 'main-photo-phone.png' : 'main-photo.png'
+    },
+    isMobile() {
+      return window.mobileCheck();
+    }
+  },
 };
 </script>
 
@@ -95,6 +106,14 @@ h1 {
 
 h2 {
     font-weight: bold;
+
+    font-size: 2rem;
+    line-height: 2rem;
+}
+
+.links-description {
+    width: 50%;
+    padding-left: 3rem;
 }
 
 .main-row {
@@ -133,6 +152,9 @@ h2 {
 
 .buttons {
     margin-top: 10px;
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
 }
 
 .buttons a {
@@ -162,15 +184,36 @@ a:hover {
         line-height: 30px;
     }
 
-    .main-row {
-        background-image: url(~@/assets/main-photo-mobile.svg);
-        background-position-x: left;
-        padding-top: 15.5rem;
-        background-size: 100% 15rem;
+    h2 {
+        text-align: center;
+        font-size: 18px;
+        line-height: 18px;
+        margin-bottom: 12px;
     }
 
     main {
         min-height: auto;
+    }
+
+    .links-row-body {
+        flex-direction: column;
+    }
+
+    .links-description {
+        width: 100%;
+    }
+
+    .links-row-body {
+        padding: 1rem;
+    }
+
+    .buttons > div {
+        display: flex;
+        justify-content: center;
+    }
+
+    .links-row-body {
+        border-radius: 14px;
     }
 }
 

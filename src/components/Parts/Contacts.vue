@@ -14,7 +14,7 @@
             ×
         </div>
         <div class="modal-contacts-body">
-            <h2 class="mt-3">
+            <h2 class="mt-4">
                 Контактная информация
             </h2>
             <div class="links">
@@ -52,33 +52,32 @@ export default {
       type: Boolean,
     },
   },
-  data() {
-    return {
-      links: [
+  computed: {
+    links() {
+      const modifier = window.mobileCheck() ? '-light' : '';
+      return [
         {
           title: '+375 (29) 768-19-40',
           link: Settings.LINK_PHONE,
-          photo: 'phone.svg',
+          photo: `phone${modifier}.svg`,
         },
         {
           title: '@eugene_levy',
           link: Settings.LINK_TELEGRAM,
-          photo: 'telegram.svg',
+          photo: `telegram${modifier}.svg`,
         },
         {
           title: 'ЭБ Инвестиции',
           link: Settings.LINK_YOUTUBE,
-          photo: 'youtube.svg',
+          photo: `youtube${modifier}.svg`,
         },
         {
           title: 'sales@binvesting.ru',
           link: Settings.LINK_EMAIL,
-          photo: 'email.svg',
+          photo: `email${modifier}.svg`,
         },
-      ],
-    };
-  },
-  computed: {
+      ];
+    },
     showModal: {
       get() {
         return this.$route.hash === '#contacts';
@@ -88,6 +87,9 @@ export default {
           this.closeModal();
         }
       },
+    },
+    isMainClass() {
+      return this.$route.path === '/';
     },
   },
   methods: {
@@ -142,12 +144,16 @@ export default {
     }
 
     .modal-contacts-close {
-        color: #243EE9;
+        color: black;
         font-size: 2.5rem;
         cursor: pointer;
         position: absolute;
         right: -5px;
         top: -15px;
+    }
+
+    .modal-contacts-close:hover {
+        color: #243EE9;
     }
 
     .modal-contacts-body {
@@ -157,6 +163,42 @@ export default {
     @media screen and (max-device-width: 767px) {
         .modal-contacts-body {
             width: 100%;
+        }
+
+        .modal-contacts {
+            background-color: #243EE9!important;
+            color: white;
+        }
+
+
+        .links a {
+            color: white!important;
+        }
+
+        .links a img svg path {
+            stroke: white!important;
+            fill: white!important;
+            color: white!important;
+        }
+
+        h2 {
+            font-size: 1.5rem!important;
+        }
+
+
+        .modal-contacts-close {
+            color: white;
+            right: -12px;
+        }
+
+
+        .modal-contacts-close:hover {
+            opacity: 0.8;
+            color: white;
+        }
+
+        .links a, p {
+            font-size: 0.9rem;
         }
     }
 </style>

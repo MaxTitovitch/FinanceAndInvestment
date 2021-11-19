@@ -10,21 +10,24 @@
             <div class="row">
                 <div v-for="(link, i) in links" :key="i" class="col-12 links-row">
                     <div class="links-row-body">
-                        <div v-if="link.position === 'right'"
+                        <div v-if="link.position === 'right' && !isMobile"
                              class="w-50 d-flex justify-content-center align-items-center">
                             <img :src="`/img/services/${link.photo}`" :alt="link.title" class="w-75 h-75">
                         </div>
-                        <div class="d-flex flex-column justify-content-between w-50 p-3 pl-5">
+                        <div class="d-flex flex-column justify-content-between links-description p-3">
                             <div>
                                 <h2>{{ link.title }}</h2>
-                                <p>{{ link.description }}</p>
+                                <p class="mobile-hidden">{{ link.description }}</p>
                             </div>
-                            <div class="buttons d-flex align-items-end justify-content-start flex-nowrap mobile-hidden">
+                            <div v-if="isMobile" class="w-100 d-flex justify-content-center">
+                                <img :src="`/img/services/${link.photo}`" :alt="link.title" class="w-75">
+                            </div>
+                            <div class="buttons mt-3 mt-md-0">
                                 <router-link to="/cases">Кейсы</router-link>
                                 <router-link to="#contacts">Контакты</router-link>
                             </div>
                         </div>
-                        <div v-if="link.position === 'left'"
+                        <div v-if="link.position === 'left' && !isMobile"
                              class="w-50 d-flex justify-content-center align-items-center">
                             <img :src="`/img/services/${link.photo}`" :alt="link.title" class="w-75 h-75">
                         </div>
@@ -72,6 +75,11 @@ export default {
       ],
     };
   },
+  computed: {
+    isMobile() {
+      return window.mobileCheck();
+    },
+  },
 };
 </script>
 
@@ -107,8 +115,16 @@ h2 {
     padding: 3rem;
 }
 
+.links-description {
+    width: 50%;
+    padding-left: 3rem;
+}
+
 .buttons {
     margin-top: 10px;
+    display: flex;
+    align-items: end;
+    flex-wrap: nowrap;
 }
 
 .buttons a {
@@ -139,9 +155,41 @@ a:hover {
         line-height: 30px;
     }
 
+    h2 {
+        text-align: center;
+        font-size: 18px;
+        line-height: 18px;
+        margin-bottom: 12px;
+    }
 
     main {
         min-height: auto;
+    }
+
+    .links-row-body {
+        flex-direction: column;
+    }
+
+    .links-description {
+        width: 100%;
+    }
+
+    .links-row-body {
+        padding: 1rem;
+    }
+
+    .buttons {
+        justify-content: space-evenly;
+    }
+
+    .buttons > a {
+        width: 40%;
+        max-width: unset!important;
+        margin-right: 0;
+    }
+
+    .links-row-body {
+        border-radius: 14px;
     }
 }
 

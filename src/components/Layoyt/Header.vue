@@ -82,7 +82,7 @@
 
             <b-navbar-nav class="ml-auto mobile-show" v-if="!showSearch">
                 <b-link href="#" v-b-toggle.sidebar-right>
-                    <img src="@/assets/menu.svg" alt="Меню" class="image-search">
+                    <img :src="require(`@/assets/menu${isMainClass ? '' : '-dark'}.svg`)" alt="Меню" class="image-search mt-0">
                 </b-link>
                 <b-sidebar id="sidebar-right" right shadow no-header backdrop class="sidebar" body-class="px-3"
                            v-model="isShowSidebar">
