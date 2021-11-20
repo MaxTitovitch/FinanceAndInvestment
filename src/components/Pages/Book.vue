@@ -111,7 +111,6 @@ h2 {
     display: block;
     border-radius: 10px;
     width: 200px;
-    box-shadow: 0 22px 20px -12px rgba(36, 62, 233, 0.35);
 }
 
 .buttons .external-button {
@@ -138,8 +137,8 @@ a:hover {
 
 @media screen and (max-device-width: 767px) {
     h1, .h1  {
-        font-size: 30px!important;
-        line-height: 30px;
+        font-size: 3.5rem;
+        line-height: 3.5rem;
     }
 
     h2 {
@@ -180,7 +179,7 @@ a:hover {
     }
 
     .buttons > a {
-        width: 40%;
+        width: 42%;
         max-width: unset!important;
         margin-right: 0;
     }

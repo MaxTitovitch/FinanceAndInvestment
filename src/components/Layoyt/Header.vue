@@ -1,109 +1,115 @@
 <template>
-    <header class="container-fluid" :class="{['main-class']: isMainClass || isShowSidebar}">
-        <b-navbar toggleable="lg" variant="faded" type="light" class="flex-nowrap header-height pb-0">
-            <b-navbar-brand to="/" :class="showSearch ? 'mobile-hidden' : ''">
-                <h2 class="font-weight-bold" :class="{['light-color']: isMainClass || isShowSidebar}">Binvesting</h2>
-            </b-navbar-brand>
+    <div class="w-100" :class="{['main-class']: isMainClass || isShowSidebar}">
+        <header class="container">
+            <b-navbar toggleable="lg" variant="faded" type="light" class="flex-nowrap header-height pb-0">
+                <b-navbar-brand to="/" :class="showSearch ? 'mobile-hidden' : ''">
+                    <h2 class="font-weight-bold" :class="{['light-color']: isMainClass || isShowSidebar}">
+                        Binvesting</h2>
+                </b-navbar-brand>
 
-            <b-nav id="nav-collapse" is-nav class="w-100">
-                <b-navbar-nav class="mobile-hidden w-100 pr-5 d-flex justify-content-end" v-if="!showSearch">
-                    <MenuNavbar
-                            main-class="d-flex justify-content-around w-75"
-                            type="desktop"
-                            :is-main-class="isMainClass"
-                    />
-                </b-navbar-nav>
+                <b-nav id="nav-collapse" is-nav class="w-100">
+                    <b-navbar-nav class="mobile-hidden w-100 d-flex justify-content-end" v-if="!showSearch">
+                        <MenuNavbar
+                                main-class="d-flex justify-content-around w-75"
+                                type="desktop"
+                                :is-main-class="isMainClass"
+                        />
+                    </b-navbar-nav>
 
-                <b-navbar-nav class="search-area w-100 mt-2" v-if="showSearch">
-                    <b-nav-form class="search-form" form-class="align-end justify-content-between">
-                        <b-form-input
-                                id="searchInput"
-                                size="sm"
-                                class="mr-sm-2 search-input"
-                                placeholder="Поиск по терминам и видео"
-                                autocomplete="off"
-                                @keypress.enter.prevent
-                                @input="filtrateData"
-                                v-model="searchQuery"
-                        ></b-form-input>
-                    </b-nav-form>
-                    <b-nav-item href="#" class="text-dark search-close mobile-show" @click.prevent="toggleSearch">
-                        ×
-                    </b-nav-item>
-                </b-navbar-nav>
-                <div class="item-list" v-if="searchQuery && showSearch">
-                    <div class="item-list-body">
-                        <div v-for="(groups, index) in allGroups" :key="index">
-                            <div v-for="(group, index) in groups.array" :key="index">
-                                <h3 class="group-name-small" v-if="group[groups.type].length > 0">
-                                    {{ group.name }}
-                                </h3>
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div v-for="(entity, id) in group[groups.type]" :key="id" class="col-12 p-1">
-                                            <a href="#" class="entity-name"
-                                               @click.prevent="find(entity.name, groups.type)"
-                                               v-if="groups.type === 'videos'">
-                                                <img src="@/assets/noshow.svg" alt="Не просмотрено" class="eye"
-                                                     v-if="entity.showType === 'NOSHOW'">
-                                                <img src="@/assets/show.svg" alt="Просмотрено" class="eye"
-                                                     v-if="entity.showType === 'SHOW'">
-                                                <img src="@/assets/fullshow.svg" alt="Просмотрено полностью" class="eye"
-                                                     v-if="entity.showType === 'FULLSHOW'">
-                                                <span class="ml-2">{{ entity.name }}</span>
-                                            </a>
-                                            <a href="#" class="entity-name"
-                                               @click.prevent="find(entity.name, groups.type)"
-                                               v-if="groups.type === 'terms'">
-                                                {{ entity.name }}
-                                                <img src="@/assets/eye.svg" alt="Просмотрено" class="eye"
-                                                     v-if="entity.isShow">
-                                            </a>
+                    <b-navbar-nav class="search-area w-100 mt-2" v-if="showSearch">
+                        <b-nav-form class="search-form" form-class="align-end justify-content-between">
+                            <b-form-input
+                                    id="searchInput"
+                                    size="sm"
+                                    class="mr-sm-2 search-input"
+                                    placeholder="Поиск по терминам и видео"
+                                    autocomplete="off"
+                                    @keypress.enter.prevent
+                                    @input="filtrateData"
+                                    v-model="searchQuery"
+                            ></b-form-input>
+                        </b-nav-form>
+                        <b-nav-item href="#" class="text-dark search-close mobile-show" @click.prevent="toggleSearch">
+                            ×
+                        </b-nav-item>
+                    </b-navbar-nav>
+                    <div class="item-list" v-if="searchQuery && showSearch">
+                        <div class="item-list-body">
+                            <div v-for="(groups, index) in allGroups" :key="index">
+                                <div v-for="(group, index) in groups.array" :key="index">
+                                    <h3 class="group-name-small" v-if="group[groups.type].length > 0">
+                                        {{ group.name }}
+                                    </h3>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div v-for="(entity, id) in group[groups.type]" :key="id"
+                                                 class="col-12 p-1">
+                                                <a href="#" class="entity-name"
+                                                   @click.prevent="find(entity.name, groups.type)"
+                                                   v-if="groups.type === 'videos'">
+                                                    <img src="@/assets/noshow.svg" alt="Не просмотрено" class="eye"
+                                                         v-if="entity.showType === 'NOSHOW'">
+                                                    <img src="@/assets/show.svg" alt="Просмотрено" class="eye"
+                                                         v-if="entity.showType === 'SHOW'">
+                                                    <img src="@/assets/fullshow.svg" alt="Просмотрено полностью"
+                                                         class="eye"
+                                                         v-if="entity.showType === 'FULLSHOW'">
+                                                    <span class="ml-2">{{ entity.name }}</span>
+                                                </a>
+                                                <a href="#" class="entity-name"
+                                                   @click.prevent="find(entity.name, groups.type)"
+                                                   v-if="groups.type === 'terms'">
+                                                    {{ entity.name }}
+                                                    <img src="@/assets/eye.svg" alt="Просмотрено" class="eye"
+                                                         v-if="entity.isShow">
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-
+                            <div v-if="isHaveElements === 0">Ничего не найдено</div>
                         </div>
-                        <div v-if="isHaveElements === 0">Ничего не найдено</div>
                     </div>
-                </div>
-            </b-nav>
+                </b-nav>
 
-            <b-navbar-nav class="ml-auto mobile-show" v-if="!showSearch">
-                <b-link href="#" v-b-toggle.sidebar-right>
-                    <img :src="require(`@/assets/menu${isMainClass || isShowSidebar ? '' : '-dark'}.svg`)" alt="Меню"
-                         class="image-search mt-0">
-                </b-link>
-                <b-sidebar
-                        id="sidebar-right"
-                        right
-                        no-header
-                        body-class="sidebar px-3"
-                        width="100%"
-                        v-model="isShowSidebar"
-                >
-                    <MenuNavbar
-                            dropdown-class="menu-link"
-                            main-class="sidebar"
-                            first-item-claas="mt-1"
-                            type="mobile"
-                            isShowSidebar="isShowSidebar"
-                            :isMainClass="isMainClass || isShowSidebar"
-                            v-on:hide-sidebar="hideMenu"
-                    />
-                    <template slot="footer">
-                        <div class="links pa-2">
-                            <a :href="link.link" v-for="(link, i) in links" :key="i">
-                                <img :src="`/img/contacts/${link.photo}`" :alt="link.title">
-                                {{ link.title }}
-                            </a>
-                        </div>
-                    </template>
-                </b-sidebar>
-            </b-navbar-nav>
-        </b-navbar>
-    </header>
+                <b-navbar-nav class="ml-auto mobile-show" v-if="!showSearch">
+                    <b-link href="#" v-b-toggle.sidebar-right>
+                        <img :src="require(`@/assets/menu${isMainClass || isShowSidebar ? '' : '-dark'}.svg`)"
+                             alt="Меню"
+                             class="image-search mt-0">
+                    </b-link>
+                    <b-sidebar
+                            id="sidebar-right"
+                            right
+                            no-header
+                            body-class="sidebar px-3"
+                            width="100%"
+                            v-model="isShowSidebar"
+                    >
+                        <MenuNavbar
+                                dropdown-class="menu-link"
+                                main-class="sidebar"
+                                first-item-claas="mt-1"
+                                type="mobile"
+                                isShowSidebar="isShowSidebar"
+                                :isMainClass="isMainClass || isShowSidebar"
+                                v-on:hide-sidebar="hideMenu"
+                        />
+                        <template slot="footer">
+                            <div class="links pa-2">
+                                <a :href="link.link" v-for="(link, i) in links" :key="i">
+                                    <img :src="`/img/contacts/${link.photo}`" :alt="link.title">
+                                    {{ link.title }}
+                                </a>
+                            </div>
+                        </template>
+                    </b-sidebar>
+                </b-navbar-nav>
+            </b-navbar>
+        </header>
+    </div>
 </template>
 
 <script>
@@ -171,13 +177,13 @@ export default {
   watch: {
     isShowSidebar(value) {
       if (value) {
-        document.querySelector('html').classList.add('hide-scroll')
-        document.querySelector('html').classList.remove('show-scroll')
-      } else  {
-        document.querySelector('html').classList.add('show-scroll')
-        document.querySelector('html').classList.remove('hide-scroll')
+        document.querySelector('html').classList.add('hide-scroll');
+        document.querySelector('html').classList.remove('show-scroll');
+      } else {
+        document.querySelector('html').classList.add('show-scroll');
+        document.querySelector('html').classList.remove('hide-scroll');
       }
-    }
+    },
   },
   updated() {
     if (this.showSearch) {
@@ -420,12 +426,12 @@ img {
 .b-sidebar {
     overflow: hidden;
     padding-bottom: 3rem;
-    top: 72px!important;
-    height: calc(100vh - 72px)!important;
+    top: 72px !important;
+    height: calc(100vh - 72px) !important;
 }
 
 .b-sidebar.bg-light, .b-sidebar-footer, .b-sidebar-body {
-    background-color: #243EE9!important;
+    background-color: #243EE9 !important;
 }
 
 .b-sidebar-footer {

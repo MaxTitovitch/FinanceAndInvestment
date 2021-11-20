@@ -6,7 +6,7 @@
         <div class="container py-2 mt-3 text-center">
             <h1>Услуги которые мы предоставляем</h1>
         </div>
-        <div class="container">
+        <div class="container mb-5">
             <div class="row">
                 <div v-for="(link, i) in links" :key="i" class="col-12 links-row">
                     <div class="links-row-body">
@@ -29,7 +29,7 @@
                         </div>
                         <div v-if="link.position === 'left' && !isMobile"
                              class="w-50 d-flex justify-content-center align-items-center">
-                            <img :src="`/img/services/${link.photo}`" :alt="link.title" class="w-75 h-75">
+                            <img :src="`/img/services/${link.photo}`" :alt="link.title" class="link-image">
                         </div>
                     </div>
                 </div>
@@ -51,25 +51,25 @@ export default {
         {
           title: 'Финансовый консалтинг для компаний',
           description: 'Подготовим финансовую модель, оценим стоимость и кредитоспосбность компании.',
-          position: 'right',
+          position: 'left',
           photo: 'consulting.svg',
         },
         {
           title: 'Софтверные решения с аналитикой',
           description: 'Предоставим отчетность и аналитику по компаниям в удобном для вас формате.',
-          position: 'left',
+          position: 'right',
           photo: 'solutions.svg',
         },
         {
           title: 'Помощь в коммуникации с инвесторами',
           description: 'Поможем вам выстроить прозрачную систему коммуникации с инвесторами и привлечь средства на выгодных условиях.',
-          position: 'right',
+          position: 'left',
           photo: 'communication.svg',
         },
         {
           title: 'Персональные консультации по выбору портфеля',
           description: 'Поможем вам собрать инвестиционный портфель в зависимости от ваших целей и склонности к риску.',
-          position: 'left',
+          position: 'right',
           photo: 'package.svg',
         },
       ],
@@ -89,12 +89,18 @@ h1 {
     font-style: normal;
     font-weight: bold;
     color: #000000;
-    font-size: 3rem;
-    line-height: 3rem;
+    font-size: 3.5rem;
+    line-height: 3.5rem;
 }
 
 h2 {
     font-weight: bold;
+    font-size: 3rem;
+    line-height: 3rem;
+}
+
+.link-image {
+    width: 70%;
 }
 
 
@@ -137,7 +143,6 @@ h2 {
     display: block;
     border-radius: 10px;
     width: 200px;
-    box-shadow: 0 22px 20px -12px rgba(36, 62, 233, 0.35);
 }
 
 .buttons a:hover {
@@ -183,7 +188,7 @@ a:hover {
     }
 
     .buttons > a {
-        width: 40%;
+        width: 42%;
         max-width: unset!important;
         margin-right: 0;
     }

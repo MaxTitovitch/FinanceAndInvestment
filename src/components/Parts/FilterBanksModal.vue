@@ -140,7 +140,6 @@ export default {
     display: block;
     border-radius: 10px;
     width: 205px;
-    box-shadow: 0 22px 20px -12px rgba(36, 62, 233, 0.35);
   }
 
   .buttons:hover {

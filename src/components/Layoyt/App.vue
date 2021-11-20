@@ -64,7 +64,7 @@ body {
 }
 
 html {
-    overflow-y: scroll;
+    overflow-y: overlay;
 }
 
 .modal-open {
@@ -77,22 +77,36 @@ body.hide-scroll, html.hide-scroll {
 }
 
 body.show-scroll, html.show-scroll {
-    overflow-y: scroll!important;
+    overflow-y: overlay!important;
 }
 
 *::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    background-color: #F5F5F5;
+    border-radius: 15px;;
+    background-color: rgba(0,0,0,0);
+    opacity: 0;
+    visibility: hidden;
+}
+
+*::-webkit-scrollbar:hover {
+    background-color: red;
 }
 
 *::-webkit-scrollbar {
-    width: 12px;
-    background-color: #F5F5F5;
+    width: 10px;
+    background-color: rgba(0,0,0,0);
 }
 
+
 *::-webkit-scrollbar-thumb {
-    border-radius: 10px;
+    border-radius: 15px;
+    /*background-color: rgba(0,0,0,0);*/
+    background-clip: content-box;
+    border: 2px solid rgba(0,0,0,0);
+    background-color: #4a4a4a;
+}
+
+
+*::-webkit-scrollbar-thumb:hover {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     background-color: #4a4a4a;
 }

@@ -9,12 +9,12 @@
                 <h1>Ваш проводник в <br> финансовый мир!</h1>
             </div>
         </div>
-        <div class="container mt-5">
+        <div class="container my-5">
             <div class="row">
                 <div v-for="(link, i) in links" :key="i" class="col-12 links-row">
                     <div class="links-row-body">
                         <div v-if="link.position === 'right' && !isMobile" class="w-50 d-flex justify-content-center">
-                            <img :src="`/img/main/${link.photo}`" :alt="link.title" class="w-75">
+                            <img :src="`/img/main/${link.photo}`" :alt="link.title" class="link-image">
                         </div>
                         <div class="d-flex flex-column justify-content-between links-description p-3">
                             <div>
@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div v-if="link.position === 'left' && !isMobile" class="w-50 d-flex justify-content-center">
-                            <img :src="`/img/main/${link.photo}`" :alt="link.title" class="w-75">
+                            <img :src="`/img/main/${link.photo}`" :alt="link.title" class="link-image">
                         </div>
                     </div>
                 </div>
@@ -100,15 +100,19 @@ h1 {
     text-align: center;
     color: #FFFFFF;
     padding-bottom: 5rem;
-    font-size: 4rem;
-    line-height: 4rem;
+    font-size: 3.5rem;
+    line-height: 3.5rem;
 }
 
 h2 {
     font-weight: bold;
 
-    font-size: 2rem;
-    line-height: 2rem;
+    font-size: 3rem;
+    line-height: 3rem;
+}
+
+.link-image {
+    width: 70%;
 }
 
 .links-description {
@@ -166,7 +170,6 @@ h2 {
     display: block;
     border-radius: 10px;
     width: 205px;
-    box-shadow: 0 22px 20px -12px rgba(36, 62, 233, 0.35);
 }
 
 .buttons a:hover {

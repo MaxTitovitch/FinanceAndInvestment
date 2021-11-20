@@ -12,7 +12,7 @@
                     <div class="links-row-body">
                         <div v-if="link.position === 'right' && !isMobile"
                              class="w-50 d-flex justify-content-center align-items-center">
-                            <img :src="`/img/cases/${link.photo}`" :alt="link.title" class="w-75 h-75">
+                            <img :src="`/img/cases/${link.photo}`" :alt="link.title" class="link-image">
                         </div>
                         <div class="d-flex flex-column justify-content-between links-description p-3">
                             <div>
@@ -29,7 +29,7 @@
                         </div>
                         <div v-if="link.position === 'left' && !isMobile"
                              class="w-50 d-flex justify-content-center align-items-center">
-                            <img :src="`/img/cases/${link.photo}`" :alt="link.title" class="w-75 h-75">
+                            <img :src="`/img/cases/${link.photo}`" :alt="link.title" class="link-image">
                         </div>
                     </div>
                 </div>
@@ -105,14 +105,19 @@ h1, .h1 {
     font-style: normal;
     font-weight: bold;
     color: #000000;
-    font-size: 3rem;
-    line-height: 3rem;
+    font-size: 3.5rem;
+    line-height: 3.5rem;
 }
 
 h2 {
     font-weight: bold;
+    font-size: 3rem;
+    line-height: 3rem;
 }
 
+.link-image {
+    width: 85%;
+}
 
 .links-row {
     display: flex;
@@ -156,7 +161,6 @@ h2 {
     display: block;
     border-radius: 10px;
     width: 200px;
-    box-shadow: 0 22px 20px -12px rgba(36, 62, 233, 0.35);
 }
 
 .buttons a:hover {
@@ -202,7 +206,7 @@ a:hover {
     }
 
     .buttons > a {
-        width: 40%;
+        width: 42%;
         max-width: unset!important;
         margin-right: 0;
     }
