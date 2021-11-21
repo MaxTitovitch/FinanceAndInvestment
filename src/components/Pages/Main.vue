@@ -14,7 +14,7 @@
                 <div v-for="(link, i) in links" :key="i" class="col-12 links-row">
                     <div class="links-row-body">
                         <div v-if="link.position === 'right' && !isMobile" class="w-50 d-flex justify-content-center">
-                            <img :src="`/img/main/${link.photo}`" :alt="link.title" class="link-image">
+                            <img :src="`/img/main/${link.photo}`" :alt="link.title" class="link-image" :class="link.otherClass || ''">
                         </div>
                         <div class="d-flex flex-column justify-content-between links-description p-3">
                             <div>
@@ -22,7 +22,7 @@
                                 <p class="mobile-hidden">{{ link.description }}</p>
                             </div>
                             <div v-if="isMobile" class="w-100 d-flex justify-content-center">
-                                <img :src="`/img/main/${link.photo}`" :alt="link.title" class="w-75">
+                                <img :src="`/img/main/${link.photo}`" :alt="link.title" :class="link.otherClass || 'w-75'">
                             </div>
                             <div class="buttons mt-3 mt-md-0">
                                 <div class="w-100">
@@ -31,7 +31,7 @@
                             </div>
                         </div>
                         <div v-if="link.position === 'left' && !isMobile" class="w-50 d-flex justify-content-center">
-                            <img :src="`/img/main/${link.photo}`" :alt="link.title" class="link-image">
+                            <img :src="`/img/main/${link.photo}`" :alt="link.title" class="link-image" :class="link.otherClass || ''">
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,8 @@ export default {
           description: 'В нашей книге мы собрали все необходимые знания для старта в инвестициях с нуля. В ней вы найдете обзор основных инвестиционных инструментов, рекомендации по выбору портфеля, а также в книге развенчаны основные мифы и заблуждения новичков.',
           position: 'left',
           link: '/book',
-          photo: 'book.svg',
+          photo: 'book.png',
+          otherClass: 'w-50',
         },
       ],
     };
@@ -100,15 +101,15 @@ h1 {
     text-align: center;
     color: #FFFFFF;
     padding-bottom: 5rem;
-    font-size: 3.5rem;
-    line-height: 3.5rem;
+    font-size: 3.4rem;
+    line-height: 3.4rem;
 }
 
 h2 {
     font-weight: bold;
 
-    font-size: 3rem;
-    line-height: 3rem;
+    font-size: 2.9rem;
+    line-height: 2.9rem;
 }
 
 .link-image {

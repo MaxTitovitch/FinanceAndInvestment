@@ -47,9 +47,22 @@ export default {
     font-weight: 400;
     font-style: normal;
 }
+@font-face {
+    font-family: 'RubikBold';
+    src: local('RubikBold'),
+    local('Rubik-Regular'),
+    url('~@/assets/fonts/RB.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
 
 .blur {
     background: rgba(0, 0, 0, .1);
+}
+
+h1, h2 {
+    font-family: RubikBold,serif!important;
+
 }
 
 html, body {
@@ -65,6 +78,8 @@ body {
 
 html {
     overflow-y: overlay;
+    max-width: 100vw!important;
+    overflow-x: hidden;
 }
 
 .modal-open {
@@ -80,37 +95,37 @@ body.show-scroll, html.show-scroll {
     overflow-y: overlay!important;
 }
 
-*::-webkit-scrollbar-track {
-    border-radius: 15px;;
-    background-color: rgba(0,0,0,0);
-    opacity: 0;
-    visibility: hidden;
+/**::-webkit-scrollbar-track {*/
+/*    border-radius: 15px;;*/
+/*    background-color: rgba(0,0,0,0);*/
+/*    opacity: 0;*/
+/*    visibility: hidden;*/
+/*}*/
+
+
+/**::-webkit-scrollbar {*/
+/*    width: 10px;*/
+/*    background-color: rgba(0,0,0,0);*/
+/*}*/
+
+
+/**::-webkit-scrollbar-thumb {*/
+/*    border-radius: 15px;*/
+/*    !*background-color: rgba(0,0,0,0);*!*/
+/*    background-clip: content-box;*/
+/*    border: 2px solid rgba(0,0,0,0);*/
+/*    background-color: #4a4a4a;*/
+/*}*/
+
+
+/**::-webkit-scrollbar-thumb:hover {*/
+/*    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);*/
+/*    background-color: #4a4a4a;*/
+/*}*/
+
+.pointer {
+    cursor: pointer;
 }
-
-*::-webkit-scrollbar:hover {
-    background-color: red;
-}
-
-*::-webkit-scrollbar {
-    width: 10px;
-    background-color: rgba(0,0,0,0);
-}
-
-
-*::-webkit-scrollbar-thumb {
-    border-radius: 15px;
-    /*background-color: rgba(0,0,0,0);*/
-    background-clip: content-box;
-    border: 2px solid rgba(0,0,0,0);
-    background-color: #4a4a4a;
-}
-
-
-*::-webkit-scrollbar-thumb:hover {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-    background-color: #4a4a4a;
-}
-
 
 h1, h2, h3, h4, h5, p, span, div {
     font-family: Rubik, serif;
@@ -123,6 +138,7 @@ h1, h2, h3, h4, h5, p, span, div {
     align-items: center;
     flex-wrap: nowrap;
     flex-direction: column;
+    padding-top: 72px;
 }
 
 #app > * {

@@ -3,7 +3,7 @@
         <div>
             <vue-headful title="Книга - ЭБ Инвестиции" description="Книга - ЭБ Инвестиции"/>
         </div>
-        <div class="container py-2 mt-3 text-center">
+        <div class="container pt-5 pb-2 mt-3 text-center">
             <h1>Инвестиции с нуля</h1>
         </div>
         <div class="container">
@@ -11,11 +11,11 @@
                 <div class="col-12 links-row">
                     <div class="links-row-body">
                         <div v-if="!isMobile" class="w-50 d-flex justify-content-center align-items-center">
-                            <img :src="`/img/book.svg`" alt="Book" class="w-75 h-100">
+                            <img :src="`/img/book.png`" alt="Book" class="w-50 h-100">
                         </div>
                         <div class="d-flex flex-column justify-content-between links-description p-3">
                             <div v-if="isMobile" class="w-100 d-flex justify-content-center align-items-center">
-                                <img :src="`/img/book.svg`" alt="Book" class="w-75 h-100">
+                                <img :src="`/img/book.png`" alt="Book" class="w-50 h-100">
                             </div>
                             <div class="book-text">
                                 <h2>Описание книги</h2>
@@ -63,8 +63,8 @@ h1 {
     font-style: normal;
     font-weight: bold;
     color: #000000;
-    font-size: 3rem;
-    line-height: 3rem;
+    font-size: 2.9rem;
+    line-height: 2.9rem;
 }
 
 h2 {
@@ -137,8 +137,8 @@ a:hover {
 
 @media screen and (max-device-width: 767px) {
     h1, .h1  {
-        font-size: 3.5rem;
-        line-height: 3.5rem;
+        font-size: 3.4rem;
+        line-height: 3.4rem;
     }
 
     h2 {

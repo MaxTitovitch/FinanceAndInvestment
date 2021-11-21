@@ -62,7 +62,7 @@ export default {
           photo: `phone${modifier}.svg`,
         },
         {
-          title: '@eugene_levy',
+          title: '@binvesting',
           link: Settings.LINK_TELEGRAM,
           photo: `telegram${modifier}.svg`,
         },

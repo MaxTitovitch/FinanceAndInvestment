@@ -1,5 +1,5 @@
 <template>
-    <div class="w-100" :class="{['main-class']: isMainClass || isShowSidebar}">
+    <div class="w-100 header-wrapper" :class="{['main-class']: isMainClass || isShowSidebar}">
         <header class="container">
             <b-navbar toggleable="lg" variant="faded" type="light" class="flex-nowrap header-height pb-0">
                 <b-navbar-brand to="/" :class="showSearch ? 'mobile-hidden' : ''">
@@ -133,7 +133,7 @@ export default {
           photo: `phone-light.svg`,
         },
         {
-          title: '@eugene_levy',
+          title: '@binvesting',
           link: Settings.LINK_TELEGRAM,
           photo: `telegram-light.svg`,
         },
@@ -234,12 +234,23 @@ export default {
 </script>
 
 <style scoped>
+.header-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 1000;
+    background: white;
+    border-bottom: 1px solid #eaeaea;
+}
+
 header {
     padding-bottom: 0;
 }
 
 .main-class {
     background: #243EE9;
+    border-bottom: none!important;
 }
 
 .header-height {

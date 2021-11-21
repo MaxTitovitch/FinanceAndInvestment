@@ -15,15 +15,15 @@
                     </router-link>
                 </div>
                 <div class="col-12 col-md-4 d-flex flex-wrap align-items-end flex-column footer-link mt-4 mt-md-0">
-                    <router-link class="text-dark" :to="Settings.LINK_PHONE">
+                    <a class="text-dark pointer" target="_blank" @click="openLink(Settings.LINK_PHONE)">
                         <img :src="`/img/contacts/phone.svg`" class="mobile-show mr-1" alt="Phone">
                         <span>+375 (29) 768-19-40</span>
-                    </router-link>
+                    </a>
                     <div class="footer-social d-flex justify-content-end mt-2">
-                        <router-link class="text-dark" :to="link.link" v-for="(link, i) in socialLinks" :key="i">
+                        <a class="text-dark pointer" target="_blank" @click="openLink(link.link)" v-for="(link, i) in socialLinks" :key="i">
                             <img :src="`/img/contacts/${link.photo}`" :alt="link.title" class="mr-1">
                             <span class="mobile-show">{{ link.title }}</span>
-                        </router-link>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@ export default {
       ],
       socialLinks: [
         {
-          title: '@eugene_levy',
+          title: '@binvesting',
           link: Settings.LINK_TELEGRAM,
           photo: 'telegram.svg',
         },
@@ -84,7 +84,12 @@ export default {
       return this.links.filter(link => {
         return window.mobileCheck() ? !link.onlyDesktop : !link.onlyMobile;
       })
-    }
+    },
+  },
+  methods: {
+    openLink(link) {
+      window.open(link, '_blank');
+    },
   },
 };
 </script>
@@ -102,6 +107,7 @@ export default {
 footer {
     background: #F5F5F5;
     padding: 32px 0 10px;
+    max-width: 100vw;
 }
 
 .footer-link {

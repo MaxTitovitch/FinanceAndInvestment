@@ -3,7 +3,7 @@
         <div>
             <vue-headful title="Услуги - ЭБ Инвестиции" description="Услуги - ЭБ Инвестиции"/>
         </div>
-        <div class="container py-2 mt-3 text-center">
+        <div class="container py-5 mt-3 text-center">
             <h1>Услуги которые мы предоставляем</h1>
         </div>
         <div class="container mb-5">
@@ -89,14 +89,14 @@ h1 {
     font-style: normal;
     font-weight: bold;
     color: #000000;
-    font-size: 3.5rem;
-    line-height: 3.5rem;
+    font-size: 3.4rem;
+    line-height: 3.4rem;
 }
 
 h2 {
     font-weight: bold;
-    font-size: 3rem;
-    line-height: 3rem;
+    font-size: 2.9rem;
+    line-height: 2.9rem;
 }
 
 .link-image {
