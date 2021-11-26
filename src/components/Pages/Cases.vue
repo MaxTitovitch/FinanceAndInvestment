@@ -42,23 +42,24 @@
             <h2 class="h1">С кем мы работали</h2>
         </div>
         <div class="container mb-5">
-            <div class="row links-horizontal mx-2 mx-md-0">
-                <div v-for="(image, i) in images" :key="i" class="col-6 col-md-4 links-row">
-                    <div class="links-row-body p-1">
-                        <div class="w-100 d-flex justify-content-center align-items-center">
-                            <img :src="`/img/cases/company/${image.photo}`" :alt="image.title" class="w-100">
-                        </div>
+            <splide :options="options" class="mb-5">
+                <splide-slide v-for="(image, index) in images" :key="index" class="links-row p-4">
+                    <div class="links-row-body p-1 my-2">
+                        <img :src="`/img/cases/company/${image.photo}`" :alt="image.title" class="w-100">
                     </div>
-                </div>
-            </div>
+                </splide-slide>
+            </splide>
         </div>
     </main>
 </template>
 
 <script>
+import {Splide, SplideSlide} from '@splidejs/vue-splide';
+import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 
 export default {
   name: 'Cases',
+  components: {Splide, SplideSlide},
   mounted() {
     this.$store.commit('setSearch', false);
   },
@@ -105,6 +106,19 @@ export default {
     isMobile() {
       return window.mobileCheck();
     },
+
+    options() {
+      const perPage = window.mobileCheck() ? 1 : 3;
+
+      return {
+        slide: 'loop',
+        rewind: true,
+        autoplay: true,
+        speed: 500,
+        perPage,
+        arrowPath: 'M84,44H21.656l21.456-21.456c1.562-1.562,1.562-4.095,0.001-5.657c-1.562-1.562-4.096-1.562-5.658,0L9.172,45.171l0,0  c-0.186,0.186-0.352,0.391-0.498,0.61c-0.067,0.101-0.114,0.21-0.171,0.315c-0.067,0.124-0.142,0.242-0.196,0.373  c-0.056,0.135-0.088,0.276-0.129,0.416c-0.032,0.111-0.075,0.217-0.098,0.331C8.028,47.475,8,47.737,8,48l0,0  c0,0.003,0.001,0.005,0.001,0.008c0,0.259,0.027,0.519,0.078,0.774c0.024,0.121,0.069,0.232,0.104,0.349  c0.039,0.133,0.07,0.268,0.123,0.397c0.058,0.139,0.136,0.265,0.208,0.396c0.054,0.098,0.096,0.198,0.159,0.292  c0.147,0.221,0.314,0.427,0.501,0.614l28.282,28.281c1.562,1.562,4.095,1.562,5.657,0.001c1.562-1.562,1.562-4.096,0-5.658  L21.657,52H84c2.209,0,4-1.791,4-4S86.209,44,84,44z',
+      };
+    },
   },
 };
 </script>
@@ -137,34 +151,34 @@ h2 {
 }
 
 
-.links-horizontal {
-    flex-wrap: nowrap !important;
-    overflow-x: scroll;
-    scroll-direction: horizontal;
-}
+/*.links-horizontal {*/
+/*    flex-wrap: nowrap !important;*/
+/*    overflow-x: scroll;*/
+/*    scroll-direction: horizontal;*/
+/*}*/
 
-.links-horizontal::-webkit-scrollbar-track {
-    border-radius: 10px;;
-    background-color: #e9e9e9;
-}
-
-
-.links-horizontal::-webkit-scrollbar {
-    height: 5px;
-    background-color: rgba(0, 0, 0, 0);
-}
+/*.links-horizontal::-webkit-scrollbar-track {*/
+/*    border-radius: 10px;;*/
+/*    background-color: #e9e9e9;*/
+/*}*/
 
 
-.links-horizontal::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #8f8f8f;
-}
+/*.links-horizontal::-webkit-scrollbar {*/
+/*    height: 5px;*/
+/*    background-color: rgba(0, 0, 0, 0);*/
+/*}*/
 
 
-.links-horizontal::-webkit-scrollbar-thumb:hover {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-    background-color: #4a4a4a;
-}
+/*.links-horizontal::-webkit-scrollbar-thumb {*/
+/*    border-radius: 10px;*/
+/*    background-color: #8f8f8f;*/
+/*}*/
+
+
+/*.links-horizontal::-webkit-scrollbar-thumb:hover {*/
+/*    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);*/
+/*    background-color: #4a4a4a;*/
+/*}*/
 
 
 .links-row-body {
@@ -264,4 +278,45 @@ a:hover {
     }
 }
 
+</style>
+
+<style>
+.splide__pagination__page.is-active {
+    background: darkgray !important;
+}
+
+.splide__arrow {
+    top: calc(100% - 16px);
+    margin-bottom: 20px;
+    z-index: 10000;
+    background-color: unset!important;
+    background-size: cover;
+    padding: 10px;
+}
+
+.splide__arrow:hover {
+    fill: white;
+    border-radius: 50%;
+    background-color: #2d65e0!important;
+}
+
+.splide__arrow--prev {
+    background-image: url("/img/arrow-slider-left.svg");
+}
+
+.splide__arrow--next {
+    background-image: url("/img/arrow-slider-right.svg");
+}
+
+.splide__arrow--prev:hover {
+    background-image: url("/img/arrow-slider-left-white.svg");
+}
+
+.splide__arrow--next:hover {
+    background-image: url("/img/arrow-slider-right-white.svg");
+}
+
+.splide__arrow svg {
+    display: none!important;
+}
 </style>
