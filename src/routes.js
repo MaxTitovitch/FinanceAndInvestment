@@ -8,7 +8,6 @@ import Error404 from "@/components/Pages/Error404";
 import Book from "@/components/Pages/Book";
 import Cases from "@/components/Pages/Cases";
 import Hook from "@/components/Pages/Hook";
-import Learning from "@/components/Pages/Learning";
 import Services from "@/components/Pages/Services";
 
 export default [
@@ -61,11 +60,6 @@ export default [
         path: '/hook',
         name: 'hook',
         component: Hook,
-    },
-    {
-        path: '/learning',
-        name: 'learning',
-        component: Learning,
     },
     {
         path: '/services',

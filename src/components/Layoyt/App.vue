@@ -41,9 +41,9 @@ export default {
     font-family: 'Rubik';
     src: local('Rubik'),
     local('Rubik-Regular'),
-    url('~@/assets/fonts/Rubik.woff2') format('woff2'),
-    url('~@/assets/fonts/Rubik.woff') format('woff'),
-    url('~@/assets/fonts/Rubik.ttf') format('truetype');
+    /*url('~@/assets/fonts/Rubik.woff2') format('woff2'),*/
+    /*url('~@/assets/fonts/Rubik.woff') format('woff'),*/
+    url('~@/assets/fonts/Rubik-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
@@ -59,7 +59,7 @@ export default {
     font-family: 'RubikBold';
     src: local('RubikBold'),
     local('Rubik-Regular'),
-    url('~@/assets/fonts/RB.ttf') format('truetype');
+    url('~@/assets/fonts/Rubik-ExtraBold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
 }

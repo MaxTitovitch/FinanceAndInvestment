@@ -99,6 +99,11 @@ export default {
 .footer-logo {
     color: black;
 }
+.footer-logo h3 {
+    font-family: RobotoBold,serif!important;
+    font-weight: bold;
+}
+
 
 .footer-logo:hover {
     text-decoration: none;

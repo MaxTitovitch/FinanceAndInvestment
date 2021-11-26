@@ -9,9 +9,9 @@
         <div class="container">
             <div class="row">
                 <div v-for="(link, i) in links" :key="i" class="col-12 links-row">
-                    <div class="links-row-body">
+                    <div class="links-row-body height-size">
                         <div v-if="link.position === 'right' && !isMobile"
-                             class="w-50 d-flex justify-content-center align-items-center">
+                             class="w-55 d-flex justify-content-center align-items-center">
                             <img :src="`/img/cases/company/${link.photo}`" :alt="link.title" class="link-image">
                         </div>
                         <div class="d-flex flex-column justify-content-between links-description p-3">
@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div v-if="link.position === 'left' && !isMobile"
-                             class="w-50 d-flex justify-content-center align-items-center">
+                             class="w-55 d-flex justify-content-center align-items-center">
                             <img :src="`/img/cases/company/${link.photo}`" :alt="link.title" class="link-image">
                         </div>
                     </div>
@@ -134,14 +134,16 @@ h1, .h1 {
 }
 
 h2 {
+    font-family: Rubik, serif;
     font-weight: bold;
-    font-size: 2.9rem;
-    line-height: 2.9rem;
+    font-size: 2.35rem;
+    line-height: 2.35rem;
 }
 
 .link-image {
     width: 90%;
 }
+
 
 .links-row {
     display: flex;
@@ -149,36 +151,6 @@ h2 {
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
-
-
-/*.links-horizontal {*/
-/*    flex-wrap: nowrap !important;*/
-/*    overflow-x: scroll;*/
-/*    scroll-direction: horizontal;*/
-/*}*/
-
-/*.links-horizontal::-webkit-scrollbar-track {*/
-/*    border-radius: 10px;;*/
-/*    background-color: #e9e9e9;*/
-/*}*/
-
-
-/*.links-horizontal::-webkit-scrollbar {*/
-/*    height: 5px;*/
-/*    background-color: rgba(0, 0, 0, 0);*/
-/*}*/
-
-
-/*.links-horizontal::-webkit-scrollbar-thumb {*/
-/*    border-radius: 10px;*/
-/*    background-color: #8f8f8f;*/
-/*}*/
-
-
-/*.links-horizontal::-webkit-scrollbar-thumb:hover {*/
-/*    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);*/
-/*    background-color: #4a4a4a;*/
-/*}*/
 
 
 .links-row-body {
@@ -192,12 +164,25 @@ h2 {
     padding: 3rem;
 }
 
+.height-size {
+    height: 450px;
+}
+
+.links-row-body > div {
+    height: 100%;
+}
+
 .links-row-body img {
     border-radius: 45px;
+    max-height: 100%;
+}
+
+.w-55 {
+    width: 47% !important;
 }
 
 .links-description {
-    width: 50%;
+    width: 53%;
     padding-left: 3rem;
 }
 
@@ -297,7 +282,7 @@ a:hover {
 .splide__arrow:hover {
     fill: white;
     border-radius: 50%;
-    background-color: #2d65e0!important;
+    background-color: #243EE9!important;
 }
 
 .splide__arrow--prev {

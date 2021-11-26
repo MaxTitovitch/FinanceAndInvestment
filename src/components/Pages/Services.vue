@@ -9,7 +9,7 @@
         <div class="container mb-5">
             <div class="row">
                 <div v-for="(link, i) in links" :key="i" class="col-12 links-row">
-                    <div class="links-row-body">
+                    <div class="links-row-body height-size">
                         <div v-if="link.position === 'right' && !isMobile"
                              class="w-50 d-flex justify-content-center align-items-center">
                             <img :src="`/img/services/${link.photo}`" :alt="link.title" class="w-75 h-75">
@@ -95,8 +95,8 @@ h1 {
 
 h2 {
     font-weight: bold;
-    font-size: 2.9rem;
-    line-height: 2.9rem;
+    font-size: 2.7rem;
+    line-height: 2.7rem;
 }
 
 .link-image {
@@ -119,6 +119,14 @@ h2 {
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
     border-radius: 45px;
     padding: 3rem;
+}
+
+.height-size {
+    height: 450px;
+}
+
+.links-row-body > div {
+    height: 100%;
 }
 
 .links-description {

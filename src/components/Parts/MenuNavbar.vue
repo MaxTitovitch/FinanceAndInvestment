@@ -1,23 +1,23 @@
 <template>
     <div :class="{[mainClass]: true, ['light-color']: isMainClass}" class="main-menu d-flex justify-content-between">
         <div class="text-center d-flex justify-content-center align-items-center py-1 py-md-3"
-             :class="{'w-20': type === 'desktop'}">
+             :class="{'submenu-link-hovered small-size': type === 'desktop'}">
             <router-link to="/" class="menu-link" @click.native="hideMenu">Главная</router-link>
         </div>
         <div class="text-center d-flex justify-content-center align-items-center py-1 py-md-3"
-             :class="{'w-20': type === 'desktop'}">
+             :class="{'submenu-link-hovered small-size': type === 'desktop'}">
             <router-link to="/services" class="menu-link" @click.native="hideMenu">Услуги</router-link>
         </div>
         <div class="text-center d-flex justify-content-center align-items-center py-1 py-md-3"
-             :class="{'w-20': type === 'desktop'}">
+             :class="{'submenu-link-hovered small-size': type === 'desktop'}">
             <router-link to="/cases" class="menu-link" @click.native="hideMenu">Кейсы</router-link>
         </div>
         <div class="text-center d-flex justify-content-center align-items-center py-1 py-md-3"
-             :class="{'w-20': type === 'desktop'}">
+             :class="{'submenu-link-hovered small-size': type === 'desktop'}">
             <router-link to="/book" class="menu-link" @click.native="hideMenu">Книга</router-link>
         </div>
-        <div class="d-flex justify-content-start submenu-link"
-             :class="{'w-20': type === 'desktop', [dropdownClass]: true}">
+        <div class="d-flex justify-content-center submenu-link"
+             :class="{'submenu-link-hovered': type === 'desktop', [dropdownClass]: true}">
             <div class="d-flex align-items-center h-100">
                 <div
                         class="dropdown-body"
@@ -42,8 +42,8 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-start submenu-link"
-             :class="{'w-20': type === 'desktop', [dropdownClass]: true}">
+        <div class="d-flex justify-content-center submenu-link"
+             :class="{'submenu-link-hovered': type === 'desktop', [dropdownClass]: true}">
             <div class="d-flex align-items-center h-100">
                 <div class="dropdown-body"
                      @mouseenter="changeDropdown(type === 'desktop', 1)"
@@ -68,7 +68,7 @@
             </div>
         </div>
         <div class="text-center d-flex justify-content-center align-items-center py-1 py-md-3"
-             :class="{'w-20': type === 'desktop'}">
+             :class="{'submenu-link-hovered': type === 'desktop'}">
             <router-link to="#contacts" class="menu-link" @click.native.prevent="hideMenu">Контакты</router-link>
         </div>
     </div>
@@ -120,6 +120,14 @@ export default {
 
 <style>
 
+.submenu-link-hovered {
+    width: 150px;
+}
+
+.submenu-link-hovered.small-size {
+    width: 120px;
+}
+
 .light-color a, .light-color .dropdown-button {
     color: white !important;
 }
@@ -162,6 +170,7 @@ export default {
 .menu-link a:hover, .menu-link:hover, .dropdown-button:hover, .dropdown-body:hover .dropdown-button {
     text-decoration: none;
     font-weight: bold;
+    font-size: 17px;
 }
 
 .light-color {
@@ -201,7 +210,7 @@ p.menu-link > a {
     border: 1px solid lightgrey;
     border-radius: 10px;
     padding: 10px 30px;
-    min-width: 160px;
+    min-width: 200px;
 }
 
 .dropdown-items p {
