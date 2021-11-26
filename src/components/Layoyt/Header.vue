@@ -3,7 +3,7 @@
         <header class="container">
             <b-navbar toggleable="lg" variant="faded" type="light" class="flex-nowrap header-height pb-0">
                 <b-navbar-brand to="/" :class="showSearch ? 'mobile-hidden' : ''">
-                    <h2 class="font-weight-bold" :class="{['light-color']: isMainClass || isShowSidebar}">
+                    <h2 class="header-logo" :class="{['light-color']: isMainClass || isShowSidebar}">
                         Binvesting</h2>
                 </b-navbar-brand>
 
@@ -242,6 +242,10 @@ export default {
     z-index: 1000;
     background: white;
     border-bottom: 1px solid #eaeaea;
+}
+
+.header-logo {
+    font-family: RobotoBold,serif!important;
 }
 
 header {

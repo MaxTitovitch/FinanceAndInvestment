@@ -5,7 +5,7 @@
         </div>
         <div class="container">
             <div class="row justify-content-center mt-3">
-                <div class="col-12 col-md-5">
+                <div class="col-12 col-md-5 search-row">
                     <div class="w-100 form-container">
                         <b-nav-form class="search-form" form-class="align-end justify-content-between w-100">
                             <b-form-input
@@ -25,7 +25,7 @@
                             ×
                         </a>
                     </div>
-                    <div class="item-list" v-if="searchQuery && isHaveElements !== searchQuery">
+                    <div class="item-list" v-if="searchQuery && isHaveElements !== searchQuery && isShowSearch">
                         <div class="item-list-body">
                             <div v-for="(group, index) in groups" :key="index">
                                 <h3 class="group-name-small" v-if="group.terms.length > 0">
@@ -126,6 +126,7 @@ export default {
       searchQuery: '',
       scrollTop: 0,
       groupGroups: ['З', 'К', 'О', 'Т', 'Ц', 'Я', '!'],
+      isShowSearch: false,
     };
   },
   beforeUpdate() {
@@ -145,6 +146,7 @@ export default {
       this.$store.commit('filtrateTerms', this.searchQuery);
       this.$store.dispatch('initGroupTerms', {lastGroupName: this.groupGroups.reverse()[0]});
       this.groupGroups = [];
+      this.isShowSearch = this.searchQuery !== '';
     },
     showTerm(term, event) {
       this.$store.commit('hideTerms');
@@ -179,6 +181,13 @@ export default {
     clearNameFilter() {
       this.findTerm('');
     },
+  },
+  created() {
+    document.addEventListener('click', e => {
+      if(!e.target.closest('.search-row')) {
+        this.isShowSearch = false;
+      }
+    });
   },
 };
 </script>

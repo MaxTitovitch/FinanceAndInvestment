@@ -48,6 +48,14 @@ export default {
     font-style: normal;
 }
 @font-face {
+    font-family: 'RobotoBold';
+    src: local('RobotoBold'),
+    local('Roboto-Bold'),
+    url('~@/assets/fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
     font-family: 'RubikBold';
     src: local('RubikBold'),
     local('Rubik-Regular'),

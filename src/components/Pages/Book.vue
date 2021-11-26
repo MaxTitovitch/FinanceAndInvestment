@@ -11,11 +11,11 @@
                 <div class="col-12 links-row">
                     <div class="links-row-body">
                         <div v-if="!isMobile" class="w-50 d-flex justify-content-center align-items-center">
-                            <img :src="`/img/book.png`" alt="Book" class="w-50 h-100">
+                            <img :src="`/img/book.jpg`" alt="Book" class="w-50 h-100">
                         </div>
                         <div class="d-flex flex-column justify-content-between links-description p-3">
                             <div v-if="isMobile" class="w-100 d-flex justify-content-center align-items-center">
-                                <img :src="`/img/book.png`" alt="Book" class="w-50 h-100">
+                                <img :src="`/img/book.jpg`" alt="Book" class="w-50 h-100">
                             </div>
                             <div class="book-text">
                                 <h2>Описание книги</h2>
