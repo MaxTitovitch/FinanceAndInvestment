@@ -1,7 +1,7 @@
 <template>
     <main>
         <div>
-            <vue-headful title="Книга - ЭБ Инвестиции" description="Книга - ЭБ Инвестиции"/>
+            <vue-headful title="Книга - Binvesting" description="Книга - Binvesting"/>
         </div>
         <div class="container pt-5 pb-2 mt-3 text-center">
             <h1>Инвестиции с нуля</h1>

@@ -1,7 +1,7 @@
 <template>
   <div id="videos">
     <div>
-      <vue-headful title="Видео - ЭБ Инвестиции" description="Видео - ЭБ Инвестиции"/>
+      <vue-headful title="Видео - Binvesting" description="Видео - Binvesting"/>
     </div>
     <div class="container">
       <div class="row justify-content-center mt-3">

@@ -29,7 +29,7 @@
             </div>
             <div class="row mt-4 mobile-hidden">
                 <div class="col-12 text-center">
-                    <p class="font-weight-bold">© {{ year }} ЭБ Беларусь. Все права защищены.</p>
+                    <p class="font-weight-bold">© {{ year }} Binvesting. Все права защищены.</p>
                 </div>
             </div>
         </div>

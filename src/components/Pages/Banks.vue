@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <vue-headful title="Оценки банков - ЭБ Беларусь" description="Оценки банков - ЭБ Беларусь"/>
+      <vue-headful title="Оценки банков - Binvesting" description="Оценки банков - Binvesting"/>
     </div>
     <div class="container">
       <div class="row justify-content-between mt-3">

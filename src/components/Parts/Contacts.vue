@@ -18,7 +18,7 @@
                 Контактная информация
             </h2>
             <div class="links">
-                <a :href="link.link" v-for="(link, i) in links" :key="i">
+                <a :href="link.link" v-for="(link, i) in links" :key="i" target="_blank">
                     <img :src="`/img/contacts/${link.photo}`" :alt="link.title">
                     {{ link.title }}
                 </a>
@@ -62,8 +62,8 @@ export default {
           photo: `phone${modifier}.svg`,
         },
         {
-          title: '@binvesting',
-          link: Settings.LINK_TELEGRAM,
+          title: '@eugene_levy',
+          link: Settings.LINK_TELEGRAM_PERSONAL,
           photo: `telegram${modifier}.svg`,
         },
         {

@@ -16,6 +16,7 @@ const API_BANKS_PATH = '/banks/';
 
 
 const LINK_TELEGRAM = 'https://t.me/binvesting';
+const LINK_TELEGRAM_PERSONAL = 'https://t.me/eugene_levy';
 const LINK_YOUTUBE = 'https://www.youtube.com/channel/UCCYBFYPvN_47MDWIm5c2Bxg';
 const LINK_PHONE = 'tel:+375297681940';
 const LINK_EMAIL = 'mailto:sales@binvesting.ru';
@@ -32,6 +33,7 @@ export default {
     API_ETFS_PATH,
     API_BANKS_PATH,
     LINK_TELEGRAM,
+    LINK_TELEGRAM_PERSONAL,
     LINK_YOUTUBE,
     LINK_PHONE,
     LINK_EMAIL,

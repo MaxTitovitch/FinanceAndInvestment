@@ -1,7 +1,7 @@
 <template>
     <div v-scroll="handleScroll" id="terms">
         <div>
-            <vue-headful title="Термины - ЭБ Инвестиции" description="Термины - ЭБ Инвестиции"/>
+            <vue-headful title="Термины - Binvesting" description="Термины - Binvesting"/>
         </div>
         <div class="container">
             <div class="row justify-content-center mt-3">

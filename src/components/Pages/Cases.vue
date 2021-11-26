@@ -1,7 +1,7 @@
 <template>
     <main>
         <div>
-            <vue-headful title="Наши кейсы - ЭБ Инвестиции" description="Наши кейсы - ЭБ Инвестиции"/>
+            <vue-headful title="Наши кейсы - Binvesting" description="Наши кейсы - Binvesting"/>
         </div>
         <div class="container py-5 mt-3 text-center">
             <h1>Наши кейсы</h1>
@@ -23,7 +23,7 @@
                                 <img :src="`/img/cases/company/${link.photo}`" :alt="link.title" class="w-75">
                             </div>
                             <div class="buttons mt-3 mt-md-0">
-                                <router-link to="#">Презентация</router-link>
+                                <a :href="link.link" target="_blank">Презентация</a>
                                 <router-link to="#contacts">Контакты</router-link>
                             </div>
                         </div>
@@ -70,31 +70,34 @@ export default {
           description: 'Компания ООО "Блесаварис Лизинг" впервые выходила на долговой рынок и нуждалась в презентации для инвесторов. Собрав информацию о компании и рынке лизинга, мы подготовили презентацию. Эмитент в полном объеме разместил планируемые выпуски.',
           position: 'right',
           photo: 'company-6.png',
+          link: 'https://binvesting-docs.s3.eu-central-1.amazonaws.com/Блесаварис+ИП.pdf',
         },
         {
           title: 'Оценка надежности эмитента облигаций',
           description: 'Мы подготовили независимую оценку надежности компании ООО "ЕвроЛомбард" по нашей модели перед очередным выпуском корпоративных облигаций. Наша модель учитывает риски связанные с денежными потоками, ликвидностью и уровнем задолженности эмитента.',
           position: 'left',
           photo: 'company-7.png',
+          link: 'https://binvesting-docs.s3.eu-central-1.amazonaws.com/Евроломбард+Оценка+Надежности.pdf',
         },
         {
           title: 'Видеопрезентация эмитента облигаций',
           description: 'Совместно с ООО "Агрофинанс" мы подготовили видеопрезентацию компании. В коротком ролике Директор Михаил Левкович поделился основной информацией о компании, а также своим видением перспектив развития рынков лизинга и техники для сельского хозяйства.',
           position: 'right',
           photo: 'company-3.jpg',
+          link: 'https://www.youtube.com/watch?v=GcpaGg5KyvU',
         },
       ],
       images: [
-        {photo: 'company-1.jpg', title: 'Company 1' },
-        {photo: 'company-2.jpeg', title: 'Company 2' },
-        {photo: 'company-3.jpg', title: 'Company 3' },
-        {photo: 'company-4.jpg', title: 'Company 4' },
-        {photo: 'company-5.png', title: 'Company 5' },
-        {photo: 'company-6.png', title: 'Company 6' },
-        {photo: 'company-7.png', title: 'Company 7' },
-        {photo: 'company-8.png', title: 'Company 8' },
-        {photo: 'company-9.png', title: 'Company 9' },
-        {photo: 'company-10.png', title: 'Company 10' },
+        {photo: 'company-1.jpg', title: 'Company 1'},
+        {photo: 'company-2.jpeg', title: 'Company 2'},
+        {photo: 'company-3.jpg', title: 'Company 3'},
+        {photo: 'company-4.jpg', title: 'Company 4'},
+        {photo: 'company-5.png', title: 'Company 5'},
+        {photo: 'company-6.png', title: 'Company 6'},
+        {photo: 'company-7.png', title: 'Company 7'},
+        {photo: 'company-8.png', title: 'Company 8'},
+        {photo: 'company-9.png', title: 'Company 9'},
+        {photo: 'company-10.png', title: 'Company 10'},
       ],
     };
   },
@@ -135,7 +138,7 @@ h2 {
 
 
 .links-horizontal {
-    flex-wrap: nowrap!important;
+    flex-wrap: nowrap !important;
     overflow-x: scroll;
     scroll-direction: horizontal;
 }
@@ -148,7 +151,7 @@ h2 {
 
 .links-horizontal::-webkit-scrollbar {
     height: 5px;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 
@@ -174,6 +177,7 @@ h2 {
     border-radius: 45px;
     padding: 3rem;
 }
+
 .links-row-body img {
     border-radius: 45px;
 }
@@ -212,8 +216,8 @@ a:hover {
 }
 
 @media screen and (max-device-width: 767px) {
-    h1, .h1  {
-        font-size: 30px!important;
+    h1, .h1 {
+        font-size: 30px !important;
         line-height: 30px;
     }
 
@@ -247,7 +251,7 @@ a:hover {
 
     .buttons > a {
         width: 42%;
-        max-width: unset!important;
+        max-width: unset !important;
         margin-right: 0;
     }
 

@@ -99,7 +99,7 @@
                         />
                         <template slot="footer">
                             <div class="links pa-2">
-                                <a :href="link.link" v-for="(link, i) in links" :key="i">
+                                <a :href="link.link" v-for="(link, i) in links" target="_blank" :key="i">
                                     <img :src="`/img/contacts/${link.photo}`" :alt="link.title">
                                     {{ link.title }}
                                 </a>

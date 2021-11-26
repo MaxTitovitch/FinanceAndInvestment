@@ -1,10 +1,10 @@
 <template>
   <div class="h-100 d-flex justify-content-center align-items-center">
     <div>
-      <vue-headful title="Страница не найдена - ЭБ Инвестиции" description="Страница не найдена - ЭБ Инвестиции"/>
+      <vue-headful title="Страница не найдена - Binvesting" description="Страница не найдена - Binvesting"/>
     </div>
     <div class="body-container">
-      <img src="@/assets/404.svg" alt="404 - ЭБ Инвестиции">
+      <img src="@/assets/404.svg" alt="404 - Binvesting">
     </div>
   </div>
 </template>

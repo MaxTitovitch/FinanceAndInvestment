@@ -1,7 +1,7 @@
 <template>
     <main>
         <div>
-            <vue-headful title="Главная - ЭБ Инвестиции" description="Главная - ЭБ Инвестиции"/>
+            <vue-headful title="Главная - Binvesting" description="Главная - Binvesting"/>
         </div>
         <div class="container-fluid p-0 position-relative">
             <img :src="require(`@/assets/main/${backgroundImage}`)" alt="Background" class="background-image">
@@ -76,7 +76,7 @@ export default {
           description: 'В нашей книге мы собрали все необходимые знания для старта в инвестициях с нуля. В ней вы найдете обзор основных инвестиционных инструментов, рекомендации по выбору портфеля, а также в книге развенчаны основные мифы и заблуждения новичков.',
           position: 'left',
           link: '/book',
-          photo: 'book.png',
+          photo: 'book.svg',
           otherClass: 'w-50',
         },
       ],

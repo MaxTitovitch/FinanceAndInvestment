@@ -1,7 +1,7 @@
 <template>
   <div class="h-100 d-flex justify-content-center align-items-center">
     <div>
-      <vue-headful title="Обучение - ЭБ Инвестиции" description="Обучение - ЭБ Инвестиции"/>
+      <vue-headful title="Обучение - Binvesting" description="Обучение - Binvesting"/>
     </div>
     <div class="body-container">
       Обучение
