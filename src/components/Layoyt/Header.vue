@@ -2,15 +2,15 @@
     <div class="w-100 header-wrapper" :class="{['main-class']: isMainClass || isShowSidebar}">
         <header class="container">
             <b-navbar toggleable="lg" variant="faded" type="light" class="flex-nowrap header-height pb-0">
-                <b-navbar-brand to="/" :class="showSearch ? 'mobile-hidden' : ''">
+                <b-navbar-brand to="/" :class="showSearch ? 'mobile-hidden' : ''" class="w-25">
                     <h2 class="header-logo" :class="{['light-color']: isMainClass || isShowSidebar}">
                         Binvesting</h2>
                 </b-navbar-brand>
 
-                <b-nav id="nav-collapse" is-nav class="w-100">
-                    <b-navbar-nav class="mobile-hidden w-100 d-flex justify-content-end" v-if="!showSearch">
+                <b-nav id="nav-collapse" is-nav class="w-75">
+                    <b-navbar-nav class="mobile-hidden w-100 d-flex flex-column align-items-end" v-if="!showSearch">
                         <MenuNavbar
-                                main-class="d-flex justify-content-around w-75"
+                                main-class="d-flex justify-content-around w-100"
                                 type="desktop"
                                 :is-main-class="isMainClass"
                         />
