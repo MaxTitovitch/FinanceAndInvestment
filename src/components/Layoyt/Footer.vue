@@ -9,18 +9,20 @@
                         </router-link>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 pl-5 d-flex flex-wrap justify-content-between align-items-center footer-link">
-                    <router-link v-for="(link, i) in filtratedLinks" :key="i" class="text-dark" :to="link.link">
+                <div class="col-12 col-md-7 pl-5 d-flex flex-wrap justify-content-between align-items-center footer-link">
+                    <router-link v-for="(link, i) in filtratedLinks" :key="i" class="text-dark footer-menu"
+                                 :to="link.link">
                         {{ link.title }}
                     </router-link>
                 </div>
-                <div class="col-12 col-md-4 d-flex flex-wrap align-items-end flex-column footer-link mt-4 mt-md-0">
+                <div class="col-12 col-md-3 d-flex flex-wrap align-items-end flex-column footer-link mt-4 mt-md-0">
                     <a class="text-dark pointer" target="_blank" @click="openLink(Settings.LINK_PHONE)">
                         <img :src="`/img/contacts/phone.svg`" class="mobile-show mr-1" alt="Phone">
                         <span>+375 (29) 768-19-40</span>
                     </a>
                     <div class="footer-social d-flex justify-content-end mt-2">
-                        <a class="text-dark pointer" target="_blank" @click="openLink(link.link)" v-for="(link, i) in socialLinks" :key="i">
+                        <a class="text-dark pointer" target="_blank" @click="openLink(link.link)"
+                           v-for="(link, i) in socialLinks" :key="i">
                             <img :src="`/img/contacts/${link.photo}`" :alt="link.title" class="mr-1">
                             <span class="mobile-show">{{ link.title }}</span>
                         </a>
@@ -30,6 +32,9 @@
             <div class="row mt-4 mobile-hidden">
                 <div class="col-12 text-center">
                     <p class="font-weight-bold">© {{ year }} Binvesting. Все права защищены.</p>
+                    <p>
+                        <router-link class="footer-disclaimer" to="#disclaimer">Не является инвестиционной рекомендацией</router-link>
+                    </p>
                 </div>
             </div>
         </div>
@@ -83,7 +88,7 @@ export default {
     filtratedLinks() {
       return this.links.filter(link => {
         return window.mobileCheck() ? !link.onlyDesktop : !link.onlyMobile;
-      })
+      });
     },
   },
   methods: {
@@ -96,11 +101,22 @@ export default {
 
 <style scoped>
 
+.footer-menu {
+    width: 80px;
+    text-align: center;
+}
+
 .footer-logo {
     color: black;
 }
+
+.footer-disclaimer {
+    color: black;
+    font-weight: bold;
+}
+
 .footer-logo h3 {
-    font-family: RobotoBold,serif!important;
+    font-family: RobotoBold, serif !important;
     font-weight: bold;
 }
 
@@ -141,25 +157,25 @@ p {
         display: flex;
         flex-direction: column;
         justify-content: start;
-        align-items: start!important;
-        padding: 0!important;
+        align-items: start !important;
+        padding: 0 !important;
     }
 
     .container {
-        padding: 30px!important;
+        padding: 30px !important;
     }
 
     footer {
-        padding: 10px 0!important;
+        padding: 10px 0 !important;
     }
 
     .footer-social {
         flex-direction: column;
-        margin-top: 0!important;
+        margin-top: 0 !important;
     }
 
     .footer-logo-body {
-        padding: 0!important;
+        padding: 0 !important;
     }
 }
 </style>

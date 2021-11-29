@@ -5,10 +5,11 @@ import Videos from "@/components/Pages/Videos";
 import Etf from "@/components/Pages/Etf";
 import Issuers from "@/components/Pages/Issuers";
 import Error404 from "@/components/Pages/Error404";
-import Book from "@/components/Pages/Book";
+// import Book from "@/components/Pages/Book";
 import Cases from "@/components/Pages/Cases";
 import Hook from "@/components/Pages/Hook";
 import Services from "@/components/Pages/Services";
+import Team from "@/components/Pages/Team";
 
 export default [
     {
@@ -49,7 +50,7 @@ export default [
     {
         path: '/book',
         name: 'book',
-        component: Book,
+        component: Hook,
     },
     {
         path: '/cases',
@@ -65,6 +66,11 @@ export default [
         path: '/services',
         name: 'services',
         component: Services,
+    },
+    {
+        path: '/team',
+        name: 'team',
+        component: Team,
     },
     {
         path: '*',

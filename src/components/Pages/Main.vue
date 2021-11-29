@@ -102,7 +102,7 @@ h1 {
     color: #FFFFFF;
     padding-bottom: 5rem;
     font-size: 3.4rem;
-    line-height: 3.4rem;
+    line-height: 4.6rem;
 }
 
 h2 {

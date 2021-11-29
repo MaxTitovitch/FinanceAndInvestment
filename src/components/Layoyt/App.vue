@@ -4,6 +4,7 @@
         <router-view/>
         <Footer/>
         <Contacts />
+        <Disclaimer />
     </div>
 </template>
 
@@ -12,11 +13,13 @@ import Header from '@/components/Layoyt/Header';
 import Footer from '@/components/Layoyt/Footer';
 import {mapGetters} from 'vuex';
 import Contacts from '@/components/Parts/Contacts';
+import Disclaimer from '@/components/Parts/Disclaimer';
 
 export default {
   name: 'App',
   components: {
     Contacts,
+    Disclaimer,
     Header,
     Footer,
   },

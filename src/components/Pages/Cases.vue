@@ -44,7 +44,7 @@
         <div class="container mb-5">
             <splide :options="options" class="mb-5">
                 <splide-slide v-for="(image, index) in images" :key="index" class="links-row p-4">
-                    <div class="links-row-body p-1 my-2">
+                    <div class="links-row-body p-4 my-2">
                         <img :src="`/img/cases/company/${image.photo}`" :alt="image.title" class="w-100">
                     </div>
                 </splide-slide>
@@ -90,14 +90,14 @@ export default {
       ],
       images: [
         {photo: 'company-1.jpg', title: 'Company 1'},
-        {photo: 'company-2.jpeg', title: 'Company 2'},
-        {photo: 'company-3.jpg', title: 'Company 3'},
-        {photo: 'company-4.jpg', title: 'Company 4'},
         {photo: 'company-5.png', title: 'Company 5'},
-        {photo: 'company-6.png', title: 'Company 6'},
+        {photo: 'company-3.jpg', title: 'Company 3'},
         {photo: 'company-7.png', title: 'Company 7'},
+        {photo: 'company-4.jpg', title: 'Company 4'},
         {photo: 'company-8.png', title: 'Company 8'},
+        {photo: 'company-6.png', title: 'Company 6'},
         {photo: 'company-9.png', title: 'Company 9'},
+        {photo: 'company-2.jpeg', title: 'Company 2'},
         {photo: 'company-10.png', title: 'Company 10'},
       ],
     };

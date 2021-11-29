@@ -68,6 +68,10 @@
             </div>
         </div>
         <div class="text-center d-flex justify-content-center align-items-center py-1 py-md-3"
+             :class="{'submenu-link-hovered small-size': type === 'desktop'}">
+            <router-link to="/team" class="menu-link" @click.native="hideMenu">О нас</router-link>
+        </div>
+        <div class="text-center d-flex justify-content-center align-items-center py-1 py-md-3"
              :class="{'submenu-link-hovered': type === 'desktop'}">
             <router-link to="#contacts" class="menu-link" @click.native.prevent="hideMenu">Контакты</router-link>
         </div>
@@ -210,7 +214,7 @@ p.menu-link > a {
     border: 1px solid lightgrey;
     border-radius: 10px;
     padding: 10px 30px;
-    min-width: 200px;
+    min-width: 220px;
 }
 
 .dropdown-items p {
