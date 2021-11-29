@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row justify-content-between mt-3">
                 <div class="col-12 col-md-6 order-12 order-md-0">
-                    <h1 class="main-header font-weight-bold mt-2">Беларусь. Оценки эмитентов</h1>
+                    <h1 class="main-header font-weight-bold mt-md-2 mt-4">Беларусь. Оценки эмитентов</h1>
                 </div>
                 <div class="col-12 col-md-4 d-flex justify-content-between align-items-center order-0 order-md-12">
                     <b-nav-form class="search-form" form-class="align-end justify-content-between w-100">
@@ -43,10 +43,10 @@
                              :sort-compare="sortCompare"
                              responsive="sm"
                              table-class="table-fixed"
-                             class="table-fixed-container"
+                             class="table-fixed-container mobile-hidden"
                     >
                         <template #cell(overview)="data">
-                            <a v-if="!data.item.express" :href="data.item.overview" class="text-dark font-weight-bold"
+                            <a v-if="!data.item.express && data.item.overview" :href="data.item.overview" class="text-dark font-weight-bold"
                                target="_blank">
                                 Подробнее...
                             </a>
@@ -55,6 +55,34 @@
                             {{ data.item.express ? 'Экспресс' : 'Стандартная' }}
                         </template>
                     </b-table>
+                    <div class="mobile-show">
+                        <div class="bank-card container-fluid" v-for="(issuer, i) in issuers" :key="i">
+                            <div class="row">
+                                <h2 class="w-100 mb-4 text-center">
+                                    {{ issuer.name }}
+                                </h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-5 text-center">
+                                    <p>Оценка <br> надежности</p>
+                                    <p class="bank-big">
+                                        {{ issuer.rating }}
+                                    </p>
+                                </div>
+                                <div class="col-7 text-left">
+                                    <div>
+                                        <p><strong>Дата оценки:</strong> {{ issuer.date }}</p>
+                                        <p class="mt-2"><strong>Модель:</strong> {{ issuer.express ? 'Экспресс' : 'Стандартная' }}</p>
+                                        <p v-if="!issuer.express && issuer.overview" class="buttons">
+                                            <a class="mt-1 w-75 btn-sm" :href="issuer.overview" target="_blank">
+                                                Подробнее
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div v-if="issuers.length <= 0"
                          class="main-header font-weight-bold w-100 text-center text-secondary">
                         Эмитенты не найдены
@@ -68,7 +96,7 @@
 <script>
 import {mapGetters} from 'vuex';
 import FilterIssuersModal from '@/components/Parts/FilterIssuersModal';
-import {getDate} from "@/helpers";
+import {getDate} from '@/helpers';
 
 export default {
   name: 'Issuers',
@@ -116,13 +144,58 @@ export default {
       const aValue = !['date'].includes(key) ? aRow[key] : new Date(getDate(aRow[key]));
       const bValue = !['date'].includes(key) ? bRow[key] : new Date(getDate(bRow[key]));
 
-      return aValue < bValue ? -1 : aValue > bValue ? 1 : 0
+      return aValue < bValue ? -1 : aValue > bValue ? 1 : 0;
     },
   },
 };
 </script>
 
 <style scoped>
+.bank-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 14px;
+    margin-top: 25px;
+    padding: 20px;
+}
+
+.bank-card .bank-big {
+    font-size: 45px;
+    font-weight: bold;
+    font-family: RubikBold, serif;
+}
+
+.bank-card p {
+    margin-bottom: 0;
+    font-size: 0.8rem;
+}
+.buttons {
+    margin-top: 10px;
+    display: flex;
+    align-items: end;
+    flex-wrap: nowrap;
+}
+
+.buttons a {
+    background: #243EE9 !important;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 50px;
+    max-width: 65%;
+    text-align: center;
+    display: block;
+    border-radius: 7px;
+    width: 200px;
+}
+
+.buttons a:hover {
+    text-decoration: none;
+    background: #0f21a5 !important;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
 .search-close {
     padding-left: 3px;
     width: 6%;
@@ -174,6 +247,10 @@ input:focus, input:active {
 @media screen and (max-device-width: 767px) {
     .main-header {
         font-size: 22px;
+    }
+
+    h2 {
+        font-size: 20px !important;
     }
 
     .search-close {
@@ -247,6 +324,7 @@ th[role="columnheader"] {
 .table-fixed thead tr th {
     border: none;
 }
+
 .table-fixed td {
     word-break: break-word;
 }
