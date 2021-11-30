@@ -32,6 +32,30 @@
                     </b-link>
                     <FilterIssuersModal v-show="isShowFilter" :issuersFiltrateValue="issuersFiltrateValue"/>
                 </div>
+                <div class="col-12 mobile-show">
+                    <v-select
+                            id="sortSelect"
+                            size="sm"
+                            class="mt-2 search-select w-100"
+                            @keypress.enter.prevent
+                            :options="sortableFields"
+                            :text-prop="'label'"
+                            :value-prop="'key'"
+                            v-model="sortBySort"
+                            autocomplete="off"
+                    />
+                    <v-select
+                            id="sortSelectOrdering"
+                            size="sm"
+                            class="mt-3 search-select w-100"
+                            @keypress.enter.prevent
+                            :options="sortDirections"
+                            :text-prop="'label'"
+                            :value-prop="'key'"
+                            v-model="sortDescSort"
+                            autocomplete="off"
+                    />
+                </div>
             </div>
             <div class="row mt-3">
                 <div class="col-12">
@@ -46,7 +70,8 @@
                              class="table-fixed-container mobile-hidden"
                     >
                         <template #cell(overview)="data">
-                            <a v-if="!data.item.express && data.item.overview" :href="data.item.overview" class="text-dark font-weight-bold"
+                            <a v-if="!data.item.express && data.item.overview" :href="data.item.overview"
+                               class="text-dark font-weight-bold"
                                target="_blank">
                                 Подробнее...
                             </a>
@@ -56,7 +81,7 @@
                         </template>
                     </b-table>
                     <div class="mobile-show">
-                        <div class="bank-card container-fluid" v-for="(issuer, i) in issuers" :key="i">
+                        <div class="bank-card container-fluid" v-for="(issuer, i) in sortedIssuers" :key="i">
                             <div class="row">
                                 <h2 class="w-100 mb-4 text-center">
                                     {{ issuer.name }}
@@ -71,8 +96,15 @@
                                 </div>
                                 <div class="col-7 text-left">
                                     <div>
-                                        <p><strong>Дата оценки:</strong> {{ issuer.date }}</p>
-                                        <p class="mt-2"><strong>Модель:</strong> {{ issuer.express ? 'Экспресс' : 'Стандартная' }}</p>
+                                        <p>
+                                            <strong class="pr-1">Дата оценки:</strong>
+                                            <span :style="{color: getDateColor(issuer.date)}">{{ issuer.date }}</span>
+                                        </p>
+                                        <p class="mt-2"><strong>Модель:</strong> {{
+                                                issuer.express ?
+                                                        'Экспресс' :
+                                                        'Стандартная'
+                                            }}</p>
                                         <p v-if="!issuer.express && issuer.overview" class="buttons">
                                             <a class="mt-1 w-75 btn-sm" :href="issuer.overview" target="_blank">
                                                 Подробнее
@@ -97,10 +129,11 @@
 import {mapGetters} from 'vuex';
 import FilterIssuersModal from '@/components/Parts/FilterIssuersModal';
 import {getDate} from '@/helpers';
+import VSelect from '@alfsnd/vue-bootstrap-select';
 
 export default {
   name: 'Issuers',
-  components: {FilterIssuersModal},
+  components: {FilterIssuersModal, VSelect},
   mounted() {
     this.$store.commit('setSearch', false);
     this.$store.dispatch('initIssuers');
@@ -112,10 +145,37 @@ export default {
       isShowFilter: 'getIsShowIssuersFilter',
       isIssuersFiltrate: 'isIssuersFiltrate',
     }),
+    sortableFields() {
+      return this.fields.filter(field => field.sortable);
+    },
+    sortBySort: {
+      get() {
+        return this.fields.find(field => field.key === this.sortBy);
+      },
+      set(sortBy) {
+        this.sortBy = sortBy.key;
+      },
+    },
+    sortDescSort: {
+      get() {
+        return this.sortDirections.find(direction => {
+          return this.sortDesc ? (direction.key === 'desc') : (direction.key === 'asc');
+        });
+      },
+      set(sortDesc) {
+        this.sortDesc = sortDesc.key === 'desc';
+      },
+    },
+    sortedIssuers() {
+      return [...this.issuers].sort((first, second) => {
+        const sortFlag = this.sortCompare(first, second, this.sortBy);
+        return !this.sortDesc ? sortFlag : (sortFlag === -1 ? 1 : (sortFlag === 1 ? -1 : 0));
+      });
+    },
   },
   data() {
     return {
-      sortBy: 'age',
+      sortBy: 'name',
       sortDesc: false,
       fields: [
         {key: 'name', label: 'Название', sortable: true},
@@ -123,6 +183,10 @@ export default {
         {key: 'rating', label: 'Оценка', sortable: true},
         {key: 'express', label: 'Модель оценки', sortable: true},
         {key: 'overview', label: 'Подробнее', sortable: false},
+      ],
+      sortDirections: [
+        {key: 'asc', label: 'По возрастанию'},
+        {key: 'desc', label: 'По убыванию'},
       ],
     };
   },
@@ -146,6 +210,23 @@ export default {
 
       return aValue < bValue ? -1 : aValue > bValue ? 1 : 0;
     },
+    getDateColor(date) {
+      const dateLastHalfYear = this.getLastDate(-6), dateLastYear = this.getLastDate(-12);
+
+      if (getDate(date) < dateLastYear) {
+        return '#ff0000';
+      } else if (getDate(date) < dateLastHalfYear) {
+        return '#dddd00';
+      } else {
+        return '#2ebd2e';
+      }
+    },
+    getLastDate(month) {
+      const date = new Date();
+      date.setMonth(date.getMonth() + month);
+      return date;
+    }
+
   },
 };
 </script>
@@ -168,6 +249,7 @@ export default {
     margin-bottom: 0;
     font-size: 0.8rem;
 }
+
 .buttons {
     margin-top: 10px;
     display: flex;
@@ -275,6 +357,25 @@ input:focus, input:active {
 </style>
 
 <style>
+
+.search-select .v-select-toggle {
+    border: 1px solid !important;
+    border-radius: 10px !important;
+    height: 36px !important;
+    align-items: center;
+}
+
+.search-select .v-select-toggle:focus {
+    outline-color: #243EE9;
+}
+
+.search-select .v-select-toggle .arrow-down {
+    margin-top: 0 !important;
+}
+
+.search-select .v-dropdown-item.selected {
+    background-color: #243EE9 !important;
+}
 
 td:first-child {
     text-align: left;

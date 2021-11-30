@@ -5,7 +5,7 @@
             hide-footer
             hide-header
             content-class="modal-disclaimer"
-            body-class="p-0"
+            body-class="p-0 ml-5 d-flex justify-content-center my-3"
             size="lg"
             v-model="showModal"
             @close.stop="$emit('close')"

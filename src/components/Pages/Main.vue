@@ -193,7 +193,7 @@ a:hover {
 @media screen and (max-device-width: 767px) {
     h1 {
         font-size: 30px;
-        line-height: 30px;
+        line-height: 45px;
     }
 
     h2 {

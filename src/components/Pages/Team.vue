@@ -1,7 +1,7 @@
 <template>
     <main>
         <div>
-            <vue-headful title="Услуги - Binvesting" description="Услуги - Binvesting"/>
+            <vue-headful title="Команда - Binvesting" description="Команда - Binvesting"/>
         </div>
         <div class="container py-5 mt-3 text-center">
             <h1>Команда</h1>

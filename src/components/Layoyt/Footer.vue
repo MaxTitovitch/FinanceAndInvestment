@@ -160,6 +160,11 @@ p {
         align-items: start !important;
         padding: 0 !important;
     }
+    
+    .footer-menu {
+        text-align: left;
+        width: 100%;
+    }
 
     .container {
         padding: 30px !important;

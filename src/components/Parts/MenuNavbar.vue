@@ -69,7 +69,7 @@
         </div>
         <div class="text-center d-flex justify-content-center align-items-center py-1 py-md-3"
              :class="{'submenu-link-hovered small-size': type === 'desktop'}">
-            <router-link to="/team" class="menu-link" @click.native="hideMenu">О нас</router-link>
+            <router-link to="/team" class="menu-link" @click.native="hideMenu">Команда</router-link>
         </div>
         <div class="text-center d-flex justify-content-center align-items-center py-1 py-md-3"
              :class="{'submenu-link-hovered': type === 'desktop'}">
