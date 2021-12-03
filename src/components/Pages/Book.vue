@@ -144,7 +144,7 @@ a:hover {
     h2 {
         text-align: center;
         font-size: 18px;
-        line-height: 18px;
+        line-height: 30px;
         margin-bottom: 1.3rem;
         margin-top: 2rem;
     }

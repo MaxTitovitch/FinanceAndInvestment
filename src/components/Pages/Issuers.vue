@@ -79,6 +79,9 @@
                         <template #cell(express)="data">
                             {{ data.item.express ? 'Экспресс' : 'Стандартная' }}
                         </template>
+                        <template #cell(date)="data">
+                            <span :style="{color: getDateColor(data.item.date)}">{{ data.item.date }}</span>
+                        </template>
                     </b-table>
                     <div class="mobile-show">
                         <div class="bank-card container-fluid" v-for="(issuer, i) in sortedIssuers" :key="i">
@@ -214,11 +217,11 @@ export default {
       const dateLastHalfYear = this.getLastDate(-6), dateLastYear = this.getLastDate(-12);
 
       if (getDate(date) < dateLastYear) {
-        return '#ff0000';
+        return '#E83A49';
       } else if (getDate(date) < dateLastHalfYear) {
-        return '#dddd00';
+        return '#FFC700';
       } else {
-        return '#2ebd2e';
+        return '#00CE21';
       }
     },
     getLastDate(month) {

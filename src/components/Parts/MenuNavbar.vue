@@ -27,7 +27,8 @@
                 >
                     <span class="dropdown-button py-1 py-md-3" :class="{open: isOpen[0]}">
                         Обучение
-                        <img class="mobile-show" :src="!isOpen[0] ? '/img/arrow-down.svg' : '/img/arrow-up.svg'" alt="Arrow">
+                        <img class="mobile-show" :src="!isOpen[0] ? '/img/arrow-down.svg' : '/img/arrow-up.svg'"
+                             alt="Arrow">
                     </span>
                     <div class="dropdown-items" v-show="isOpen[0]">
                         <p :class="'menu-link ' + firstItemClaas">
@@ -52,7 +53,8 @@
                 >
                     <span class="dropdown-button py-1 py-md-3" :class="{open: isOpen[1]}">
                         Аналититка
-                        <img class="mobile-show" :src="!isOpen[1] ? '/img/arrow-down.svg' : '/img/arrow-up.svg'" alt="Arrow">
+                        <img class="mobile-show" :src="!isOpen[1] ? '/img/arrow-down.svg' : '/img/arrow-up.svg'"
+                             alt="Arrow">
                     </span>
                     <div class="dropdown-items" v-show="isOpen[1]">
                         <p :class="'menu-link ' + firstItemClaas">
@@ -171,12 +173,6 @@ export default {
     margin-left: 3px;
 }
 
-.menu-link a:hover, .menu-link:hover, .dropdown-button:hover, .dropdown-body:hover .dropdown-button {
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 17px;
-}
-
 .light-color {
     color: white;
 }
@@ -197,6 +193,10 @@ div.menu-link {
 
 p.menu-link > a {
     padding-top: 7px;
+}
+
+p.menu-link:last-child > a {
+    padding-bottom: 7px;
 }
 
 .menu-link, .menu-link > a {
@@ -303,8 +303,8 @@ p.menu-link > a {
     }
 
     .dropdown-items .menu-link > a {
-        color: white!important;
-        font-size: 1rem!important;
+        color: white !important;
+        font-size: 1rem !important;
     }
 
     .dropdown-button {

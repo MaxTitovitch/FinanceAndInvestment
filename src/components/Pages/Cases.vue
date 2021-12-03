@@ -174,7 +174,6 @@ h2 {
 
 .links-row-body img {
     border-radius: 45px;
-    max-height: 100%;
 }
 
 .w-55 {
@@ -223,7 +222,7 @@ a:hover {
     h2 {
         text-align: center;
         font-size: 18px;
-        line-height: 18px;
+        line-height: 30px;
         margin-bottom: 12px;
     }
 

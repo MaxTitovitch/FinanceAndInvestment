@@ -14,7 +14,8 @@
                 <div v-for="(link, i) in links" :key="i" class="col-12 links-row">
                     <div class="links-row-body height-size">
                         <div v-if="link.position === 'right' && !isMobile" class="w-50 d-flex justify-content-center">
-                            <img :src="`/img/main/${link.photo}`" :alt="link.title" class="link-image" :class="link.otherClass || ''">
+                            <img :src="`/img/main/${link.photo}`" :alt="link.title" class="link-image"
+                                 :class="link.otherClass || ''">
                         </div>
                         <div class="d-flex flex-column justify-content-between links-description p-3">
                             <div>
@@ -22,16 +23,25 @@
                                 <p class="mobile-hidden">{{ link.description }}</p>
                             </div>
                             <div v-if="isMobile" class="w-100 d-flex justify-content-center">
-                                <img :src="`/img/main/${link.photo}`" :alt="link.title" :class="link.otherClass || 'w-75'">
+                                <img :src="`/img/main/${link.photo}`" :alt="link.title"
+                                     :class="link.otherClass || 'w-75'">
                             </div>
                             <div class="buttons mt-3 mt-md-0">
-                                <div class="w-100">
-                                    <router-link :to="link.link">Подробнее</router-link>
+                                <div class="w-100 d-flex justify-content-start">
+                                    <router-link
+                                            v-for="(bank, j) in link.buttons"
+                                            :key="j"
+                                            :to="bank.link"
+                                            class="main-button"
+                                    >
+                                        {{ bank.title }}
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
                         <div v-if="link.position === 'left' && !isMobile" class="w-50 d-flex justify-content-center">
-                            <img :src="`/img/main/${link.photo}`" :alt="link.title" class="link-image" :class="link.otherClass || ''">
+                            <img :src="`/img/main/${link.photo}`" :alt="link.title" class="link-image"
+                                 :class="link.otherClass || ''">
                         </div>
                     </div>
                 </div>
@@ -54,41 +64,52 @@ export default {
           title: 'Консультации и софт для компаний',
           description: 'Поможем вашему бизнесу оптимизировать внутренние финансы и привлечь внешнее финансирование на выгодных условиях. Соберем инвестиционный портфель под ваши цели.',
           position: 'right',
-          link: '/services',
           photo: 'services.svg',
+          buttons: [
+            {title: 'Услуги', link: '/services'},
+            {title: 'Кейсы', link: '/cases'},
+          ],
         },
         {
           title: 'Обучение инвестированию и финансам',
           description: 'Библиотека терминов и образовательные видео по теме инвестиций и финансов',
           position: 'left',
-          link: '/terms',
           photo: 'terms.svg',
+          buttons: [
+            {title: 'Термины', link: '/terms'},
+            {title: 'Видео', link: '/videos'},
+          ],
         },
         {
           title: 'Аналитика по компаниям и банкам',
           description: 'Аналитика по различным аспектам деятельности сотен компаний и банков',
           position: 'right',
-          link: '/issuers',
           photo: 'issuers.svg',
+          buttons: [
+            {title: 'Компании', link: '/issuers'},
+            {title: 'Банки', link: '/banks'},
+          ],
         },
         {
           title: 'Наша книга',
           description: 'В нашей книге мы собрали все необходимые знания для старта в инвестициях с нуля. В ней вы найдете обзор основных инвестиционных инструментов, рекомендации по выбору портфеля, а также в книге развенчаны основные мифы и заблуждения новичков.',
           position: 'left',
-          link: '/book',
           photo: 'book.svg',
           otherClass: 'w-50',
+          buttons: [
+            {title: 'Книга', link: '/book'},
+          ],
         },
       ],
     };
   },
   computed: {
     backgroundImage() {
-      return window.mobileCheck() ? 'main-photo-phone.png' : 'main-photo.png'
+      return window.mobileCheck() ? 'main-photo-phone.png' : 'main-photo.png';
     },
     isMobile() {
       return window.mobileCheck();
-    }
+    },
   },
 };
 </script>
@@ -181,6 +202,11 @@ h2 {
     width: 205px;
 }
 
+.buttons .main-button {
+    width: 33%;
+    margin-right: 15px;
+}
+
 .buttons a:hover {
     text-decoration: none;
     background: #0f21a5 !important;
@@ -199,7 +225,7 @@ a:hover {
     h2 {
         text-align: center;
         font-size: 18px;
-        line-height: 18px;
+        line-height: 30px;
         margin-bottom: 12px;
     }
 
