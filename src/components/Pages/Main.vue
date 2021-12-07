@@ -27,7 +27,7 @@
                                      :class="link.otherClass || 'w-75'">
                             </div>
                             <div class="buttons mt-3 mt-md-0">
-                                <div class="w-100 d-flex justify-content-start">
+                                <div class="w-100 d-flex justify-content-center justify-content-md-start">
                                     <router-link
                                             v-for="(bank, j) in link.buttons"
                                             :key="j"
@@ -220,6 +220,11 @@ a:hover {
     h1 {
         font-size: 30px;
         line-height: 45px;
+    }
+
+    .buttons .main-button {
+        margin-right: 7px;
+        margin-left: 7px;
     }
 
     h2 {

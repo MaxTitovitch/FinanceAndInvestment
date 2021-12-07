@@ -204,8 +204,10 @@ p.menu-link:last-child > a {
     display: block;
 }
 
-.menu-link:hover {
+.menu-link:hover, .dropdown-button:hover, .menu-link:hover a {
     cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .dropdown-items {

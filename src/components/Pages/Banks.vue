@@ -31,6 +31,30 @@
                     </b-link>
                     <FilterBanksModal v-show="isShowFilter" :banksFiltrateValue="banksFiltrateValue"/>
                 </div>
+                <div class="col-12 mobile-show">
+                    <v-select
+                            id="sortSelect"
+                            size="sm"
+                            class="mt-2 search-select w-100"
+                            @keypress.enter.prevent
+                            :options="sortableFields"
+                            :text-prop="'label'"
+                            :value-prop="'key'"
+                            v-model="sortBySort"
+                            autocomplete="off"
+                    />
+                    <v-select
+                            id="sortSelectOrdering"
+                            size="sm"
+                            class="mt-3 search-select w-100"
+                            @keypress.enter.prevent
+                            :options="sortDirections"
+                            :text-prop="'label'"
+                            :value-prop="'key'"
+                            v-model="sortDescSort"
+                            autocomplete="off"
+                    />
+                </div>
             </div>
             <div class="row mt-3">
                 <div class="col-12">
@@ -46,7 +70,7 @@
                     >
                     </b-table>
                     <div class="mobile-show">
-                        <div class="bank-card container-fluid" v-for="(bank, i) in banks" :key="i">
+                        <div class="bank-card container-fluid" v-for="(bank, i) in sortedBanks" :key="i">
                             <div class="row">
                                 <h2 class="w-100 mb-4 text-center">
                                     {{ bank.name }}
@@ -84,10 +108,11 @@
 import {mapGetters} from 'vuex';
 import FilterBanksModal from '@/components/Parts/FilterBanksModal';
 import {getDate} from '@/helpers';
+import VSelect from '@alfsnd/vue-bootstrap-select';
 
 export default {
   name: 'Banks',
-  components: {FilterBanksModal},
+  components: {FilterBanksModal, VSelect},
   mounted() {
     this.$store.commit('setSearch', false);
     this.$store.dispatch('initBanks');
@@ -99,10 +124,37 @@ export default {
       isShowFilter: 'getIsShowBanksFilter',
       isBanksFiltrate: 'isBanksFiltrate',
     }),
+    sortableFields() {
+      return this.fields.filter(field => field.sortable);
+    },
+    sortBySort: {
+      get() {
+        return this.fields.find(field => field.key === this.sortBy);
+      },
+      set(sortBy) {
+        this.sortBy = sortBy.key;
+      },
+    },
+    sortDescSort: {
+      get() {
+        return this.sortDirections.find(direction => {
+          return this.sortDesc ? (direction.key === 'desc') : (direction.key === 'asc');
+        });
+      },
+      set(sortDesc) {
+        this.sortDesc = sortDesc.key === 'desc';
+      },
+    },
+    sortedBanks() {
+      return [...this.banks].sort((first, second) => {
+        const sortFlag = this.sortCompare(first, second, this.sortBy);
+        return !this.sortDesc ? sortFlag : (sortFlag === -1 ? 1 : (sortFlag === 1 ? -1 : 0));
+      });
+    },
   },
   data() {
     return {
-      sortBy: 'age',
+      sortBy: 'name',
       sortDesc: false,
       fields: [
         {key: 'name', label: 'Название', sortable: true},
@@ -110,6 +162,10 @@ export default {
         {key: 'date_price', label: 'Дата оценки', sortable: true},
         {key: 'rating', label: 'Место в рейтинге надежности', sortable: true},
         {key: 'date_rating', label: 'Дата оценки', sortable: true},
+      ],
+      sortDirections: [
+        {key: 'asc', label: 'По возрастанию'},
+        {key: 'desc', label: 'По убыванию'},
       ],
     };
   },
