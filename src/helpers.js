@@ -17,5 +17,6 @@ export function getDateByQuarter(quarter){
 
 export function getDate (stringDate) {
     let dateParts = stringDate.split('.');
-    return new Date(`${dateParts[1]}.${dateParts[0]}.${dateParts[2]}`);
+    return new Date(`${dateParts[1]}/${dateParts[0]}/${dateParts[2]}`);
+
 }
